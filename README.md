@@ -1,1 +1,3 @@
-# Docs
+# Dokumentation zu SOLECTRUS
+
+In Arbeit...

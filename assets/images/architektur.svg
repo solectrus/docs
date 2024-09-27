@@ -1,0 +1,324 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-.5 -.5 955 778">
+    <defs>
+        <linearGradient id="a" x1="0%" x2="0%" y1="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#fff;stop-opacity:.9" />
+            <stop offset="100%" style="stop-color:#fff;stop-opacity:.1" />
+        </linearGradient>
+    </defs>
+    <g pointer-events="all">
+        <rect width="920" height="510" x="34" fill="#dae8fc" stroke="#6c8ebf" rx="76.5" ry="76.5" />
+        <path fill="url(#a)" d="M111.65-1Q33-1 33 77.65V204q461 153 922 0V77.65Q955-1 876.35-1Z" />
+    </g>
+    <rect width="80" height="80" x="244" y="390" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all" rx="12" ry="12" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:430px;margin-left:245px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;font-weight:700;white-space:normal;overflow-wrap:normal">Forecast-Collector</div>
+                </div>
+            </div>
+        </foreignObject><text x="284" y="434" font-family="Helvetica" font-size="12" font-weight="bold" text-anchor="middle">Forecast-Coll...</text>
+    </switch>
+    <rect width="80" height="80" x="104" y="390" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all" rx="12" ry="12" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:430px;margin-left:105px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;font-weight:700;white-space:normal;overflow-wrap:normal">SENEC-Collector</div>
+                </div>
+            </div>
+        </foreignObject><text x="144" y="434" font-family="Helvetica" font-size="12" font-weight="bold" text-anchor="middle">SENEC-Collect...</text>
+    </switch>
+    <rect width="80" height="80" x="404" y="47" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all" rx="12" ry="12" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:87px;margin-left:405px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;font-weight:700;white-space:normal;overflow-wrap:normal">Dashboard</div>
+                </div>
+            </div>
+        </foreignObject><text x="444" y="91" font-family="Helvetica" font-size="12" font-weight="bold" text-anchor="middle">Dashboard</text>
+    </switch>
+    <g stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)">
+        <path fill="#dae8fc" d="M794 165c0-8.28 22.39-15 50-15 13.26 0 25.98 1.58 35.36 4.39 9.37 2.82 14.64 6.63 14.64 10.61v57c0 8.28-22.39 15-50 15s-50-6.72-50-15Z" />
+        <path fill="none" d="M894 165c0 8.28-22.39 15-50 15s-50-6.72-50-15" />
+    </g>
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:98px;height:1px;padding-top:206px;margin-left:795px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">Redis<div><br />
+                            <div>(Caching)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="844" y="210" font-family="Helvetica" font-size="12" text-anchor="middle">Redis...</text>
+    </switch>
+    <g stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)">
+        <path fill="#dae8fc" d="M389 218c0-8.28 24.62-15 55-15 14.59 0 28.58 1.58 38.89 4.39C493.21 210.21 499 214.02 499 218v60c0 8.28-24.62 15-55 15s-55-6.72-55-15Z" />
+        <path fill="none" d="M499 218c0 8.28-24.62 15-55 15s-55-6.72-55-15" />
+    </g>
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:108px;height:1px;padding-top:261px;margin-left:390px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">InfluxDB v2</div>
+                </div>
+            </div>
+        </foreignObject><text x="444" y="264" font-family="Helvetica" font-size="12" text-anchor="middle">InfluxDB v2</text>
+    </switch>
+    <g stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)">
+        <path fill="#dae8fc" d="M794 28c0-8.28 22.39-15 50-15 13.26 0 25.98 1.58 35.36 4.39C888.73 20.21 894 24.02 894 28v74c0 8.28-22.39 15-50 15s-50-6.72-50-15Z" />
+        <path fill="none" d="M894 28c0 8.28-22.39 15-50 15s-50-6.72-50-15" />
+    </g>
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:98px;height:1px;padding-top:78px;margin-left:795px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">PostgreSQL<div><br /></div>
+                        <div>(Preise, Einstellungen)</div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="844" y="81" font-family="Helvetica" font-size="12" text-anchor="middle">PostgreSQL...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="M444 203v-69.63" pointer-events="stroke" />
+        <path fill="#a8201a" d="m444 128.12 3.5 7-3.5-1.75-3.5 1.75Z" pointer-events="all" />
+    </g>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m490.37 66.96 297.26-1.92" pointer-events="stroke" />
+        <path fill="#a8201a" d="m485.12 66.99 6.98-3.54-1.73 3.51 1.77 3.49ZM792.88 65.01l-6.98 3.54 1.73-3.51-1.77-3.49Z" pointer-events="all" />
+    </g>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m490.13 108.71 297.74 83.08" pointer-events="stroke" />
+        <path fill="#a8201a" d="m485.08 107.3 7.68-1.49-2.63 2.9.75 3.84ZM792.92 193.2l-7.68 1.49 2.63-2.9-.75-3.84Z" pointer-events="all" />
+    </g>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m144 390 239.49-138.81" pointer-events="stroke" />
+        <path fill="#a8201a" d="m388.03 248.56-4.3 6.54-.24-3.91-3.27-2.15Z" pointer-events="all" />
+    </g>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m284 390 100.64-107.35" pointer-events="stroke" />
+        <path fill="#a8201a" d="m388.24 278.82-2.24 7.5-1.36-3.67-3.75-1.12Z" pointer-events="all" />
+    </g>
+    <rect width="80" height="80" x="384" y="390" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all" rx="12" ry="12" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:430px;margin-left:385px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;font-weight:700;white-space:normal;overflow-wrap:normal">MQTT-Collector</div>
+                </div>
+            </div>
+        </foreignObject><text x="424" y="434" font-family="Helvetica" font-size="12" font-weight="bold" text-anchor="middle">MQTT-Collector</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m424 390 11.17-88.7" pointer-events="stroke" />
+        <path fill="#a8201a" d="m435.83 296.09 2.6 7.38-3.26-2.17-3.69 1.3Z" pointer-events="all" />
+    </g>
+    <rect width="80" height="80" x="804" y="390" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all" rx="12" ry="12" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:430px;margin-left:805px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;font-weight:700;white-space:normal;overflow-wrap:normal">CSV-<div>Importer</div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="844" y="434" font-family="Helvetica" font-size="12" font-weight="bold" text-anchor="middle">CSV-...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="M844 390 504.89 250.42" pointer-events="stroke" />
+        <path fill="#a8201a" d="m500.03 248.43 7.81-.58-2.95 2.57.28 3.91Z" pointer-events="all" />
+    </g>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m564 390-85.71-95.24" pointer-events="stroke" />
+        <path fill="#a8201a" d="m474.78 290.86 7.28 2.86-3.77 1.04-1.43 3.65Z" pointer-events="all" />
+    </g>
+    <rect width="80" height="80" x="524" y="390" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all" rx="12" ry="12" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:430px;margin-left:525px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;font-weight:700;white-space:normal;overflow-wrap:normal">Tibber-Collector</div>
+                </div>
+            </div>
+        </foreignObject><text x="564" y="434" font-family="Helvetica" font-size="12" font-weight="bold" text-anchor="middle">Tibber-Collec...</text>
+    </switch>
+    <rect width="80" height="80" x="664" y="390" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all" rx="12" ry="12" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:430px;margin-left:665px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;font-weight:700;white-space:normal;overflow-wrap:normal">Shelly-Collector</div>
+                </div>
+            </div>
+        </foreignObject><text x="704" y="434" font-family="Helvetica" font-size="12" font-weight="bold" text-anchor="middle">Shelly-Collec...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="M704 390 504.59 281.05" pointer-events="stroke" />
+        <path fill="#a8201a" d="m499.98 278.54 7.82.28-3.21 2.23-.14 3.91Z" pointer-events="all" />
+    </g>
+    <circle cx="44" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:5px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">SENEC Speicher</div>
+                </div>
+            </div>
+        </foreignObject><text x="44" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">SENEC Speicher</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m44 570 84.81-95.24" pointer-events="stroke" />
+        <path fill="#a8201a" d="m132.3 470.83-2.04 7.56-1.45-3.63-3.78-1.02Z" pointer-events="all" />
+    </g>
+    <circle cx="150" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:111px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">SENEC<div>Cloud</div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="150" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">SENEC...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m150 570-5.62-93.64" pointer-events="stroke" />
+        <path fill="#a8201a" d="m144.07 471.12 3.91 6.77-3.6-1.53-3.39 1.95Z" pointer-events="all" />
+    </g>
+    <circle cx="257" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:218px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">forecast.solar</div>
+                </div>
+            </div>
+        </foreignObject><text x="257" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">forecast.solar</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m257 570 17.81-93.74" pointer-events="stroke" />
+        <path fill="#a8201a" d="m275.79 471.1 2.13 7.53-3.11-2.37-3.76 1.06Z" pointer-events="all" />
+    </g>
+    <circle cx="363" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:324px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">solcast.com</div>
+                </div>
+            </div>
+        </foreignObject><text x="363" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">solcast.com</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m363 570-55.76-94.52" pointer-events="stroke" />
+        <path fill="#a8201a" d="m304.57 470.96 6.57 4.25-3.9.27-2.13 3.29Z" pointer-events="all" />
+    </g>
+    <circle cx="894" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:855px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">CSV-<div>Dateien</div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="894" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">CSV-...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m894 570-47.15-94.3" pointer-events="stroke" />
+        <path fill="#a8201a" d="m844.5 471 6.26 4.7h-3.91l-2.35 3.13Z" pointer-events="all" />
+    </g>
+    <circle cx="575" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:536px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">tibber<div>API</div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="575" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">tibber...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m575 570-10.3-93.67" pointer-events="stroke" />
+        <path fill="#a8201a" d="m564.12 471.11 4.25 6.58-3.67-1.36-3.29 2.12Z" pointer-events="all" />
+    </g>
+    <circle cx="682" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:643px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">Shelly<div>Plug S</div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="682" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">Shelly...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m682 570 1.87-93.63" pointer-events="stroke" />
+        <path fill="#a8201a" d="m683.98 471.12 3.36 7.07-3.47-1.82-3.53 1.68Z" pointer-events="all" />
+    </g>
+    <circle cx="788" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:749px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">Shelly<div>Pro 3EM</div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="788" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">Shelly...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m788 570-60.57-94.64" pointer-events="stroke" />
+        <path fill="#a8201a" d="m724.6 470.94 6.72 4.01-3.89.41-2 3.36Z" pointer-events="all" />
+    </g>
+    <circle cx="469" cy="610" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:610px;margin-left:430px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">MQTT<div>Broker</div>
+                    </div>
+                </div>
+            </div>
+        </foreignObject><text x="469" y="614" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">MQTT...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)">
+        <path fill="none" d="m469 570-42.39-94.19" pointer-events="stroke" />
+        <path fill="#a8201a" d="m424.46 471.02 6.06 4.95-3.91-.16-2.47 3.03Z" pointer-events="all" />
+    </g>
+    <circle cx="469" cy="730" r="40" fill="#fae5c7" stroke="#0f8b8d" pointer-events="all" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:730px;margin-left:430px">
+                <div data-drawio-colors="color: #143642;" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#143642;line-height:1.2;pointer-events:all;white-space:normal;overflow-wrap:normal">Sonstige Geräte</div>
+                </div>
+            </div>
+        </foreignObject><text x="469" y="734" fill="#143642" font-family="Helvetica" font-size="12" text-anchor="middle">Sonstige Gerä...</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)">
+        <path fill="none" d="M469 690v-33.63" pointer-events="stroke" />
+        <path fill="#a8201a" d="m469 651.12 3.5 7-3.5-1.75-3.5 1.75Z" pointer-events="all" />
+    </g>
+    <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMzMzLjk1IDUzMC43OSIgZGF0YS1uYW1lPSJMYXllciAxIiBpZD0iTGF5ZXJfMSI+JiN4YTsgIDxkZWZzPiYjeGE7ICAgIDxzdHlsZT4mI3hhOyAgICAgIC5jbHMtMSB7JiN4YTsgICAgICAgIGZpbGw6ICMxZDYzZWQ7JiN4YTsgICAgICAgIHN0cm9rZS13aWR0aDogMHB4OyYjeGE7ICAgICAgfSYjeGE7ICAgIDwvc3R5bGU+JiN4YTsgIDwvZGVmcz4mI3hhOyAgPHBhdGggZD0iTTY2MS41NiwyMTguMDhjLTE2LjQ5LTExLjEtNTkuODEtMTUuODQtOTEuMy03LjM1LTEuNjktMzEuMzctMTcuODgtNTcuODEtNDcuNDctODAuODhsLTEwLjk1LTcuMzUtNy4zLDExLjAzYy0xNC4zNSwyMS43OC0yMC40LDUwLjgxLTE4LjI2LDc3LjIsMS42OSwxNi4yNiw3LjM0LDM0LjUzLDE4LjI2LDQ3Ljc5LTQwLjk5LDIzLjc4LTc4Ljc4LDE4LjM4LTI0Ni4xMiwxOC4zOEguMDZjLS43NSwzNy43OSw1LjMyLDExMC40Nyw1MS41NCwxNjkuNjQsNS4xMSw2LjU0LDEwLjcsMTIuODYsMTYuNzgsMTguOTUsMzcuNTgsMzcuNjMsOTQuMzYsNjUuMjMsMTc5LjI2LDY1LjMsMTI5LjUzLjEyLDI0MC41LTY5LjksMzA4LjAxLTIzOS4xOCwyMi4yMS4zNiw4MC44NSwzLjk4LDEwOS41NS01MS40Ny43LS45Myw3LjMtMTQuNyw3LjMtMTQuN2wtMTAuOTQtNy4zNVpNMTY4LjY3LDE4My41M2gtNzIuNjV2NzIuNjVoNzIuNjV2LTcyLjY1Wk0yNjIuNTIsMTgzLjUzaC03Mi42NXY3Mi42NWg3Mi42NXYtNzIuNjVaTTM1Ni4zOCwxODMuNTNoLTcyLjY1djcyLjY1aDcyLjY1di03Mi42NVpNNDUwLjI0LDE4My41M2gtNzIuNjV2NzIuNjVoNzIuNjV2LTcyLjY1Wk03NC44MSwxODMuNTNIMi4xNnY3Mi42NWg3Mi42NXYtNzIuNjVaTTE2OC42Nyw5MS43N2gtNzIuNjV2NzIuNjVoNzIuNjV2LTcyLjY1Wk0yNjIuNTIsOTEuNzdoLTcyLjY1djcyLjY1aDcyLjY1di03Mi42NVpNMzU2LjM4LDkxLjc3aC03Mi42NXY3Mi42NWg3Mi42NXYtNzIuNjVaTTM1Ni4zOCwwaC03Mi42NXY3Mi42NWg3Mi42NVYwWiIgY2xhc3M9ImNscy0xIi8+JiN4YTsgIDxnPiYjeGE7ICAgIDxwYXRoIGQ9Ik0yMzI5LjQ0LDQxOS4zYzAsMTguOTQtMTQuODcsMzMuODEtMzQuMjEsMzMuODFzLTM0LjQyLTE0Ljg3LTM0LjQyLTMzLjgxLDE1LjI3LTMzLjQsMzQuNDItMzMuNCwzNC4yMSwxNC44NywzNC4yMSwzMy40Wk0yMjY5LjM3LDQxOS4zYzAsMTQuODcsMTEsMjYuNjgsMjYuMDcsMjYuNjhzMjUuNDYtMTEuODEsMjUuNDYtMjYuNDctMTAuOC0yNi44OS0yNS42NS0yNi44OS0yNS44NywxMi4wMi0yNS44NywyNi42OFpNMjI4OS45NSw0MzYuODJoLTcuNzR2LTMzLjRjMy4wNC0uNjEsNy4zMy0xLjAyLDEyLjgyLTEuMDIsNi4zMiwwLDkuMTYsMS4wMiwxMS42MSwyLjQ1LDEuODQsMS40MiwzLjI2LDQuMDcsMy4yNiw3LjMzLDAsMy42Ny0yLjg1LDYuNTItNi45MSw3Ljc0di40MWMzLjI0LDEuMjEsNS4wOCwzLjY2LDYuMSw4LjE0LDEuMDEsNS4wOSwxLjYyLDcuMTMsMi40NSw4LjM1aC04LjM1Yy0xLjAyLTEuMjItMS42NC00LjI3LTIuNjUtOC4xNS0uNjEtMy42Ni0yLjY1LTUuMjktNi45My01LjI5aC0zLjY2djEzLjQ1Wk0yMjkwLjE0LDQxNy44OGgzLjY2YzQuMjgsMCw3Ljc0LTEuNDIsNy43NC00Ljg4LDAtMy4wNi0yLjIzLTUuMTEtNy4xMy01LjExLTIuMDMsMC0zLjQ2LjIxLTQuMjcuNDN2OS41NloiIGNsYXNzPSJjbHMtMSIvPiYjeGE7ICAgIDxwYXRoIGQ9Ik0xMDE3LjE2LDgxLjI4Yy00Ljc5LTQuNjgtMTAuNTQtNy4wNi0xNy40My03LjA2cy0xMi44MSwyLjM4LTE3LjQyLDcuMDZjLTQuNjIsNC42OC02Ljg4LDEwLjY4LTYuODgsMTcuODN2MTE5LjRjLTIzLjctMTkuNTktNTEuMDUtMjkuNDctODIuMTYtMjkuNDctMzYuMTYsMC02Ny4wOCwxMy4wNi05Mi43LDM5LjI3LTI1LjYyLDI2LjEyLTM4LjM0LDU3LjcyLTM4LjM0LDk0Ljc4czEyLjgxLDY4LjU3LDM4LjM0LDk0Ljc4YzI1LjYyLDI2LjEyLDU2LjQ2LDM5LjI3LDkyLjcsMzkuMjdzNjYuNzQtMTMuMDYsOTIuNy0zOS4yN2MyNS42Mi0yNS44NiwzOC4zNC01Ny40NSwzOC4zNC05NC43OFY5OS4xMWMwLTcuMTUtMi4zNS0xMy4xNS03LjE1LTE3LjgzWk05NjguOTgsMzU1LjM5di4xOGMtNC4yNywxMC4xNS0xMC4xMSwxOS4wNi0xNy41MSwyNi42NS03LjQsNy42OC0xNi4xMiwxMy42OC0yNi4wNSwxOC4xOC0xMC4wMiw0LjUtMjAuNjUsNi43MS0zMi4wNiw2Ljcxcy0yMi4zLTIuMjEtMzIuMzItNi43MWMtMTAuMDItNC41LTE4LjY1LTEwLjUtMjUuOTYtMTguMDktNy4zMi03LjU5LTEzLjE1LTE2LjUtMTcuNDItMjYuNjUtNC4yNy0xMC4yNC02LjQ1LTIxLjA5LTYuNDUtMzIuNTdzMi4xOC0yMi4zMyw2LjQ1LTMyLjU3YzQuMjctMTAuMjQsMTAuMTEtMTkuMDYsMTcuNDItMjYuNjUsNy4zMi03LjU5LDE2LjAzLTEzLjU5LDI1Ljk2LTE4LjA5LDEwLjAyLTQuNSwyMC43NC02LjcxLDMyLjMyLTYuNzFzMjIuMDQsMi4yMSwzMi4wNiw2LjcxYzEwLjAyLDQuNSwxOC42NSwxMC41LDI2LjA1LDE4LjE4LDcuNCw3LjY4LDEzLjI0LDE2LjU5LDE3LjUxLDI2LjY1LDQuMjcsMTAuMTUsNi40NSwyMC45Miw2LjQ1LDMyLjM5cy0yLjE4LDIyLjMzLTYuNDUsMzIuMzlaIiBjbGFzcz0iY2xzLTEiLz4mI3hhOyAgICA8cGF0aCBkPSJNMjA5OS43NywyNzEuNjRjLTYuMzYtMTUuODktMTYuMDUtMzAuMjctMjguNzYtNDMuMTZsLS4xNy0uMDljLTI1Ljg4LTI2LjEyLTU2LjgyLTM5LjI3LTkyLjctMzkuMjdzLTY3LjA5LDEzLjA2LTkyLjcxLDM5LjI3Yy0yNS42MiwyNi4xMi0zOC4zMyw1Ny43Mi0zOC4zMyw5NC43OHMxMi44MSw2OC41NywzOC4zMyw5NC43OGMyNS42MiwyNi4xMiw1Ni40NywzOS4yNyw5Mi43MSwzOS4yNywzMi45MiwwLDYxLjQxLTEwLjg1LDg1LjY0LTMyLjU2LDQuNjktNC45NCw3LjA2LTEwLjk0LDcuMDYtMTcuOTJzLTIuMjYtMTMuMTUtNi44OS0xNy44M2MtNC42MS00LjY4LTEwLjQ1LTcuMDYtMTcuNDItNy4wNi02LjA5LjE4LTExLjUsMi4yMS0xNi4xMSw2LjI3LTcuMzIsNi4zNS0xNS4yNSwxMS4yMS0yMy44NywxNC4zOS04LjYzLDMuMTgtMTguMDQsNC43Ny0yOC4zMSw0Ljc3LTkuMDcsMC0xNy43OC0xLjQxLTI2LjA1LTQuMzItOC4yOS0yLjkxLTE2LjAzLTYuODktMjIuOTItMTIuMDktNi45OC01LjIxLTEyLjk4LTExLjM4LTE4LjEyLTE4LjcxLTUuMTQtNy4yNC05LjA2LTE1LjI3LTExLjY3LTI0LjA5aDE4NS4zMmM2Ljg3LDAsMTIuNjItMi4zOCwxNy40Mi03LjA2LDQuOC00LjY4LDcuMTUtMTAuNjgsNy4xNS0xNy44MywwLTE4LjUzLTMuMjQtMzUuNzQtOS41OC01MS41NFpNMTg5OS4yOSwyOTguMjljMi41My04Ljc0LDYuMzYtMTYuNzcsMTEuNS0yNC4wOSw1LjE1LTcuMjQsMTEuMjQtMTMuNSwxOC4yMS0xOC43MSw3LjA2LTUuMjEsMTQuNzItOS4xOCwyMy4xNy0xMi4wOSw4LjQ0LTIuOTEsMTcuMDYtNC4zMiwyNS45Ny00LjMyczE3LjUxLDEuNDEsMjUuODYsNC4zMmM4LjM3LDIuOTEsMTYuMDUsNi44OCwyMi45MiwxMi4wOSw2Ljk4LDUuMjEsMTMuMDcsMTEuMzgsMTguMjEsMTguNzEsNS4yMiw3LjI0LDkuMTYsMTUuMjcsMTEuODYsMjQuMDloLTE1Ny43MVoiIGNsYXNzPSJjbHMtMSIvPiYjeGE7ICAgIDxwYXRoIGQ9Ik0yMzI3LjUxLDIwNS44OWMtNC4zNi00LjMyLTkuODUtNy42OC0xNi40Ny0xMC4xNS02LjYyLTIuNDctMTMuODUtNC4xNS0yMS43OC01LjEyLTcuODQtLjk3LTE1LjI1LTEuNDEtMjIuMTItMS40MS0xNS42MSwwLTMwLjI0LDIuNTYtNDQsNy42OC0xMy43Nyw1LjEyLTI2LjQ5LDEyLjQ0LTM4LjE3LDIxLjk3di00Ljc2YzAtNi44OC0yLjM1LTEyLjcxLTcuMTUtMTcuNTYtNC43OC00Ljg1LTEwLjQ1LTcuMzItMTcuMTUtNy4zMnMtMTIuNjQsMi40Ny0xNy40Miw3LjMyYy00LjgsNC44NS03LjE1LDEwLjc3LTcuMTUsMTcuNTZ2MjE4LjI1YzAsNi44OCwyLjM1LDEyLjcxLDcuMTUsMTcuNTYsNC43OCw0Ljg1LDEwLjUzLDcuMzIsMTcuNDIsNy4zMnMxMi40NS0yLjQ3LDE3LjE1LTcuMzJjNC44LTQuODUsNy4xNS0xMC43Nyw3LjE1LTE3LjU2di0xMDkuMTdjMC0xMS42NSwyLjE4LTIyLjU5LDYuNDUtMzIuODMsNC4yNy0xMC4yNCwxMC4xMS0xOS4wNiwxNy41MS0yNi42NSw3LjQyLTcuNTksMTYuMTMtMTMuNTksMjYuMDUtMTcuOTIsMTAuMDItNC40MSwyMC42Ni02LjYyLDMyLjA4LTYuNjJzMjIuMiwyLjAzLDMyLjA2LDZjMy45MSwxLjc3LDcuMzIsMi42NSwxMC4yOCwyLjY1LDMuNCwwLDYuNjItLjYyLDkuNTgtMS45NCwyLjk2LTEuMzIsNS41OC0zLjA5LDcuNzYtNS4zOCwyLjE4LTIuMjksMy45MS00Ljk0LDUuMjItOC4wMywxLjMxLTMsMi4wMS02LjI3LDIuMDEtOS44LDAtNi44OC0yLjE4LTEyLjQ0LTYuNTMtMTYuNzdoLjA4WiIgY2xhc3M9ImNscy0xIi8+JiN4YTsgICAgPHBhdGggZD0iTTEzMDQuNDksMjcxLjczYy02LjM2LTE1LjgtMTUuODYtMzAuMjctMjguNjYtNDMuMzMtMjUuODctMjYuMTItNTYuOC0zOS4yNy05Mi43LTM5LjI3cy02Ny4wOCwxMy4wNi05Mi43LDM5LjI3Yy0yNS42MiwyNi4xMi0zOC4zMyw1Ny43Mi0zOC4zMyw5NC43OHMxMi44MSw2OC41NywzOC4zMyw5NC43OGMyNS42MiwyNi4xMiw1Ni40NiwzOS4yNyw5Mi43LDM5LjI3czY2Ljc0LTEzLjA2LDkyLjctMzkuMjdjMjUuNjItMjUuODYsMzguMzQtNTcuNDUsMzguMzQtOTQuNzgtLjE4LTE4LjUzLTMuNC0zNS42NS05LjY3LTUxLjQ1Wk0xMjU4Ljg0LDM1NS4zOXYuMThjLTQuMjcsMTAuMTUtMTAuMTEsMTkuMDYtMTcuNTEsMjYuNjUtNy40LDcuNjgtMTYuMTIsMTMuNjgtMjYuMDUsMTguMTgtOS45Myw0LjUtMjAuNjUsNi43MS0zMi4wNiw2Ljcxcy0yMi4zLTIuMjEtMzIuMzItNi43MWMtMTAuMDItNC41LTE4LjY1LTEwLjUtMjUuOTYtMTguMDktNy4zMi03LjU5LTEzLjE1LTE2LjUtMTcuNDItMjYuNjUtNC4yNy0xMC4yNC02LjQ1LTIxLjA5LTYuNDUtMzIuNTdzMi4xOC0yMi4zMyw2LjQ1LTMyLjU3YzQuMjctMTAuMjQsMTAuMTEtMTkuMDYsMTcuNDItMjYuNjUsNy4zMi03LjU5LDE2LjAzLTEzLjU5LDI1Ljk2LTE4LjA5LDEwLjAyLTQuNSwyMC43NC02LjcxLDMyLjMyLTYuNzFzMjIuMDQsMi4yMSwzMi4wNiw2LjcxYzEwLjAyLDQuNSwxOC42NSwxMC41LDI2LjA1LDE4LjE4LDcuNCw3LjY4LDEzLjI0LDE2LjU5LDE3LjUxLDI2LjY1LDQuMjcsMTAuMTUsNi40NSwyMC45Miw2LjQ1LDMyLjM5cy0yLjE4LDIyLjMzLTYuNDUsMzIuMzlaIiBjbGFzcz0iY2xzLTEiLz4mI3hhOyAgICA8cGF0aCBkPSJNMTgyOC42MiwyMTQuMDFjMC0zLjM1LS43LTYuNTMtMi05LjUzLTEuMzEtMy0zLjA1LTUuNzMtNS4yMy04LjAzLTIuMTgtMi4yOS00Ljc5LTQuMTUtNy43NS01LjM4LTIuOTYtMS4yMy02LjE4LTEuOTQtOS41OC0xLjk0LTQuODgsMC05LjI0LDEuMjQtMTMuMDcsMy44bC0xMzkuOTIsOTMuMTFWOTkuMjljMC03LjA2LTIuMzUtMTIuOTctNy4xNC0xNy44My00Ljc5LTQuODUtMTAuNDUtNy4zMi0xNy4xNi03LjMycy0xMi42MywyLjQ3LTE3LjQzLDcuMzJjLTQuNzksNC44NS03LjE0LDEwLjc3LTcuMTQsMTcuODN2MzMyLjcxYzAsNi44OCwyLjM1LDEyLjgsNy4xNCwxNy43NCw0Ljc5LDQuOTQsMTAuNTQsNy40MSwxNy40Myw3LjQxczEyLjQ2LTIuNDcsMTcuMTYtNy40MWM0Ljc5LTQuOTQsNy4xNC0xMC44Niw3LjE0LTE3Ljc0di04Ni40bDI4LjU4LTE5LjE1LDEwOC4xMiwxMjQuMTdjNC4zNiw0LjMyLDkuODUsNi40NCwxNi4zOCw2LjQ0LDMuNCwwLDYuNjItLjYyLDkuNTgtMS45NCwyLjk2LTEuMjQsNS41OC0zLjA5LDcuNzUtNS4zOCwyLjE4LTIuMjksMy45Mi00Ljk0LDUuMjMtOC4wMywxLjMxLTMsMi02LjI3LDItOS41MywwLTYuNTMtMi4yNi0xMi4zNi02LjgtMTcuNDdsLTEwMC42My0xMTUuODcsOTguMDEtNjUuMTNjNi4yNy00LjMyLDkuMzItMTAuOTQsOS4zMi0xOS44NnYuMThaIiBjbGFzcz0iY2xzLTEiLz4mI3hhOyAgICA8cGF0aCBkPSJNMTQxNC4zNiwyNjMuN2M3LjQ5LTcuNTksMTYuMjEtMTMuNTksMjYuMjMtMTcuOTIsMTAuMDItNC40MSwyMC42NS02LjYyLDMyLjA2LTYuNjIsMTAuMjgsMCwxOS43OCwxLjc3LDI4LjU4LDUuMjksOC43MSwzLjUzLDE3LjA4LDguNzQsMjUsMTUuNTMsNC43LDMuNzksMTAuMDIsNS43MywxNS45NCw1LjczLDcuMDYsMCwxMi44MS0yLjM4LDE3LjQzLTcuMTUsNC42Mi00Ljc3LDYuODgtMTAuNzcsNi44OC0xNy45MnMtMi43OS0xMy43Ny04LjQ1LTE4Ljg4Yy0yNC4wNS0yMS43MS01Mi41My0zMi41Ny04NS4zOC0zMi41Ny0zNi4xNiwwLTY3LjA4LDEzLjA2LTkyLjcsMzkuMjctMjUuNjIsMjYuMTItMzguMzMsNTcuNzItMzguMzMsOTQuNzhzMTIuODEsNjguNTcsMzguMzMsOTQuNzhjMjUuNjIsMjYuMTIsNTYuNDYsMzkuMjcsOTIuNywzOS4yNywzMi43NiwwLDYxLjI1LTEwLjg1LDg1LjM4LTMyLjU3LDUuMTQtNS4yOSw3Ljc2LTExLjM4LDcuNzYtMTguNDRzLTIuMjctMTMuMTUtNi44OC0xNy44M2MtNC42Mi00LjY4LTEwLjQ1LTcuMDYtMTcuNDItNy4wNi01LjkyLjE4LTExLjA3LDEuOTQtMTUuNDIsNS4yOS03Ljg0LDYuODgtMTYuMDMsMTItMjQuODMsMTUuNDQtOC43MSwzLjQ0LTE4LjIxLDUuMTItMjguNTgsNS4xMi0xMS40MSwwLTIyLjA0LTIuMjEtMzIuMDYtNi42Mi0xMC4wMi00LjQxLTE4LjczLTEwLjQxLTI2LjIzLTE3LjkxLTcuNDktNy41LTEzLjQyLTE2LjUtMTcuNjktMjYuNjUtNC4yNy0xMC4yNC02LjQ1LTIxLjE4LTYuNDUtMzIuODNzMi4xOC0yMi41OSw2LjQ1LTMyLjgzYzQuMjctMTAuMjQsMTAuMTktMTkuMDYsMTcuNjktMjYuNjV2LS4wOVoiIGNsYXNzPSJjbHMtMSIvPiYjeGE7ICA8L2c+JiN4YTs8L3N2Zz4=" width="220.7" height="50" x="57.66" y="39.5" preserveAspectRatio="none" />
+    <rect width="80" height="80" x="104" y="190" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all" rx="12" ry="12" style="filter:drop-shadow(rgba(0,0,0,.25) 2px 3px 2px)" />
+    <switch transform="translate(-.5 -.5)">
+        <foreignObject width="100%" height="100%" pointer-events="none" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow:visible;text-align:left">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:unsafe center;justify-content:unsafe center;width:78px;height:1px;padding-top:230px;margin-left:105px">
+                <div data-drawio-colors="color: rgb(0, 0, 0);" style="box-sizing:border-box;font-size:0;text-align:center">
+                    <div style="display:inline-block;font-size:12px;font-family:Helvetica;color:#000;line-height:1.2;pointer-events:all;font-weight:700;white-space:normal;overflow-wrap:normal">Power-Splitter</div>
+                </div>
+            </div>
+        </foreignObject><text x="144" y="234" font-family="Helvetica" font-size="12" font-weight="bold" text-anchor="middle">Power-Splitter</text>
+    </switch>
+    <g stroke="#a8201a" stroke-miterlimit="10">
+        <path fill="none" d="m190.37 230.57 192.26 2.35" pointer-events="stroke" />
+        <path fill="#a8201a" d="m185.12 230.5 7.04-3.41-1.79 3.48 1.7 3.52ZM387.88 232.99l-7.04 3.41 1.79-3.48-1.7-3.52Z" pointer-events="all" />
+    </g>
+</svg>

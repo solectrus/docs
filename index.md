@@ -1,35 +1,33 @@
 ---
-title: Home
+title: Einstieg
 layout: home
+nav_order: 1
 ---
 
-This is a _bare-minimum_ template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
+# Liebe Freunde der Sonne!
 
-If [Jekyll] is installed on your computer, you can also build and preview the created site _locally_. This lets you test changes before committing them, and avoids waiting for GitHub Pages.[^1] And you will be able to deploy your local build to a different platform than GitHub Pages.
+Willkommen auf der Dokumentations-Website von **SOLECTRUS**. Hier findet sich alles, was man zum Installieren, Konfigurieren und Betreiben von SOLECTRUS wissen muss.
 
-More specifically, the created site:
+SOLECTRUS ist ein Dashboard für die Überwachung von Photovoltaik-Anlagen. Es bietet eine ansprechende und intuitive Benutzeroberfläche, um die Leistung und den Status einer PV-Anlage zu überwachen.
 
-- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem
-- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages
+Hier auf der Dokumentation-Website finden sich Informationen zu folgenden Themen:
 
-Other than that, you're free to customize sites that you create with this template, however you like. You can easily change the versions of `just-the-docs` and Jekyll it uses, as well as adding further plugins.
+## [Installation](installation)
 
-[Browse our documentation][Just the Docs] to learn more about how to use this theme.
+Die Installation von SOLECTRUS erfolgt üblicherweise auf einem kleinen Gerät wie einem Raspberry Pi unter Linux und Docker. Es hilft, wenn man zu beiden Themen bereits ein wenig Erfahrung hat.
 
-To get started with creating a site, simply:
+## [Referenz](referenz)
 
-1. click "[use this template]" to create a GitHub repository
-2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actions
+Hier werden alle Komponenten von SOLECTRUS beschrieben. Das beinhaltet die einzelnen Kollektoren, die Datenbanken, das eigentliche Dashboard usw. Alle Möglichkeiten der Konfiguration werden hier erläutert. Es geht um die Dateien `compose.yaml` und `.env` mit all ihren Einstellungen.
 
-If you want to maintain your docs in the `docs` directory of an existing project repo, see [Hosting your docs from an existing project repo](https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md#hosting-your-docs-from-an-existing-project-repo) in the template README.
+## [Wartung](wartung)
 
----
+Hier geht es um die Installation von Updates, Durchführung von Datensicherungen und Anpassen der Konfiguration.
 
-[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
+## [Bedienung](bedienung)
 
-[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
-[GitHub Pages]: https://docs.github.com/en/pages
-[README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
-[Jekyll]: https://jekyllrb.com
-[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
+Fragen zur Bedienung von SOLECTRUS werden hier beantwortet. Das beinhaltet die Anmeldung, die Navigation, die Konfiguration und die Anzeige von Daten.
+
+## [Support](support)
+
+Wenn sich Fragen ergeben, die sich nicht eigenständig klären lassen, gibt es Möglichkeiten, Unterstützung zu erhalten.
