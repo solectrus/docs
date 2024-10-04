@@ -46,6 +46,10 @@ services:
     # ...
 ```
 
+{:.note}
+
+Die beiden Variablen `INFLUX_TOKEN` und `INFLUX_MEASUREMENT` werden anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Container und vermeidet Redundanzen.
+
 ## Umgebungsvariablen
 
 ### `SHELLY_HOST`
@@ -57,12 +61,6 @@ Hostname des Shelly. Dies ist üblicherweise eine IP-Adresse, kann aber auch ein
 Häufigkeit der Abfrage des aktuellen Messwertes (in Sekunden). Es empfiehlt sich eine Abfrage alle 5 Sekunden, um eine gute Auflösung zu erhalten.
 
 Standardwert: `5`
-
-### `INFLUX_MEASUREMENT`
-
-Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
-
----
 
 ### `INFLUX_HOST`
 
@@ -76,9 +74,11 @@ Standardwert: `http`
 
 ### `INFLUX_PORT`
 
-Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB könnte eine Anpassung erforderlich sein, z.B. auf `443`.
+Port für die Verbindung zu InfluxDB.
 
-Standardwert: `8086`
+Optional, Standard ist `8086`
+
+Bei Verwendung einer externen, per TLS abgesicherten InfluxDB kann z.B. `443` eingestellt werden.
 
 ### `INFLUX_TOKEN`
 
@@ -92,12 +92,17 @@ Organisation in InfluxDB, in der die Messwerte gespeichert werden sollen.
 
 Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
 
+### `INFLUX_MEASUREMENT`
+
+Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
+
 ## Beispielhafte .env
 
 ```properties
 SHELLY_HOST=192.168.178.5
 SHELLY_INTERVAL=5
 SHELLY_INFLUX_MEASUREMENT=heatpump
+
 INFLUX_HOST=influxdb
 INFLUX_SCHEMA=http
 INFLUX_PORT=8086

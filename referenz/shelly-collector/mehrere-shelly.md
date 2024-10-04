@@ -1,14 +1,17 @@
 ---
-title: Multi-Container-Szenario
+title: Mehrere Shelly
 layout: page
 parent: Shelly-Collector
 ---
 
 # Nutzung für mehrere Shelly
 
-Hat man mehrere Shelly-Geräte im Einsatz und möchte deren Messwerte einsammeln, so ist für jedes Gerät ein **eigener** Collector einzurichten, es laufen dann also mehrere Container parallel.
+Hat man mehrere Shelly-Geräte im Einsatz und möchte deren Messwerte einsammeln, so ist für jedes Gerät ein **eigener** Collector einzurichten, es laufen dann also mehrere Container des Shelly-Collectors parallel.
 
-Dies lässt sich wie folgt einrichten, hier ein Beispiel für eine Wärmepumpe (überwacht mit einem Shelly der 2. Generation) und einen Kühlschrank (überwacht mit einem Shelly der 1. Generation).
+Dies lässt sich wie folgt einrichten, hier ein Beispiel für folgendes Szenario:
+
+- Wärmepumpe, überwacht mit einem Shelly der 2. Generation
+- Kühlschrank, überwacht mit einem Shelly der 1. Generation
 
 ## compose.yaml
 
