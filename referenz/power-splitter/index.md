@@ -5,93 +5,66 @@ parent: Referenz
 nav_order: 6
 ---
 
-# Verwendung für SOLECTRUS
+# Power-Splitter
 
-Der Power-Splitter analysiert den Stromverbrauch großer Verbraucher (E-Auto, Wärmepumpe, Haus). Der gemessene Verbrauch wird aufgeteilt in den Anteil, der mit Photovoltaik-Strom gedeckt wird und den Anteil, der aus dem Netz bezogen wird. Daraus ergeben sich interessante Einblicke in die Verbrauchskosten, die sonst so nicht möglich waren.
+Der Power-Splitter analysiert den Stromverbrauch großer Verbraucher (E-Auto, Wärmepumpe, Haus). Der Verbrauch wird aufgeteilt in den Anteil, der mit Photovoltaik-Strom gedeckt wird und den Anteil, der aus dem Netz bezogen wird. Daraus ergeben sich interessante Einblicke in die Verbrauchskosten, die sonst so nicht möglich waren.
 
 Zunächst ein paar wichtige Hinweise:
 
-- Der Power-Splitter ergibt nur Sinn, wenn man ein E-Auto und/oder eine Wärmepumpe hat (also **nicht** zwingend beides) und erfolgreich an SOLECTRUS angebunden hat. Wer also **beides nicht** hat, für den ist es uninteressant, weil es dann nichts aufzuteilen gibt.
-
 - Die Berechnung erfolgt für sämtliche Verbrauchswerte von Wärmepumpe und/oder E-Auto, die in der InfluxDB vorhanden sind. Das bedeutet, dass nicht nur zukünftige Messwerte, sondern **auch die Messwerte der Vergangenheit** berücksichtigt werden.
 
-- Für die Berechnung kommt ein neuer Docker-Container (der eigentliche "Power-Splitter") zum Einsatz. Dieser läuft permanent im Hintergrund, berechnet die Aufteilung und schreibt sie in ein neues Measurement der InfluxDB.
+- Für die Berechnung kommt ein zusätzlicher Docker-Container (der eigentliche Power-Splitter) zum Einsatz. Dieser läuft dauerhaft im Hintergrund, berechnet die Aufteilung und schreibt sie in ein neues Measurement der InfluxDB.
 
-## Inbetriebnahme des Power-Splitters
+- Der Power-Splitter ergibt nur Sinn, wenn man ein E-Auto und/oder eine Wärmepumpe hat (also **nicht** zwingend beides) und erfolgreich an SOLECTRUS angebunden hat. Wer also **beides nicht** hat, für den ist es uninteressant, weil es dann nichts aufzuteilen gibt. Die von SOLECTRUS bereits berechnete Autarkie stellt in diesem Fall die Situation bereits dar.
 
-1. Stelle sicher, dass du ein E-Auto und/oder eine Wärmepumpe an SOLECTRUS angebunden hast. Deren Messwerte müssen also in deiner SOLECTRUS-Instanz sichtbar sein.
+## Berechnete Werte
 
-2. Prüfe, ob die [neue Sensor-Konfiguration](https://github.com/solectrus/solectrus/wiki/Konfiguration#sensor-konfiguration) bei dir vorhanden ist. Das ist der Fall, wenn du zur Installation den neuen [Konfigurator](https://configurator.solectrus.de/) verwendet hast. Wenn du schon länger mit dabei ist, hast du vermutlich noch die alte Konfiguration (von Version `0.14.5` oder früher), das muss vorher [angepasst werden](https://github.com/solectrus/solectrus/wiki/Umstellung-auf-neue-Sensor%E2%80%90Konfiguration).
+Der Power-Splitter schreibt die folgenden Werte als _Field_ in das Measurement `power_splitter` der InfluxDB:
 
-   Das bedeutet: Beim Start der Docker-Container von SOLECTRUS dürfen keine Warnungen bezüglich fehlender Sensoren im Log erscheinen. Falls doch, müssen diese zunächst behoben werden. Im Log steht genau, wie das geht.
+- `wallbox_power_grid`: Netzbezug der Wallbox, in Watt
+- `house_power_grid`: Netzbezug des Hauses, in Watt
+- `heatpump_power_grid`: Netzbezug der Wärmepumpe, in Watt
 
-   Es müssen also folgende ENV-Variablen (mit Werten) in der `.env`-Datei enthalten sein:
+Beim Start prüft der Power-Splitter zunächst, ob Messwerte aus der Vergangenheit vorliegen, für die noch kein Split erfolgt ist. Dies wird dann nachgeholt, beginnend beim ältesten noch nicht bearbeiteten Tag. Dies kann einige Zeit in Anspruch nehmen, je nachdem, wie viele Daten nachzuarbeiten sind. Etwa 30min sind hierbei nicht ungewöhnlich.
 
-   - `INFLUX_SENSOR_GRID_IMPORT_POWER`
-   - `INFLUX_SENSOR_HOUSE_POWER`
-   - `INFLUX_SENSOR_WALLBOX_POWER` und/oder `INFLUX_SENSOR_HEATPUMP_POWER`
+Anschließend erfolgt die Berechnung für den aktuellen Tag. Der Power-Splitter läuft dann im Endlosmodus und berechnet den aktuellen Tag in einem vorgegebenen Intervall (standardmäßig 1 Stunde) permanent neu, um hinzugekommene Messwerte zu berücksichtigen. Um Mitternacht wird der Tag abgeschlossen und der nächste Tag begonnen.
 
-   Mehr [Infos zur Konfiguration](https://github.com/solectrus/power-splitter/wiki/Konfiguration) finden sich in einem separaten Artikel.
+## Protokollierung
 
-   Üblicherweise gibt es weitere Sensoren in der `.env`, die sind für den Power-Splitter aber nicht relevant.
+Der Power-Splitter schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
-3. Stelle sicher, dass du Version `0.16.0` oder neuer von SOLECTRUS verwendest.
+```plaintext
+Power Splitter for SOLECTRUS, Version 0.5.0, built at 2024-08-30 02:05:48 +0200
+Using Ruby 3.3.5 on platform x86_64-linux-musl
+Copyright (c) 2024 Georg Ledermann <georg@ledermann.dev>
+https://github.com/solectrus/power-splitter
 
-4. Jetzt kommt der wichtigste Punkt: Bearbeite die `docker-compose.yml` (oder `compose.yml`) und ergänze den Power-Splitter als zusätzlichen Service. Achte unbedingt (!) auf die richtige Einrückung mit Leerzeichen.
+Accessing InfluxDB at http://influxdb:8086, bucket SENEC
+Sensor initialization started
+  - Sensor 'grid_import_power' mapped to 'SENEC:grid_power_plus'
+  - Sensor 'house_power' mapped to 'SENEC:house_power'
+  - Sensor 'heatpump_power' mapped to 'Consumer:power'
+  - Sensor 'wallbox_power' mapped to 'SENEC:wallbox_charge_power'
+  - Sensor 'house_power' excluded 'heatpump_power'
+Sensor initialization completed
 
-   ```yaml
-   services:
-     # ...
-     power-splitter:
-       image: ghcr.io/solectrus/power-splitter:latest
-       labels:
-         - com.centurylinklabs.watchtower.scope=solectrus
-       environment:
-         - TZ
-         - INFLUX_HOST
-         - INFLUX_SCHEMA
-         - INFLUX_TOKEN=${INFLUX_ADMIN_TOKEN}
-         - INFLUX_PORT
-         - INFLUX_ORG
-         - INFLUX_BUCKET
-         - INFLUX_SENSOR_GRID_IMPORT_POWER
-         - INFLUX_SENSOR_HOUSE_POWER
-         - INFLUX_SENSOR_WALLBOX_POWER
-         - INFLUX_SENSOR_HEATPUMP_POWER
-         - INFLUX_EXCLUDE_FROM_HOUSE_POWER
-         - POWER_SPLITTER_INTERVAL
-         - REDIS_URL=redis://redis:6379/1
-       links:
-         - influxdb
-         - redis
-       depends_on:
-         influxdb:
-           condition: service_healthy
-         redis:
-           condition: service_healthy
-       restart: unless-stopped
-   ```
+Starting endless loop for processing current data...
 
-   Der Power-Splitter liest aus der InfluxDB die Messwerte der Verbraucher sowie des Netzbezugs und schreibt die Aufteilung in ein neues Measurement mit der (unveränderlichen) Bezeichnung `power_splitter`.
+2024-10-04 15:43:56 +0200 - Processing day 2024-10-04
+  Pushing 188 records to InfluxDB
+  Sleeping for 3600 seconds...
+...
+```
 
-   Wichtig beim `INFLUX_TOKEN` ist, dass dieses sowohl zum Schreiben als auch zum Lesen berechtigt. Du kannst das Admin-Token nehmen (wie oben angegeben) oder selbst ein neues Token im InfluxDB-Frontend anlegen (letzteres lohnt sich aber nur für bei hohen Sicherheitsanforderungen).
+Das Protokoll kann über folgenden Befehl abgerufen werden:
 
-   Die `REDIS_URL` wird benötigt, um nach dem ersten Durchlauf einmalig den Cache leeren zu können.
+```bash
+docker compose logs power-splitter
+```
 
-   Wenn du eine verteilte Installation betreibst (Lokal + Cloud), solltest du den Service auf dem Cloud-Host installieren - also da, wo die InfluxDB läuft. Das reduziert den Traffic.
+Bei Problemen oder Fehlern (z.B. wenn die InfluxDB nicht erreichbar ist) wird dies ebenfalls protokolliert. Es empfiehlt sich daher, im Zweifelsfall zuerst das Protokoll zu prüfen.
 
-5. Starte die Container erneut mit `docker compose up -d`, diesmal wird der Power-Splitter mit gestartet.
+## Quelltext
 
-   Wenn sich die Container gar nicht starten lassen sollten, hast du vermutlich den Service nicht richtig in die `docker-compose.yml` (oder `compose.yml`) eingefügt. Prüfe insbesondere die Einrückung, das ist bei YAML-Dateien äußerst wichtig.
-
-   Verfolge nun die Log-Ausgabe des neuen Containers mit folgendem Befehl:\
-   `docker compose logs power-splitter -f` (kann beendet werden mit `Strg+C`)
-
-   Wenn du irgendwelche Fehlermeldungen siehst, kümmere dich zunächst darum, bevor du fortfährst.
-
-   Wenn alles fehlerfrei läuft, wird der Power-Splitter zunächst die Daten der Vergangenheit bearbeiten, anschließend im Hintergrund weiterlaufen und jeweils den aktuellen Tag berechnen. Dies lässt sich alles genau im Log nachvollziehen. Es ist empfehlenswert, das zu tun. Nach einer gewissen Zeit (abhängig von Rechenpower und Datenmenge) wird die Berechnung der Vergangenheit abgeschlossen sein.
-
-Geschafft :-) Wenn du in SOLECTRUS jetzt einen Zeitraum auswählst (Tag/Woche/Monat/Jahr/Gesamt), siehst du bei Haus, E-Auto und Wärmepumpe (sofern vorhanden) jeweils im Tooltip die Aufteilung des Verbrauchs. Außerdem erscheinen deren Diagramme in einer gestapelten Darstellung.
-
-Quelltext im GitHub-Repository: \
+Der Power-Splitter ist in Ruby implementiert, der Quelltext ist auf GitHub verfügbar: \
 [github.com/solectrus/power-splitter](https://github.com/solectrus/power-splitter)

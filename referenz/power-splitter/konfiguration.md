@@ -2,47 +2,126 @@
 title: Konfiguration
 layout: page
 parent: Power-Splitter
+nav_order: 2
 ---
 
-# Konfiguration über Umgebungsvariablen
+# Konfiguration des Power-Splitters
 
-SOLECTRUS wird über Umgebungsvariablen konfiguriert. Diese stehen in der Datei `.env` im gleichen Verzeichnis wie die `compose.yml`. Jeder Container hat seine eigenen Variablen, mache Variablen werden von verschiedenen Containern benutzt.
+Der Power-Splitter wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert, d.h. die bestehenden Dateien `compose.yaml` und `.env` sind zu erweitern.
 
-Es ist zu beachten, dass die Umgebungsvariablen nicht nur in der `.env` definiert werden, sondern auch in der `compose.yml` aufgeführt werden (als Auflistung im Abschnitt `environment` des Services `power-splitter`). Andernfalls sind sie für den Collector nicht erreichbar.
+## compose.yaml
 
-Nach einer Bearbeitung von `.env` oder `compose.yml` müssen die Container neu erstellt werden, um die Änderungen zu übernehmen. Dies geschieht mit dem Befehl `docker compose up -d` (bei älteren Docker-Versionen `docker-compose up -d`, also mit Bindestrich).
+```yaml
+services:
+  power-splitter:
+    image: ghcr.io/solectrus/power-splitter:latest
+    environment:
+      - TZ
+      - POWER_SPLITTER_INTERVAL
+      - INFLUX_HOST
+      - INFLUX_SCHEMA
+      - INFLUX_PORT
+      - INFLUX_TOKEN=${INFLUX_ADMIN_TOKEN}
+      - INFLUX_ORG
+      - INFLUX_BUCKET
+      - INFLUX_SENSOR_GRID_IMPORT_POWER
+      - INFLUX_SENSOR_HOUSE_POWER
+      - INFLUX_SENSOR_WALLBOX_POWER
+      - INFLUX_SENSOR_HEATPUMP_POWER
+      - INFLUX_EXCLUDE_FROM_HOUSE_POWER
+      - REDIS_URL
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    restart: unless-stopped
+    depends_on:
+      influxdb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    links:
+      - influxdb
+      - redis
+    labels:
+      - com.centurylinklabs.watchtower.scope=solectrus
 
-Es folgt eine Auflistung der für den Power-Splitter definierten Umgebungsvariablen.
+  influxdb:
+    # ...
 
-## Zugriff auf InfluxDB
+  watchtower:
+    # ...
+```
 
-- `INFLUX_HOST`
+{:.note}
 
-  Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-Netzwerk läuft, ist das der Name des Containers (z.B. `influxdb`). Es kann aber auch ein externer InfluxDB-Server sein, z.B. `influxdb.example.com`.
+Die Variable `INFLUX_TOKEN` wird anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Container und vermeidet Redundanzen.
 
-- `INFLUX_SCHEMA` (standardmäßig `http`)
+## Umgebungsvariablen
 
-  Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, die über TLS abgesichert ist, muss dieser Wert auf `https` gesetzt werden.
+### `POWER_SPLITTER_INTERVAL`
 
-- `INFLUX_PORT` (standardmäßig `8086`)
+Häufigkeit der Berechnung durch den Power-Splitter. Bei kleineren Werten wird der Power-Splitter häufiger ausgeführt, was nicht zu einer genaueren Berechnung führt, aber zu einer erhöhten Aktualität. Bemerken wird man den Unterschied nur in der Anzeige des aktuellen Tages im Dashboard. Beim Standardwert von `3600` ist der dargestellte Wert um bis zu einer Stunde veraltet.
 
-  Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB könnte eine Anpassung erforderlich sein, z.B. auf `443`.
+Ein niedriger Wert führt zu einer etwas höheren Auslastung des Systems, die Standardvorgabe ist daher konservativ gewählt. Das Minimum beträgt `300` (5 Minuten).
 
-- `INFLUX_ORG`
+### `INFLUX_HOST`
 
-  Organisation in InfluxDB, in der die Daten gespeichert werden sollen.
+Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-Netzwerk läuft, ist das der Name des Containers (z.B. `influxdb`). Es kann aber auch ein externer InfluxDB-Server sein, z.B. `influxdb.example.com`.
 
-- `INFLUX_BUCKET`
+### `INFLUX_SCHEMA`
 
-  Bucket in InfluxDB, in der die Daten gespeichert werden sollen.
+Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, die über TLS abgesichert ist, muss dieser Wert auf `https` gesetzt werden.
 
-- `INFLUX_TOKEN`
+Standardwert: `http`
 
-  Token für den Zugriff auf InfluxDB. Dieser Token muss in InfluxDB erstellt werden und die Berechtigung haben, Daten in den angegebenen Bucket zu **lesen** und zu **schreiben**. Der Einfachheit kann man das `INFLUX_ADMIN_TOKEN` nehmen.
+### `INFLUX_PORT`
+
+Port für die Verbindung zu InfluxDB.
+
+Optional, Standard ist `8086`
+
+Bei Verwendung einer externen, per TLS abgesicherten InfluxDB kann z.B. `443` eingestellt werden.
+
+### `INFLUX_TOKEN`
+
+Token für den Zugriff auf InfluxDB. Dieser Token muss in InfluxDB erstellt werden und die Berechtigung haben, Daten in den angegebenen Bucket zu **lesen** und zu **schreiben**.
+
+### `INFLUX_ORG`
+
+Organisation in InfluxDB, in der die Messwerte gespeichert werden sollen.
+
+### `INFLUX_BUCKET`
+
+Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
+
+### `REDIS_URL`
+
+URL für den Redis-Cache. Wird benötigt, um nach dem ersten Durchlauf einmalig den Cache leeren zu können.
+
+## Beispielhafte .env
+
+```properties
+POWER_SPLITTER_INTERVAL=300
+
+INFLUX_SENSOR_GRID_IMPORT_POWER=SENEC:grid_power_plus
+INFLUX_SENSOR_HOUSE_POWER=SENEC:house_power
+INFLUX_SENSOR_WALLBOX_POWER=SENEC:wallbox_charge_power
+INFLUX_SENSOR_HEATPUMP_POWER=DAIKIN:power
+
+INFLUX_HOST=influxdb
+INFLUX_SCHEMA=http
+INFLUX_PORT=8086
+INFLUX_ADMIN_TOKEN=my-super-secret-admin-token
+INFLUX_ORG=solectrus
+INFLUX_BUCKET=solectrus
+
+REDIS_URL=redis://redis:6379/1
+```
 
 ## Sensor-Mapping
 
-Der Power-Splitter benötigt Zugriff auf einige Sensoren, die auch vom Dashboard werden. Im Einzelnen sind dies:
+Der Power-Splitter verwendete einige der Sensoren, die auch vom Dashboard werden und somit bereits in der `.env` definiert werden. Im Einzelnen sind dies diese Variablen:
 
 - `INFLUX_SENSOR_GRID_IMPORT_POWER`
 - `INFLUX_SENSOR_HOUSE_POWER`
@@ -50,12 +129,6 @@ Der Power-Splitter benötigt Zugriff auf einige Sensoren, die auch vom Dashboard
 - `INFLUX_SENSOR_HEATPUMP_POWER`
 - `INFLUX_EXCLUDE_FROM_HOUSE_POWER`
 
-Es genügt also, wenn man diese fünf Variablen in der compoose.yml aufführt und somit den Zugriff ermöglicht. Es ist nicht notwendig und auch nicht sinnvoll, für den Power-Splitter eigene Werte zu definieren.
+Es genügt also, wenn man diese fünf Variablen in der `compose.yml` aufführt und somit den Zugriff ermöglicht. Es ist nicht notwendig und auch nicht sinnvoll, für den Power-Splitter eigene Werte zu definieren.
 
-## Optionales
-
-- `POWER_SPLITTER_INTERVAL` (standardmäßig `3600` = 1 Stunde, Minimum `300` = 5 Minuten)
-
-  Häufigkeit der Berechnung durch den Power-Splitter. Bei kleineren Werten wird der Power-Splitter häufiger ausgeführt, was nicht zu einer genaueren Berechnung führt, aber zu einer erhöhten Aktualität. Bemerken wird man den Unterschied nur in der Anzeige des aktuellen Tages im Dashboard. Beim Standardwert von `3600` ist der dargestellte Wert um bis zu einer Stunde veraltet.
-
-  Ein niedriger Wert führt zu einer etwas höheren Auslastung des Systems, die Standardvorgabe ist daher konservativ gewählt.
+Entscheidend ist aber, dass eine Sensor-Konfiguration vorhanden ist. Bei einer älteren Installation von SOLECTRUS (begonnen vor Version `0.15`) ist das nicht unbedingt und der Fall und muss [nachgeholt](/wartung/sensor-konfiguration) werden.
