@@ -2,7 +2,12 @@
 title: Konfiguration
 layout: page
 parent: PostgreSQL
+nav_order: 1
 ---
+
+# Konfigurieren von PostgreSQL
+
+PostgreSQL wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert, d.h. die bestehenden Dateien `compose.yaml` und `.env` sind zu erweitern.
 
 ## compose.yaml
 
@@ -35,6 +40,18 @@ services:
     # ...
 ```
 
+{:.note}
+
+Es gibt im Normalfall keine Notwendigkeit, direkt auf die Datenbank zuzugreifen. Daher muss auch kein Port nach außen geöffnet werden. Der Zugriff erfolgt ausschließlich über den Dashboard-Container von SOLECTRUS.
+
+{: .important }
+
+PostgreSQL erscheint jährlich in einer neuen Major-Version. Ein Upgrade erfordert aber ein Backup/Restor. Da die Vorteile einer neuen Major-Version aus Sicht von SOLECTRUS überschaubar sind, kann problemlos bei einer älteren Version verblieben werden, für die es üblicherweise fünf Jahre lang Minor-Updates gibt. \
+\
+Keineswegs darf bei Verfügbarkeit einer neuen Version von PostgreSQL einfach die neue Versionsnummer in die `compose.yaml` eingetragen werden. PostgreSQL wird dann nicht mehr starten! \
+\
+Neue Minor-Versionen von PostgreSQL können (und sollten auch) problemlos eingespielt werden, ohne dass ein Backup/Restore erforderlich ist. Darum kümmert sich idealerweise Watchtower.
+
 ## Umgebungsvariablen
 
 - `TZ`
@@ -49,14 +66,14 @@ services:
 
 - `DB_VOLUME_PATH`
 
-  Pfad für die Dateiablage der Datenbank.
+  Pfad, in dem die Datenbank gespeichert wird. Dieser Pfad wird als Volume in den Container gemountet.
 
-  Wird beim ersten Start angelegt und darf nicht mehr geändert werden.
+  Wenn am angegebenen Pfad bereits eine Datenbank existiert, wird diese verwendet. Andernfalls wird eine neue Datenbank angelegt. Dies ist normalerweise nur beim ersten Start des Containers der Fall.
 
 ## Beispielhafte .env
 
 ```properties
 TZ=Europe/Berlin
 POSTGRES_PASSWORD=geheimes-datenbank-passwort
-DB_VOLUME_PATH=./postgresql
+DB_VOLUME_PATH=/somewhere/solectrus/postgresql
 ```
