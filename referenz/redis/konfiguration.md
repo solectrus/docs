@@ -4,6 +4,10 @@ layout: page
 parent: Redis
 ---
 
+# Konfigurieren von Redis
+
+Redis wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert, d.h. die bestehenden Dateien `compose.yaml` und `.env` sind zu erweitern.
+
 ## compose.yaml
 
 ```yaml
@@ -37,12 +41,19 @@ services:
 
 ## Umgebungsvariablen
 
-- `REDIS_VOLUME_PATH`
+### `TZ`
 
-  Pfad für die Dateiablage der Datenbank, genutzt nur für die Persistenz beim Herunterfahren.
+Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+### `REDIS_VOLUME_PATH`
+
+Pfad, in dem die Datenbank beim Herunterfahren gespeichert wird, um die Persistenz zu gewährleisten. Dieser Pfad wird als Volume in den Container gemountet.
+
+Wenn am angegebenen Pfad bereits eine Datenbank existiert (in Form der Datei `dump.rdb`), wird diese beim Start geladen und der Cache somit wiederhergestellt.
 
 ## Beispielhafte .env
 
 ```properties
-REDIS_VOLUME_PATH=./redis
+TZ=Europe/Berlin
+REDIS_VOLUME_PATH=/somewhere/solectrus/redis
 ```
