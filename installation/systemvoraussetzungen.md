@@ -6,15 +6,9 @@ parent: Installation
 nav_order: 1
 ---
 
-Für den Betrieb von SOLECTRUS benötigst du neben der Photovoltaik-Anlage (optional mit Stromspeicher, Wärmepumpe und/oder Wallbox) oder einem Balkonkraftwerk lediglich einen kleinen Linux-Server.
+# Technische Voraussetzungen für SOLECTRUS
 
-## Geräte über MQTT
-
-Über das Netzwerkprotokoll <a href="https://de.wikipedia.org/wiki/MQTT">MQTT</a> können beliebige Speicher, Wechselrichter, Wallboxen und Wärmepumpen integriert werden, sofern diese ein solches Auslesen von Messwerten ermöglichen. Hierfür ist zusätzliche Software notwendig, insbesondere ein MQTT-Broker. Erfolgreiche Installationen basieren auf [ioBroker](https://www.iobroker.net/) und [evcc](https://evcc.io), viele Nutzer betreiben SOLECTRUS jedoch auch in anderen Szenarien. Entscheidend ist, dass man per MQTT an die Messwerte herankommt.
-
-## Stromspeicher von SENEC
-
-SOLECTRUS unterstützt außerdem nativ die Stromspeicher **SENEC.Home V3 und V2.1**, deren Messwerte über die proprietäre `lala.cgi`-Schnittstelle direkt ausgelesen werden. Auch der **SENEC.Home 4** wird unterstützt – per Cloud-Anbindung über die App-API.
+Für den Betrieb von SOLECTRUS wird neben der Photovoltaik-Anlage (optional mit Stromspeicher, Wärmepumpe und/oder Wallbox) bzw. einem Balkonkraftwerk lediglich ein kleiner Linux-Server benötigt.
 
 ## Linux-Server
 
@@ -34,13 +28,25 @@ Diesen Zwecke erfüllt beispielsweise ein [Raspberry Pi](https://de.wikipedia.or
 - Lenovo ThinkCentre M73 mit Linux Mint
 - Fujitsu Futro S920 mit Linux Mint
 
-:::note
+{: .note}
 
-Diese Liste wird gerne erweitert. Wenn du SOLECTRUS auf einem anderen Gerät erfolgreich betreibst, schreibe bitte eine E-Mail an <ScrambledEmail subject="SOLECTRUS erfolgreich im Einsatz" />. Ich freue mich insbesondere über Berichte zu ungewöhnlichen Installationen.
+Wer SOLECTRUS auf einem anderen Gerät erfolgreich betreibt, kann gerne die Liste ergänzen.
 
-:::
+## Anbindung per MQTT
 
-Beim Zugriff auf die SENEC-App-API kann SOLECTRUS auch auf einem beliebigen Cloud-Server betrieben werden, auf dem Docker installiert ist. Erfolgreich getestet wurde SOLECTRUS auf einem [Hetzner-Cloud](https://hetzner.cloud/?ref=NggV8HU9FqCz)-Server mit 2 vCPUs und 4GB RAM. 2GB RAM sollten jedoch auch ausreichen. **Eine solche Installation kommt gänzlich ohne ein lokales Gerät aus.**
+Über das verbreitete Netzwerkprotokoll <a href="https://de.wikipedia.org/wiki/MQTT">MQTT</a> können beliebige Stromspeicher, Wechselrichter, Wallboxen, Wärmepumpen und E-Autos integriert werden, sofern diese ein Auslesen von Messwerten ermöglichen. Hierfür ist zusätzliche Software notwendig, insbesondere ein MQTT-Broker. Erfolgreiche Installationen basieren auf [ioBroker](https://www.iobroker.net/) und [evcc](https://evcc.io), viele Nutzer betreiben SOLECTRUS jedoch auch in anderen Szenarien. Entscheidend ist, dass man per MQTT an die Messwerte herankommt.
+
+## Stromspeicher von SENEC
+
+SOLECTRUS unterstützt außerdem nativ die Stromspeicher **SENEC.Home V2.1 und V3**, deren Messwerte über eine proprietäre Schnittstelle direkt ausgelesen werden. Auch der **SENEC.Home 4** wird unterstützt – per Anbindung an `meine-senec.de`.
+
+## Cloud
+
+In bestimmten Fällen (z.B. bei Verwendung eines SENEC Stromspeichers) ist auch eine reine Cloud-Installation möglich, also ganz ohne lokalen Server. In anderen Fällen ist eine verteilte Installation möglich, bei der die Datensammlung auf einem lokalen Linux-Server erfolgt, während die Datenspeicherung und das Dashboard auf einem Cloud-Server liegen.
+
+Für beides benötigt man einen Cloud-Server. Erfolgreich getestet wurde SOLECTRUS in der [Hetzner-Cloud](https://hetzner.cloud/?ref=NggV8HU9FqCz) auf einem virtuellen Server mit 2 vCPUs und 4GB RAM, der mit Kosten von unter €5 pro Monat sehr günstig ist.
+
+## Nicht unterstützte Geräte
 
 Es gibt jedoch auch Geräte, auf denen SOLECTRUS leider nicht funktioniert. Dazu gehören:
 
