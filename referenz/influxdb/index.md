@@ -33,6 +33,10 @@ docker compose logs influxdb
 
 Dass es hier Probleme gibt, ist sehr unwahrscheinlich. Dennoch sollte im Zweifelsfall das Protokoll geprüft werden.
 
+### Datensicherung
+
+Für die [Sicherung und -wiederherstellung von SOLECTRUS](/wartung/datensicherung) stehen einfach zu bedienende Scripte bereit, die auch InfluxDB berücksichtigen.
+
 ## Offizielles Docker-Image
 
 Das offizielle Docker-Image von InfluxDB ist auf Docker Hub verfügbar: \
