@@ -2,20 +2,26 @@
 title: Administrator-Zugang
 layout: page
 parent: Bedienung
+nav_order: 1
 ---
 
-Der Administrator-Zugang gewährleistet, dass nur autorisierte Benutzer bestimmte kritische Funktionen von SOLECTRUS ausführen können. Zu den gegenwärtig geschützten Funktionen gehören:
+# Administrator-Zugang
+
+Einige Bereiche von SOLECTRUS sind geschützt und nur für autorisierte Benutzer zugänglich. Dazu gehören:
 
 - Festlegung der Strompreise, der Einspeisevergütung und weiterer Optionen
 - Durchführung der Registrierung
+- Abschließen eines Sponsoring-Abos
 
-Ohne vorherigen Admin-Login hat ein Benutzer nur Lesezugriff und kann dementsprechend keine Einstellungen ändern.
+Diese Funktionen sind dem Administrator vorbehalten. Die normalen Benutzer haben nur Lesezugriff und können keine Einstellungen ändern.
+
+Die Anmeldung erfolgt über das Seitenmenü und sieht dann so aus:
 
 <img src="{{ site.baseurl }}/assets/images/login.png" alt="Login" class="mx-auto w-full max-w-2xl rounded-full border-8 border-indigo-300" />
 
-Übrigens: Wie du hier sehen kannst, ist es wirklich nur ein Passwort. Aus Gründen der Einfachheit gibt es keinen Benutzernamen oder E-Mail-Adresse.
+Wie man hier sehen kann, ist es wirklich nur ein Passwort. Aus Gründen der Einfachheit gibt es keinen Benutzernamen oder E-Mail-Adresse. Das Passwort kann einer weiteren Person mitgeteilt werden, die dann ebenfalls Zugriff auf die Einstellungen erhält.
 
-Diese Funktion ist besonders nützlich, wenn deine Installation von SOLECTRUS von mehreren Benutzern genutzt wird, insbesondere wenn sie über das Internet zugänglich ist. Als Administrator kannst du sicherstellen, dass niemand außer dir die Einstellungen ändert.
+Diese Funktion ist besonders nützlich, wenn eine Installation von SOLECTRUS von mehreren Benutzern genutzt wird, insbesondere wenn sie über das Internet zugänglich ist. Es wird dadurch sichergestellt, dass nur berechtigte Personen Zugriff auf die Einstellungen haben.
 
 ### Festlegen und Ändern des Passwortes
 
@@ -23,9 +29,11 @@ Das Passwort für den Administrator-Zugang wird während der Installation von SO
 
 ```bash
 # ...
-#
-# Password to login as administrator, required to manage settings like historical prices
-ADMIN_PASSWORD=my-secret-login-password
+ADMIN_PASSWORD=me1n-gehe1mes-passw0rt
 ```
 
-Möchtest du das Passwort ändern, ist dies ausschließlich über die Bearbeitung der `.env`-Datei möglich. Nachdem du es dort geändert hast, muss SOLECTRUS neu gestartet werden, damit die Änderung wirksam wird.
+Eine Änderung des Passworts ist über die Bearbeitung der `.env`-Datei möglich. Nachdem es dort geändert wurde, muss SOLECTRUS neu gestartet werden, damit die Änderung wirksam wird:
+
+```
+docker-compose up -d
+```
