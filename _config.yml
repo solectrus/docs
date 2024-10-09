@@ -34,3 +34,6 @@ callouts:
   warning:
     title: Warnung
     color: red
+
+sass:
+  quiet_deps: true
