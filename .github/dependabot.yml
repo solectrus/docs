@@ -6,6 +6,7 @@ updates:
       interval: daily
     allow:
       - dependency-type: direct
+      - dependency-type: indirect
 
   - package-ecosystem: 'github-actions'
     directory: /
