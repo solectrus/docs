@@ -25,7 +25,7 @@ services:
       - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
       - INFLUX_ORG
       - INFLUX_BUCKET
-      - INFLUX_MEASUREMENT=${SHELLY_INFLUX_MEASUREMENT}
+      - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_SHELLY}
     logging:
       options:
         max-size: 10m
@@ -101,7 +101,7 @@ Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 ```properties
 SHELLY_HOST=192.168.178.5
 SHELLY_INTERVAL=5
-SHELLY_INFLUX_MEASUREMENT=heatpump
+INFLUX_MEASUREMENT_SHELLY=heatpump
 
 INFLUX_HOST=influxdb
 INFLUX_SCHEMA=http
