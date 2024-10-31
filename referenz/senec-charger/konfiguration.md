@@ -49,7 +49,7 @@ services:
 
 {:.note}
 
-Die beiden Variablen `INFLUX_TOKEN` und `INFLUX_MEASUREMENT` werden anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Container und vermeidet Redundanzen.
+Die Variable `INFLUX_TOKEN`wird einer anders lautenden Umgebungsvariable entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Container und vermeidet Redundanzen.
 
 ## Umgebungsvariablen
 
