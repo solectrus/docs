@@ -24,7 +24,7 @@ services:
       - INFLUX_TOKEN=${INFLUX_TOKEN_WRITE}
       - INFLUX_ORG
       - INFLUX_BUCKET
-      - INFLUX_MEASUREMENT=${TIBBER_INFLUX_MEASUREMENT}
+      - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_PRICES}
     logging:
       options:
         max-size: 10m
@@ -107,4 +107,5 @@ INFLUX_PORT=8086
 INFLUX_TOKEN_WRITE=my-super-secret-admin-token
 INFLUX_ORG=solectrus
 INFLUX_BUCKET=solectrus
+INFLUX_MEASUREMENT_PRICES=my-prices
 ```
