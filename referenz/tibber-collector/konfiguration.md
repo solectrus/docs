@@ -53,7 +53,7 @@ Die beiden Variablen `INFLUX_TOKEN` und `INFLUX_MEASUREMENT` werden anders laute
 
 ### `TIBBER_TOKEN`
 
-"Access Token" von Tibber. Dieses kann unter https://developer.tibber.com/settings/access-token erstellt werden. Es ist dazu ein aktiver Vertrag und ein Account bei Tibber erforderlich.
+_Access Token_ von Tibber. Dieses kann [auf der Website von Tibber](https://developer.tibber.com/settings/access-token) erstellt werden. Es ist dazu ein Account und ein aktiver Vertrag bei Tibber erforderlich.
 
 ### `TIBBER_INTERVAL`
 
