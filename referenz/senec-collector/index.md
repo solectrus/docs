@@ -70,12 +70,12 @@ Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Me
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```plaintext
-SENEC collector for SOLECTRUS, Version 0.16.1, built at 2024-09-03T23:21:53.925Z
+SENEC collector for SOLECTRUS, Version 0.16.1, built at 2024-09-03T04:48:19.640Z
 https://github.com/solectrus/senec-collector
 Copyright (c) 2020-2024 Georg Ledermann, released under the MIT License
 
-Using Ruby 3.3.5 on platform x86_64-linux-musl
-Pushing to InfluxDB at http://influxdb, bucket solectrus, measurement SENEC
+Using Ruby 3.3.4 on platform aarch64-linux-musl
+Pushing to InfluxDB at http://influxdb:8086, bucket solectrus, measurement SENEC
 Pulling from your local SENEC at https://192.168.178.29 every 5 seconds
 
 Getting state names (language: de) from SENEC by parsing source code...

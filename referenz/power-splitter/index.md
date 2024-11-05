@@ -34,12 +34,12 @@ Anschließend erfolgt die Berechnung für den aktuellen Tag. Der Power-Splitter 
 Der Power-Splitter schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```plaintext
-Power Splitter for SOLECTRUS, Version 0.5.0, built at 2024-08-30 02:05:48 +0200
-Using Ruby 3.3.5 on platform x86_64-linux-musl
+Power Splitter for SOLECTRUS, Version 0.5.1, built at 2024-10-13 06:34:29 +0200
+Using Ruby 3.3.5 on platform aarch64-linux-musl
 Copyright (c) 2024 Georg Ledermann <georg@ledermann.dev>
 https://github.com/solectrus/power-splitter
 
-Accessing InfluxDB at http://influxdb:8086, bucket SENEC
+Accessing InfluxDB at http://influxdb:8086, bucket solectrus
 Sensor initialization started
   - Sensor 'grid_import_power' mapped to 'SENEC:grid_power_plus'
   - Sensor 'house_power' mapped to 'SENEC:house_power'
