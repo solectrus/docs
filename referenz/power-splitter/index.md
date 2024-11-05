@@ -29,6 +29,18 @@ Beim Start prüft der Power-Splitter zunächst, ob Messwerte aus der Vergangenhe
 
 Anschließend erfolgt die Berechnung für den aktuellen Tag. Der Power-Splitter läuft dann im Endlosmodus und berechnet den aktuellen Tag in einem vorgegebenen Intervall (standardmäßig 1 Stunde) permanent neu, um hinzugekommene Messwerte zu berücksichtigen. Um Mitternacht wird der Tag abgeschlossen und der nächste Tag begonnen.
 
+## Neuberechnung erzwingen
+
+In seltenen Fällen kann es erforderlich sein, die berechneten Werte zu löschen und neu zu berechnen. Eine denkbare Situation ist z.B. ein nachträglicher Datenimport von Messwerten.
+
+Wenn der Power-Splitter läuft, kann eine Neuberechnung mit folgendem Befehl ausgelöst werden:
+
+```bash
+docker compose kill --signal USR1 power-splitter
+```
+
+Dieser "Kill-Befehl" ist dabei nicht so drastisch, wie er sich anhört. Es wird nur ein benutzerdefiniertes Signal (`USR1`) an den Container geschickt, der darauf reagiert, ohne sich zu beenden. Der Status der Neuberechnung kann im Protokoll des Power-Splitters mitverfolgt werden. Nach dem Neuberechnung wechselt der Container wieder in den Endlosmodus und bearbeitet die aktuellen Messwerte, die hereinkommen.
+
 ## Protokollierung
 
 Der Power-Splitter schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
