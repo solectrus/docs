@@ -12,7 +12,7 @@ Für den Betrieb von SOLECTRUS wird neben der Photovoltaik-Anlage (optional mit 
 
 ## Linux-Server
 
-Zum Ausführen von SOLECTRUS wird ein kleiner Server mit einem **64bit-Linux**-Betriebssystem benötigt, der [Docker](https://www.docker.com/)-Container ausführen kann und rund um die Uhr (24/7) in Betrieb ist.
+Zum Ausführen von SOLECTRUS wird ein kleiner Server mit einem **64bit-Linux**-Betriebssystem benötigt, der [Docker](https://www.docker.com/)-Container ausführen kann und rund um die Uhr (24/7) in Betrieb ist. Der **freie** Arbeitsspeicher (RAM) sollte mindestens **1GB** betragen.
 
 Diesen Zwecke erfüllt beispielsweise ein [Raspberry Pi](https://de.wikipedia.org/wiki/Raspberry_Pi), aber es funktioniert auch mit vielen anderen Servern. Berichte über den erfolgreichen Einsatz von SOLECTRUS gibt es für:
 
@@ -45,6 +45,7 @@ SOLECTRUS unterstützt außerdem nativ die Stromspeicher **SENEC.Home V2.1 und V
 In bestimmten Fällen (z.B. bei Verwendung eines SENEC Stromspeichers) ist auch eine reine Cloud-Installation möglich, also ganz ohne lokalen Server. In anderen Fällen ist eine verteilte Installation möglich, bei der die Datensammlung auf einem lokalen Linux-Server erfolgt, während die Datenspeicherung und das Dashboard auf einem Cloud-Server liegen.
 
 Für beides benötigt man einen Cloud-Server. Erfolgreich getestet wurde SOLECTRUS unter folgenden Umgebungen:
+
 - Virtueller Server in der [Hetzner-Cloud](https://hetzner.cloud/?ref=NggV8HU9FqCz) mit 2 vCPUs und 4GB RAM (5€/Monat).
 - Virtueller Server von Strato [VC 1-2](https://www.strato.de/server/linux-vserver/) mit 1 vCPU und 2GB RAM (2€/Monat) mit [evcc](https://evcc.io/).
 
