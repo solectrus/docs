@@ -17,7 +17,9 @@ Unterstützt werden die Datenformate der Stromspeicher/Wechselrichter von:
 
 ## Verwendung
 
-todo....
+{: .note}
+
+Dokumentation noch in Arbeit. Vorübergehend bitte das [README im GitHub-Repository](https://github.com/solectrus/csv-importer?tab=readme-ov-file) konsultieren.
 
 ## Quelltext
 
