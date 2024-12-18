@@ -62,6 +62,12 @@ Häufigkeit der Abfrage des aktuellen Messwertes (in Sekunden). Es empfiehlt sic
 
 Standardwert: `5`
 
+### `SHELLY_GEN` (ab Version 0.4.0)
+
+Generation des Shelly-Gerätes. Mögliche Werte sind `1` für erste Generation und `2` für zweite Generation.
+
+Standardwert: `2`
+
 ### `INFLUX_HOST`
 
 Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-Netzwerk läuft, ist das der Name des Containers (z.B. `influxdb`). Es kann aber auch ein externer InfluxDB-Server sein, z.B. `influxdb.example.com`.
@@ -101,6 +107,7 @@ Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 ```properties
 SHELLY_HOST=192.168.178.5
 SHELLY_INTERVAL=5
+SHELLY_GEN=2
 INFLUX_MEASUREMENT_SHELLY=heatpump
 
 INFLUX_HOST=influxdb
