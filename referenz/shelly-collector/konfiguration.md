@@ -26,6 +26,7 @@ services:
       - INFLUX_ORG
       - INFLUX_BUCKET
       - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_SHELLY}
+      - INFLUX_MODE
     logging:
       options:
         max-size: 10m
@@ -102,6 +103,12 @@ Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
 
 Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 
+### `INFLUX_MODE` (ab Version 0.5.0)
+
+Modus, in dem die Messwerte an InfluxDB übertragen werden. Mögliche Werte sind `default` und `essential`. Im `essential`-Modus werden nur dann Messwerte nach InfluxDB geschrieben, wenn sich der Wert geändert hat. Dies spart Speicherplatz und schont die Datenbank. Es eignet sich vor allem für Geräte, die nur selten in Betrieb sind (z.B. Waschmaschine, Geschirrspüler etc).
+
+Im `default`-Modus wird jeder erhaltene Messwert nach InfluxDB geschrieben.
+
 ## Beispielhafte .env
 
 ```properties
@@ -116,4 +123,5 @@ INFLUX_PORT=8086
 INFLUX_TOKEN_WRITE=my-super-secret-admin-token
 INFLUX_ORG=solectrus
 INFLUX_BUCKET=solectrus
+INFLUX_MODE=essential
 ```
