@@ -133,6 +133,10 @@ Dies extrahiert den Wert aus einem Payload wie `{"ccp": [1,2,42,3]}`. In diesem 
 
 ### 5. Mapping mit Formel
 
+Es gibt zwei Möglichkeiten, eine Formel zu verwenden:
+
+#### a) Bei JSON-Payload
+
 ```properties
 MAPPING_4_TOPIC=my/little/nuclear/plant
 MAPPING_4_JSON_FORMULA="round({reactivity} * {radiation_level}) + 42"
@@ -142,6 +146,20 @@ MAPPING_4_TYPE=float
 ```
 
 Aus einem JSON von z.B. `{"radiation_level": 90.5, "reactivity": 0.7}` entsteht `danger_level` mit `round(0.7 * 90.5) + 42`, also `105`.
+
+#### b) Bei String-Payload (ab Version 0.5.0)
+
+```properties
+MAPPING_4_TOPIC=my/little/nuclear/plant/powerInKwH
+MAPPING_4_FORMULA="round({value} * 1000)"
+MAPPING_4_MEASUREMENT=nuclear_power_plant
+MAPPING_4_FIELD=power
+MAPPING_4_TYPE=integer
+```
+
+Um Gegensatz zum JSON-Fall wird hier der Wert über `{value}` referenziert und die Variable heißt `MAPPING_X_FORMULA`.
+
+Aus einem Payload von z.B. `42.5` entsteht `power` mit `round(42.5 * 1000)`, also `42500`.
 
 ### 6. Mapping mit Grenzwerten
 
