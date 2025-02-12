@@ -41,6 +41,10 @@ docker compose kill --signal USR1 power-splitter
 
 Dieser "Kill-Befehl" ist dabei nicht so drastisch, wie er sich anhört. Es wird nur ein benutzerdefiniertes Signal (`USR1`) an den Container geschickt, der darauf reagiert, ohne sich zu beenden. Der Status der Neuberechnung kann im Protokoll des Power-Splitters mitverfolgt werden. Nach dem Neuberechnung wechselt der Container wieder in den Endlosmodus und bearbeitet die aktuellen Messwerte, die hereinkommen.
 
+{: .important}
+
+Seit Version 0.18 von SOLECTRUS gibt es "Tageszusammenfassungen", die auch die Werte des Power-Splitters enthalten. Nach einer Neuberechnung des Power-Splitters müssen daher die Tageszusammenfassungen in SOLECTRUS zurückgesetzt werden. Hierzu ist in der SOLECTRUS-Oberfläche unter _Einstellungen_ der entsprechende Button zu betätigen.
+
 ## Protokollierung
 
 Der Power-Splitter schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
