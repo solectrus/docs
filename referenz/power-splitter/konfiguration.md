@@ -9,6 +9,10 @@ nav_order: 2
 
 Der Power-Splitter wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert, d.h. die bestehenden Dateien `compose.yaml` und `.env` sind zu erweitern.
 
+{:.important}
+
+Voraussetzung ist, dass eine Sensor-Konfiguration vorhanden ist. Bei einer älteren Installation von SOLECTRUS (begonnen vor Version `0.15`) ist das meist nicht der Fall und muss zwingend [nachgeholt](/wartung/sensor-konfiguration) werden.
+
 ## compose.yaml
 
 ```yaml
@@ -130,5 +134,3 @@ Der Power-Splitter verwendete einige der Sensoren, die auch vom Dashboard werden
 - `INFLUX_EXCLUDE_FROM_HOUSE_POWER`
 
 Es genügt also, wenn man diese fünf Variablen in der `compose.yml` aufführt und somit den Zugriff ermöglicht. Es ist nicht notwendig und auch nicht sinnvoll, für den Power-Splitter eigene Werte zu definieren.
-
-Entscheidend ist aber, dass eine Sensor-Konfiguration vorhanden ist. Bei einer älteren Installation von SOLECTRUS (begonnen vor Version `0.15`) ist das nicht unbedingt und der Fall und muss [nachgeholt](/wartung/sensor-konfiguration) werden.
