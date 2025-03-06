@@ -9,7 +9,7 @@ nav_order: 2
 
 Die beiden Datenbanken von SOLECTRUS (PostgreSQL und vor allem InfluxDB) sammeln Daten, die man nicht verlieren möchte. Daher ist es wichtig, regelmäßig Sicherungen zu erstellen.
 
-Es stehen dafür Scripte zur Verfügung, die die Sicherung automatisieren.
+Es stehen dafür Scripte zur Verfügung, die die Sicherung manuell oder automatisiert durchführen.
 
 ## Herunterladen der Scripte
 
@@ -23,6 +23,8 @@ curl -o restore.sh https://raw.githubusercontent.com/solectrus/backup-restore/re
 chmod +x backup.sh restore.sh
 ```
 
+Manchmal werden die Scripte aktualisiert. Um die neueste Version zu erhalten, sind die beiden `curl`-Befehle erneut auszuführen.
+
 ## Erstellen einer Datensicherung
 
 Das Erstellen einer Sicherung erfolgt durch das Script `backup.sh`. Es erstellt eine Sicherung **beider** Datenbanken in **eine** Datei, die nach dem Datum benannt ist.
@@ -34,6 +36,8 @@ Das Erstellen einer Sicherung erfolgt durch das Script `backup.sh`. Es erstellt 
 Das Backup wird im laufenden Betrieb erstellt. Es muss (und darf) kein Container gestoppt werden. Das Ergebnis ist eine Datei wie `solectrus-backup-2024-10-06.tar.gz`. Das Script zeigt eine Ausgabe wie folgt:
 
 ```plaintext
+SOLECTRUS Backup Script
+
 Checking if PostgreSQL and InfluxDB containers are running...
 Ok, PostgreSQL and InfluxDB containers are both running.
 
@@ -57,19 +61,55 @@ Combined backup saved as solectrus-backup-2024-10-06.tar.gz (136K)
 Backup process completed.
 ```
 
+Die Sicherung kann optional auf einem anderen Speicherort gespeichert werden. Dazu wird der Pfad als Parameter übergeben:
+
+```bash
+./backup.sh --backup-dir /pfad/zum/zielverzeichnis
+```
+
+Außerdem kann dafür gesorgt, dass nur eine begrenzte Anzahl von Sicherungen aufbewahrt wird. Dazu wird die Anzahl ebenfalls als Parameter übergeben:
+
+```bash
+./backup.sh --retentation-days 10
+```
+
+### Automatisieren der Datensicherung
+
+Die Sicherung kann auch automatisiert werden, indem das Script in einem Cronjob aufgerufen wird.
+
+1. Cron-Tabelle öffnen:
+
+   ```bash
+   crontab -e
+   ```
+
+2. Ergänze folgende Zeile und speichere die Änderung:
+
+   ```
+   0 2 * * * cd /pfad/zu/solectrus && ./backup.sh --backup-dir /pfad/zum/zielverzeichnis --retention-days 10
+   ```
+
+3. Prüfen ob der Cronjob korrekt hinzugefügt wurde:
+
+   ```bash
+   crontab -l
+   ```
+
 ## Wiederherstellen einer Datensicherung
 
 Das Wiederherstellen einer Sicherung läuft ähnlich ab. Es wird das Script `restore.sh` verwendet, das alle Schritte automatisiert. Auch hier muss (und darf) kein Container manuell gestoppt werden. Das Script übernimmt das und startet die Container nach der Wiederherstellung wieder.
 
-Das Script wird mit dem Datum des Backups als Parameter aufgerufen:
+Das Script wird mit dem Pfad zur Backup-Datei als Parameter aufgerufen:
 
 ```bash
-./restore.sh 2024-10-06
+./restore.sh <BACKUP_DATEI>
 ```
 
 Da eine Wiederherstellung den aktuellen Zustand der Datenbanken überschreibt, wird aus Sicherheitsgründen vor dem Wiederherstellen eine Bestätigung eingeholt. Die Ausgabe des Scripts sieht wie folgt aus:
 
 ```plaintext
+SOLECTRUS Restore Script
+
 Validating backup files in solectrus-backup-2024-10-06.tar.gz...
 Ok, backup file contains backups for both PostgreSQL and InfluxDB.
 
