@@ -62,6 +62,26 @@ services:
       - INFLUX_SENSOR_GRID_EXPORT_LIMIT
       - INFLUX_SENSOR_HEATPUMP_POWER
       - INFLUX_SENSOR_CAR_BATTERY_SOC
+      - INFLUX_SENSOR_CUSTOM_POWER_01
+      - INFLUX_SENSOR_CUSTOM_POWER_02
+      - INFLUX_SENSOR_CUSTOM_POWER_03
+      - INFLUX_SENSOR_CUSTOM_POWER_04
+      - INFLUX_SENSOR_CUSTOM_POWER_05
+      - INFLUX_SENSOR_CUSTOM_POWER_06
+      - INFLUX_SENSOR_CUSTOM_POWER_07
+      - INFLUX_SENSOR_CUSTOM_POWER_08
+      - INFLUX_SENSOR_CUSTOM_POWER_09
+      - INFLUX_SENSOR_CUSTOM_POWER_10
+      - INFLUX_SENSOR_CUSTOM_POWER_11
+      - INFLUX_SENSOR_CUSTOM_POWER_12
+      - INFLUX_SENSOR_CUSTOM_POWER_13
+      - INFLUX_SENSOR_CUSTOM_POWER_14
+      - INFLUX_SENSOR_CUSTOM_POWER_15
+      - INFLUX_SENSOR_CUSTOM_POWER_16
+      - INFLUX_SENSOR_CUSTOM_POWER_17
+      - INFLUX_SENSOR_CUSTOM_POWER_18
+      - INFLUX_SENSOR_CUSTOM_POWER_19
+      - INFLUX_SENSOR_CUSTOM_POWER_20
       - INFLUX_EXCLUDE_FROM_HOUSE_POWER
     healthcheck:
       test:
@@ -261,6 +281,10 @@ Verbindungsstatus des E-Auto (True/False)
 
 Ladestand des E-Autos in Prozent
 
+### `INFLUX_SENSOR_CUSTOM_POWER_01` bis `INFLUX_SENSOR_CUSTOM_POWER_20` (ab Version 0.19)
+
+Stromverbrauch eines benutzerdefinierten Sensors in Watt.
+
 ## Fallback auf alte Konfiguration
 
 Wenn ein Sensor nicht definiert ist (z.B. weil die SOLECTRUS-Installation mit `v0.14.5` oder früher erfolgt ist), dann versucht SOLECTRUS, die Konfiguration automatisch zu vermittelt. Hierzu werden die früheren (und mittlerweile veralteten) Umgebungsvariablen `INFLUX_MEASUREMENT_PV` und `INFLUX_MEASUREMENT_FORECAST` verwendet.
@@ -278,6 +302,14 @@ INFLUX_EXCLUDE_FROM_HOUSE_POWER=HEATPUMP_POWER,WALLBOX_POWER
 ```
 
 Die Angabe erfolgt als Komma-separierte Liste von Sensor-Namen.
+
+Auch die Angabe eines benutzerdefinierten Sensors ist hier möglich, z.B. so:
+
+```properties
+INFLUX_EXCLUDE_FROM_HOUSE_POWER=WALLBOX_POWER,CUSTOM_POWER_02,CUSTOM_POWER_08
+```
+
+Dadurch werden die angegebenen benutzerdefinierten Sensoren aus dem Hausverbrauch herausgerechnet und direkt in der Strombilanz aufgeführt.
 
 ### Veraltete Angaben
 
