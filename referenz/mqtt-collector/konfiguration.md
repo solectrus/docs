@@ -133,6 +133,7 @@ Es stehen folgende Variablen zur Verfügung:
 - `MAPPING_X_TYPE`
 - `MAPPING_X_MIN`
 - `MAPPING_X_MAX`
+- `MAPPING_X_NULL_TO_ZERO`
 
 Eine ausführliche Beschreibung eines Mappings findet sich auf der folgenden Seite: \
 [Abonnieren von Topics](topics).

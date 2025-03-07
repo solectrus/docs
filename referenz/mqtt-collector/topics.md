@@ -73,6 +73,12 @@ Untererer Grenzwert für Messwerte. Wird ein Wert unterhalb dieses Grenzwerts em
 
 Oberer Grenzwert für Messwerte. Wird ein Wert oberhalb dieses Grenzwerts empfangen, wird er ignoriert und **nicht** in die InfluxDB geschrieben. Nützlich für Ausreißer oder offensichtlich fehlerhafte Werte, die sonst die Statistik verfälschen würden.
 
+### `MAPPING_X_NULL_TO_ZERO` (optional, ab `v0.7.0`)
+
+Wenn diese Variable auf `true` gesetzt wird, wird ein Messwert von `NULL` in die Zahl `0` umgewandelt und nach InfluxDB geschrieben.
+
+Bei `false` oder wenn die Variable nicht gesetzt ist, wird ein Messwert von `NULL` ignoriert, d.h. **nicht** nach InfluxDB geschrieben.
+
 ## Beispiele
 
 ### 1. Einfaches Mapping
@@ -127,9 +133,12 @@ MAPPING_3_JSON_PATH=$.ccp[2]
 MAPPING_3_MEASUREMENT=WALLBOX
 MAPPING_3_FIELD=power
 MAPPING_3_TYPE=float
+MAPPING_3_NULL_TO_ZERO=true
 ```
 
 Dies extrahiert den Wert aus einem Payload wie `{"ccp": [1,2,42,3]}`. In diesem Beispiel gibt es den Wert an der Stelle 2 (drittes Element) des Arrays `ccp` zurück, der `42` ist.
+
+Sollte der Wert `null` sein (z.B. bei `{"ccp": [1,2,null,3]}`), wird er als `0` geschrieben.
 
 ### 5. Mapping mit Formel
 
