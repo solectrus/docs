@@ -105,7 +105,9 @@ Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 
 ### `INFLUX_MODE` (ab Version 0.5.0)
 
-Modus, in dem die Messwerte an InfluxDB übertragen werden. Mögliche Werte sind `default` und `essential`. Im `essential`-Modus werden nur dann Messwerte nach InfluxDB geschrieben, wenn sich der Wert geändert hat. Dies spart Speicherplatz und schont die Datenbank. Es eignet sich vor allem für Geräte, die nur selten in Betrieb sind (z.B. Waschmaschine, Geschirrspüler etc).
+Modus, in dem die Messwerte an InfluxDB übertragen werden. Mögliche Werte sind `default` und `essential`. Im `essential`-Modus werden nur dann Messwerte nach InfluxDB geschrieben, wenn ein Verbrauch stattfindet (also nicht 0 ist). Dies spart Speicherplatz und schont die Datenbank. Es eignet sich vor allem für Geräte, die nur selten in Betrieb sind (z.B. Waschmaschine, Geschirrspüler etc).
+
+Beim Abschalten des Geräts wird einmalig ein Wert von 0 Watt geschrieben, um InfluxDB eine präzise Berechnung der Verbrauchsmenge zu ermöglichen.
 
 Im `default`-Modus wird jeder erhaltene Messwert nach InfluxDB geschrieben.
 
