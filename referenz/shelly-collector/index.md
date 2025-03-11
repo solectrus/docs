@@ -9,16 +9,21 @@ nav_order: 4
 
 Der **Shelly-Collector** sammelt den Stromverbrauch, der von einem Shelly-Stromzähler gemessen wird und schreibt diesen in die InfluxDB.
 
-Unterstützt werden Shelly-Geräte der ersten und zweiten Generation. Erfolgreich getestet wurden die folgenden Geräte:
+Die Messwerte können entweder direkt vom Gerät (über die HTTP-Rest-API) oder über die Shelly-Cloud abgerufen werden. Letzteres ermöglicht es, den Shelly-Collector auch von außerhalb des lokalen Netzwerks zu betreiben, z.B. auf einem Cloud-Server.
 
-- Shelly Pro 3EM
-- Shelly Plus Plug S
-- Shelly EM
+Unterstützt werden Shelly-Geräte der ersten, zweiten und dritten Generation. Erfolgreich getestet wurden die folgenden Geräte:
+
+- Shelly 1PM
 - Shelly 3EM
+- Shelly EM
+- Shelly Plug S Gen3
+- Shelly Plus Plug S
+- Shelly Plus 1PM
+- Shelly Pro 3EM
 
 {:.note}
 
-Wer den Collector mit einen anderen Shelly erfolgreich getestet hat, kann die Liste gerne ergänzen.
+Wer den Collector mit einen nicht aufgeführten Shelly erfolgreich getestet hat, kann die Liste gerne ergänzen.
 
 ## Überwachte Messwerte
 
@@ -36,15 +41,15 @@ Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Me
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```plaintext
-Shelly collector for SOLECTRUS, Version 0.4.0, built at 2024-10-01T23:55:03.133Z
+Shelly collector for SOLECTRUS, Version 0.6.0, built at 2025-03-11T09:47:38.489Z
 https://github.com/solectrus/shelly-collector
-Copyright (c) 2024 Georg Ledermann, released under the MIT License
+Copyright (c) 2024-2025 Georg Ledermann, released under the MIT License
 
-Using Ruby 3.3.5 on platform x86_64-linux-musl
-Pushing to InfluxDB at http://influxdb, bucket solectrus, measurement heatpump
-Pulling from your Shelly (Gen2) at http://192.168.178.5/rpc/Shelly.GetStatus every 5 seconds
+Using Ruby 3.4.2 on platform aarch64-linux-musl
+Pushing to InfluxDB at http://influxdb:8086, bucket solectrus, measurement heatpump
+Pulling from your Shelly at http://192.168.178.5 every 5 seconds
 
-Got record #1 at 2024-10-02 10:00:33 +0200 within 37 ms, Power 5.1 W, Temperature 37.3 °C
+Got record #1 at 2025-03-11 10:53:00 +0100 within 37 ms, Power 5.1 W, Temperature 37.3 °C
 Successfully pushed record #1 to InfluxDB
 ...
 ```

@@ -17,8 +17,10 @@ services:
     environment:
       - TZ
       - SHELLY_HOST
+      - SHELLY_CLOUD_SERVER
+      - SHELLY_AUTH_KEY
+      - SHELLY_DEVICE_ID
       - SHELLY_INTERVAL
-      - SHELLY_GEN
       - INFLUX_HOST
       - INFLUX_SCHEMA
       - INFLUX_PORT
@@ -53,21 +55,37 @@ Die beiden Variablen `INFLUX_TOKEN` und `INFLUX_MEASUREMENT` werden anders laute
 
 ## Umgebungsvariablen
 
-### `SHELLY_HOST`
+### `SHELLY_HOST` (nur für lokalen Zugriff, ab Version 0.6.0)
 
 Hostname des Shelly. Dies ist üblicherweise eine IP-Adresse, kann aber auch eine lokale Domain sein. Es darf **kein** `http://` oder `https://` enthalten sein!
 
+### `SHELLY_CLOUD_SERVER` (nur für Cloud-Zugriff, ab Version 0.6.0)
+
+Name des Shelly-Cloud-Servers, z.B. `https://shelly-42-eu.shelly.cloud`
+
+Welcher Server hier einzutragen ist, lässt sich in der Shelly-Cloud unter folgendem Link ablesen:
+[https://control.shelly.cloud](https://control.shelly.cloud), dort unter _Settings / User Settings / Authorization cloud key_
+
+Der Shelly muss in der Shelly-Cloud registriert sein und die Datenübermittlung in die Cloud muss aktiviert sein.
+
+### `SHELLY_AUTH_KEY` (nur für Cloud-Zugriff, ab Version 0.6.0)
+
+Authentifizierungsschlüssel für den Zugriff auf die Shelly-Cloud. Dieser Schlüssel muss in der Shelly-Cloud erstellt werden und die Berechtigung haben, Daten des angegebenen Geräts abzurufen.
+
+Welcher Schlüssel hier einzutragen ist, lässt sich in der Shelly-Cloud unter folgendem Link ablesen:
+[https://control.shelly.cloud](https://control.shelly.cloud), dort unter _Settings / User Settings / Authorization cloud key / Get Key_
+
+### `SHELLY_DEVICE_ID` (nur für Cloud-Zugriff, ab Version 0.6.0)
+
+ID des Shelly-Geräts, das abgefragt werden soll. Diese ID kann in der Shelly-Cloud abgelesen werden.
+
+Welche ID hier einzutragen ist, lässt sich in der Shelly-Cloud beim jeweiligen Gerät unter _Settings / Device information_ ablesen.
+
 ### `SHELLY_INTERVAL`
 
-Häufigkeit der Abfrage des aktuellen Messwertes (in Sekunden). Es empfiehlt sich eine Abfrage alle 5 Sekunden, um eine gute Auflösung zu erhalten.
+Häufigkeit der Abfrage des aktuellen Messwertes (in Sekunden). Es empfiehlt sich eine Abfrage alle 5 Sekunden, um eine gute Auflösung zu erhalten. Bei Nutzung des Cloud-Zugriff ist zu beachten, dass die Shelly-Cloud höchstens **einen Request pro Sekunde** zulässt. Das ist relevant, wenn man viele Shelly-Geräte abfragen möchte.
 
 Standardwert: `5`
-
-### `SHELLY_GEN` (ab Version 0.4.0)
-
-Generation des Shelly-Gerätes. Mögliche Werte sind `1` für erste Generation und `2` für zweite Generation.
-
-Standardwert: `2`
 
 ### `INFLUX_HOST`
 
@@ -113,10 +131,29 @@ Im `default`-Modus wird jeder erhaltene Messwert nach InfluxDB geschrieben.
 
 ## Beispielhafte .env
 
+### Für lokalen Zugriff
+
 ```properties
 SHELLY_HOST=192.168.178.5
 SHELLY_INTERVAL=5
-SHELLY_GEN=2
+INFLUX_MEASUREMENT_SHELLY=heatpump
+
+INFLUX_HOST=influxdb
+INFLUX_SCHEMA=http
+INFLUX_PORT=8086
+INFLUX_TOKEN_WRITE=my-super-secret-admin-token
+INFLUX_ORG=solectrus
+INFLUX_BUCKET=solectrus
+INFLUX_MODE=essential
+```
+
+### Für Cloud-Zugriff
+
+```properties
+SHELLY_CLOUD_SERVER=https://shelly-42-eu.shelly.cloud
+SHELLY_AUTH_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+SHELLY_DEVICE_ID=12345abcdef0
+SHELLY_INTERVAL=5
 INFLUX_MEASUREMENT_SHELLY=heatpump
 
 INFLUX_HOST=influxdb
