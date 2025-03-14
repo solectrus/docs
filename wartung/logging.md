@@ -2,7 +2,7 @@
 title: Logging limitieren
 layout: page
 parent: Wartung
-nav_order: 4
+nav_order: 5
 ---
 
 # Limitierung der Protokoll-Dateien

@@ -2,7 +2,7 @@
 title: Umstellung auf neue Konfiguration
 layout: page
 parent: Wartung
-nav_order: 5
+nav_order: 6
 ---
 
 # Neue Konfiguration mit v0.15

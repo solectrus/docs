@@ -2,7 +2,7 @@
 title: Datenkorrektur
 layout: page
 parent: Wartung
-nav_order: 3
+nav_order: 4
 ---
 
 # Korrektur von Messwerten in InfluxDB
