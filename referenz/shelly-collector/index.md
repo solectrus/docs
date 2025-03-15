@@ -11,12 +11,13 @@ Der **Shelly-Collector** sammelt den Stromverbrauch, der von einem Shelly-Stromz
 
 Die Messwerte können entweder direkt vom Gerät (über die HTTP-Rest-API) oder über die Shelly-Cloud abgerufen werden. Letzteres ermöglicht es, den Shelly-Collector auch von außerhalb des lokalen Netzwerks zu betreiben, z.B. auf einem Cloud-Server.
 
-Unterstützt werden Shelly-Geräte der ersten, zweiten und dritten Generation. Erfolgreich getestet wurden die folgenden Geräte:
+Unterstützt werden Shelly-Geräte der ersten, zweiten und dritten Generation. Erfolgreich getestet wurden (mit der aktuellen Version 0.7.0 des Collectors) die folgenden Geräte:
 
 - Shelly 1PM
 - Shelly 3EM
 - Shelly EM
 - Shelly Plug S Gen3
+- Shelly Plug 2
 - Shelly Plus Plug S
 - Shelly Plus 1PM
 - Shelly Pro 3EM
