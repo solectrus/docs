@@ -25,6 +25,8 @@ docker compose down
 
 Die relevanten Datenbanken sind **InfluxDB** und **PostgreSQL**. **Redis** wird nur für Caching verwendet und muss nicht kopiert werden. Die Daten liegen in der Regel in den Verzeichnissen `./influxdb` und `./postgresql`, es sei denn, in der `.env`-Datei wurden andere Speicherorte definiert (Variablen `INFLUX_VOLUME_PATH` und `DB_VOLUME_PATH`). Diese Verzeichnisse müssen auf den neuen Server übertragen werden.
 
+Beim Kopieren der Datenbank-Ordner kann es sein, dass dazu erhöhte Berechtigungen erforderlich sind. In diesem Fall kann das Kopieren mit vorangestelltem `sudo` hilfreich sein.
+
 **Wichtig:** Während des Kopiervorgangs dürfen die Datenbanken nicht verändert werden. Daher müssen die Container vorher gestoppt werden.
 
 {: .note}
