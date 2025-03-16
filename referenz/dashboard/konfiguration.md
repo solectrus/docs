@@ -163,7 +163,7 @@ Standardmäßig erlaubt SOLECTRUS keine Einbettung.
 
 ### `UI_THEME` (ab Version 0.17.1)
 
-Farbschema für die Web-Oberfläche. Mögliche Werte sind `light` und `dark`. Wenn gewählt, wird das Farbschema auf das gewählte Schema fest eingestellt und kann über über die Oberfläche nicht mehr geändert werden. Nützlich ist das für den Einsatz auf einem Digital Signage Display, das nicht man nicht interaktiv bedienen kann oder will.
+Farbschema für die Web-Oberfläche. Mögliche Werte sind `light` und `dark`. Wenn gewählt, wird das Farbschema auf das gewählte Schema fest eingestellt und kann über über die Oberfläche nicht mehr geändert werden. Nützlich ist das für den Einsatz auf einem Digital Signage Display, das man nicht interaktiv bedienen kann oder will.
 
 Optional, Standardwert: leer
 
