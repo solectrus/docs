@@ -5,7 +5,7 @@ parent: Wartung
 nav_order: 6
 ---
 
-# Neue Konfiguration mit v0.15
+# Neue Konfiguration ab v0.15
 
 Mit Version `0.15` wurde in SOLECTRUS eine neue Konfiguration eingeführt. Dieser Text soll erklären, warum das notwendig war, welche Vorteile es bringt und was bisherige Benutzer von SOLECTRUS tun sollten.
 
@@ -13,9 +13,17 @@ Für Benutzer, die erst mit Version `0.15` (oder später) eingestiegen sind, ist
 
 Dieser Text richtet sich also an Benutzer, die SOLECTRUS schon länger verwenden, also vor Version `0.15` eingestiegen sind.
 
+{:.note}
+
+Für die Umstellung sollte eher **nicht** der Konfigurator verwendet werden, da dieser einige andere Bezeichnungen verwendet, z.B. für InfluxDB-Bucket und -Measurements, Docker-Services und anderes. Das würde einige manuelle Anpassungen erfordern, die ein tieferes Verständnis von InfluxDB und Docker voraussetzen. \
+\
+Der Konfigurator ist nur für eine **Neuinstallation** gedacht, bei der keine bestehenden Datenbanken fortgeführt werden müssen.
+
+{:.warning}
+
 ## Warum überhaupt eine neue Konfiguration?
 
-Bislang orientierte sich SOLECTRUS begrifflich am Hersteller SENEC. Die ersten Versionen von SOLECTRUS unterstützten nur den SENEC-Stromspeicher und verwendeten daher intern (insbesondere in der Datenbank InfluxDB) auch deren Bezeichnungen für einzelne Messwerte. Diese Bezeichnung wie z.B. `bat_fuel_charge` oder `bat_power_minus` oder `bat_power_plus` waren nicht immer selbsterklärend und führten zu Verwirrung. Es erschien anfangs aber als eine gute Idee, wenn die SENEC-Begriffe ein-zu-eins in SOLECTRUS wieder auftauchten.
+Ursprünglich orientierte sich SOLECTRUS begrifflich am Hersteller SENEC. Die ersten Versionen von SOLECTRUS unterstützten nur den SENEC-Stromspeicher und verwendeten daher intern (insbesondere in der Datenbank InfluxDB) auch deren Bezeichnungen für einzelne Messwerte. Diese Bezeichnung wie z.B. `bat_fuel_charge` (Batterie-Ladestand), `bat_power_minus` (Batterie-Entladeleistung) oder `bat_power_plus` (Batterie-Ladeleistung) waren nicht immer selbsterklärend. Es erschien anfangs aber als eine gute Idee, wenn die SENEC-Begriffe ein-zu-eins in SOLECTRUS wieder auftauchten.
 
 Mit Einführung der [MQTT-Anbindung](https://github.com/solectrus/mqtt-collector) und der Unterstützung von weiteren Herstellern wurde das aber zu einem unschönen Nachteil: Die Messwerte kamen nun aus verschiedenen Quellen (hießen also auch anders) und mussten in das Schema von SOLECTRUS gepresst werden, das auf SENEC basierte. Das führte nicht gerade zu einer übersichtlichen Konfiguration.
 
