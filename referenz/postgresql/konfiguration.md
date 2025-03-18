@@ -46,7 +46,7 @@ Es gibt im Normalfall keine Notwendigkeit, direkt auf die Datenbank zuzugreifen.
 
 {: .important }
 
-PostgreSQL erscheint jährlich in einer neuen Major-Version. Ein Upgrade erfordert aber ein Backup/Restor. Da die Vorteile einer neuen Major-Version aus Sicht von SOLECTRUS überschaubar sind, kann problemlos bei einer älteren Version verblieben werden, für die es üblicherweise fünf Jahre lang Minor-Updates gibt. \
+PostgreSQL erscheint jährlich in einer neuen Major-Version. Ein Upgrade erfordert aber ein Backup/Restore. Da die Vorteile einer neuen Major-Version aus Sicht von SOLECTRUS überschaubar sind, kann problemlos bei einer älteren Version verblieben werden, für die es üblicherweise fünf Jahre lang Minor-Updates gibt. \
 \
 Keineswegs darf bei Verfügbarkeit einer neuen Version von PostgreSQL einfach die neue Versionsnummer in die `compose.yaml` eingetragen werden. PostgreSQL wird dann nicht mehr starten! \
 \
