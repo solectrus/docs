@@ -7,7 +7,7 @@ nav_order: 11
 
 # PostgreSQL
 
-SOLECTRUS legt alle Daten, die nichts mit Messwerten zu tun haben (z.B. Einstellungen, Strompreise, Registrierung) in der OpenSource-Datenbank **PostgreSQL** ab. Unterstützt wird die Version 12 oder höher, wobei für eine Neuinstallation die Version **16** empfohlen wird.
+SOLECTRUS legt alle Daten, die nichts mit Messwerten zu tun haben (z.B. Einstellungen, Strompreise, Registrierung) in der OpenSource-Datenbank **PostgreSQL** ab. Unterstützt wird die Version 12 oder höher, wobei für eine Neuinstallation die Version **17** empfohlen wird.
 
 ## Protokollierung
 
@@ -15,11 +15,11 @@ Wie alle Docker-Container schreibt auch PostgreSQL ein Protokoll ins Docker-Log,
 
 ```plaintext
 ...
-2024-10-05 17:53:12.399 CEST [1] LOG:  starting PostgreSQL 16.4 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309, 64-bit
-2024-10-05 17:53:12.399 CEST [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
-2024-10-05 17:53:12.399 CEST [1] LOG:  listening on IPv6 address "::", port 5432
-2024-10-05 17:53:12.401 CEST [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-2024-10-05 17:53:12.407 CEST [1] LOG:  database system is ready to accept connections
+2025-03-18 06:29:53.768 CET [1] LOG:  starting PostgreSQL 17.4 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
+2025-03-18 06:29:53.768 CET [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-03-18 06:29:53.768 CET [1] LOG:  listening on IPv6 address "::", port 5432
+2025-03-18 06:29:53.769 CET [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-03-18 06:29:53.787 CET [1] LOG:  database system is ready to accept connections
 ...
 ```
 
