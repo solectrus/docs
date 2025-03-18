@@ -55,4 +55,4 @@ Es gibt jedoch auch Geräte, auf denen SOLECTRUS leider nicht funktioniert. Dazu
 
 - FritzBox
 - Apple TimeCapsule (geschlossenes System, Installation von Docker nicht möglich)
-- Alte Synology NAS wie z.B. DS216+ mit Linux-Kernel v3 (es wird mindestens **v4** benötigt)
+- Alte Synology NAS wie z.B. DS216+ mit Linux-Kernel 3.x (es wird mindestens **4.x** benötigt). Es gibt aber Hinweise darauf, dass SOLECTRUS mittlerweile auch mit einem 3.x-Kernel funktioniert - im Zweifel einfach ausprobieren.
