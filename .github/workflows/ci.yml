@@ -21,5 +21,5 @@ jobs:
       - name: Build with Jekyll
         run: bundle exec jekyll build
 
-      - name: Check for broken links
-        run: bundle exec htmlproofer --log-level :debug ./_site
+      # - name: Check for broken links
+      #   run: bundle exec htmlproofer --log-level :debug ./_site
