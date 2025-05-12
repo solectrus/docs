@@ -21,10 +21,20 @@ Wenn der Akku voll ist, wird die Beladung wieder frei gegeben.
 
 Jede einzelne Prüfung finden nach einem festen Ablauf statt, der in folgendem Flussdiagramm dargestellt ist:
 
-<img
-  src="{{ site.baseurl }}/assets/images/senec-charger.svg"
-  alt="SENEC-Charger"
-/>
+```mermaid
+flowchart
+  BEGIN --> CHA{Findet eine Aufladung statt?}
+  CHA -->|yes| INC{Ladestand erhöht seit letzter Prüfung?}
+  CHA -->|no| EMPTY{Akku leer?}
+  INC -->|yes| END1[END]
+  INC -->|no| STOP[Entladung zulassen!]
+  EMPTY -->|yes| SUN{PV-Ertrag in Kürze?}
+  EMPTY -->|no| END4[END]
+  SUN -->|yes| END3[END]
+  SUN -->|no| CHEAP{Netzstrom günstig?}
+  CHEAP -->|yes| START[Starte Beladung!]
+  CHEAP -->|no| END5[END]
+```
 
 {: .note }
 

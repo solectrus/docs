@@ -23,10 +23,15 @@ Der MQTT-Collector abonniert Topics bei einem MQTT-Broker, verarbeitet die empfa
 
 Für jedes abonnierte Topic, für das der MQTT-Collector Messwerte empfängt, wird einzeln über ein **Mapping** festgelegt, was mit den Werten geschehen soll und insbesondere wohin sie gespeichert werden sollen.
 
-<img
-  src="{{ site.baseurl }}/assets/images/mqtt-mapping.svg"
-  alt="MQTT-Mapping"
-/>
+```mermaid
+flowchart LR
+  MQTTCollector[MQTT-Collector]
+  MQTTMapping((MQTT-Mapping))
+  InfluxDB
+
+  MQTTCollector -->|Topic + Payload| MQTTMapping
+  MQTTMapping -->|Measurement + Field + Value| InfluxDB
+```
 
 Der Collector muss sich an kein vorgegebenes Namensschema halten, sondern die Messwerte können inhaltlich (z.B. nach ihrer Quelle) strukturiert werden. Die Bezeichnungen von Measurements und Fields in der InfluxDB sind also frei wählbar.
 
@@ -44,10 +49,15 @@ Falls also der MQTT-Broker eine Einstellung wie "Publish only on change" anbiete
 
 Das Dashboard von SOLECTRUS holt sich die Werte aus der InfluxDB, ohne zu wissen, woher sie kommen. Das SOLECTRUS-Dashboard ist also unabhängig von der Quelle der Messwerte. SOLECTRUS definiert dabei Sensoren, über die die Werte abgerufen werden. Die Sensoren sind also die Schnittstelle zwischen SOLECTRUS und der InfluxDB. Für den MQTT-Collector sind die Sensoren aber irrelevant.
 
-<img
-  src="{{ site.baseurl }}/assets/images/sensor-mapping.svg"
-  alt="Sensor-Mapping"
-/>
+```mermaid
+flowchart LR
+  InfluxDB
+  SensorMapping((Sensor-Mapping))
+  Dashboard
+
+  InfluxDB -->|Measurement + Field + Value| SensorMapping
+  SensorMapping -->|Sensor + Value| Dashboard
+```
 
 ## Protokollierung
 
