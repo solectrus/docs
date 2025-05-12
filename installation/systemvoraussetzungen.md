@@ -38,7 +38,7 @@ Wer SOLECTRUS auf einem anderen Gerät erfolgreich betreibt, kann gerne die List
 
 ## Stromspeicher von SENEC
 
-SOLECTRUS unterstützt außerdem nativ die Stromspeicher **SENEC.Home V2.1 und V3**, deren Messwerte über eine proprietäre Schnittstelle direkt ausgelesen werden. Auch der **SENEC.Home 4** wird unterstützt – per Anbindung an `meine-senec.de`.
+SOLECTRUS unterstützt außerdem nativ die Stromspeicher **SENEC.Home V2.1 und V3**, deren Messwerte über eine proprietäre Schnittstelle direkt ausgelesen werden. Auch der **SENEC.Home P4** wird unterstützt – per Anbindung an `meine-senec.de`.
 
 ## Cloud
 

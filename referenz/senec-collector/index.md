@@ -11,7 +11,7 @@ Erfolgreich getestet wurde der Collector mit folgenden Stromspeichern:
 
 - SENEC.Home V2.1
 - SENEC.Home V3
-- SENEC.Home 4
+- SENEC.Home P4
 
 {:.note}
 
@@ -21,9 +21,9 @@ Wer den Collector mit einen anderen SENEC-Stromspeicher erfolgreich getestet hat
 
 Grundsätzlich kann der Collector in zwei verschiedenen **Betriebsmodi** eingesetzt werden:
 
-- **Lokal:** Direkter Zugriff auf den SENEC-Stromspeicher über dessen lokale IP-Adresse. Die Daten werden über die `lala.cgi`-Schnittstelle ausgelesen. Möglich ist das beim V2.1 und V3, nicht aber beim Home 4, denn dieser hat keine lokale Schnittstelle. Ein Auslesen der Messwerte ist in einem kurzen Intervall möglich, standardmäßig sind es 5 Sekunden.
+- **Lokal:** Direkter Zugriff auf den SENEC-Stromspeicher über dessen lokale IP-Adresse. Die Daten werden über die `lala.cgi`-Schnittstelle ausgelesen. Möglich ist das beim V2.1 und V3, nicht aber beim Home P4, denn dieser hat keine lokale Schnittstelle. Ein Auslesen der Messwerte ist in einem kurzen Intervall möglich, standardmäßig sind es 5 Sekunden.
 
-- **Cloud:** Abholen der Messwerte aus der SENEC-Cloud aus unter Verwendung der Schnittstelle, die von SENEC für die Mobil-Apps bereitgestellt wird. Für den Zugriff sind SENEC-Zugangsdaten anzugeben (E-Mail und Passwort). Möglich ist das auch für den Home 4. Das Auslesen der Messwerte ist nur einem einem längeren Intervall erlaubt, das vom Gerät abhängt. Beim Home 4 ist eine Abfrage im 1-Minuten-Takt möglich, beim V2.1 und V3 im 5-Minuten-Takt.
+- **Cloud:** Abholen der Messwerte aus der SENEC-Cloud aus unter Verwendung der Schnittstelle, die von SENEC für die Mobil-Apps bereitgestellt wird. Für den Zugriff sind SENEC-Zugangsdaten anzugeben (E-Mail und Passwort). Möglich ist das auch für den Home P4. Das Auslesen der Messwerte ist nur einem einem längeren Intervall erlaubt, das vom Gerät abhängt. Beim Home P4 ist eine Abfrage im 1-Minuten-Takt möglich, beim V2.1 und V3 im 5-Minuten-Takt.
 
 ### Vergleich der Betriebsmodi
 
@@ -31,7 +31,7 @@ Grundsätzlich kann der Collector in zwei verschiedenen **Betriebsmodi** eingese
 | :-------------- | :-------- | :-------- |
 | SENEC.Home V2.1 | Ja (5sec) | Ja (5min) |
 | SENEC.Home V3   | Ja (5sec) | Ja (5min) |
-| SENEC.Home 4    | Nein      | Ja (1min) |
+| SENEC.Home P4   | Nein      | Ja (1min) |
 
 Beim V2.1 und V3 ist es also möglich, sich für einen der beiden Adapter zu entscheiden. Dies eröffnet die Möglichkeit, SOLECTRUS vollständig auf einem Cloud-Server zu betreiben, also ohne einen Raspberry o.ä. im lokalen Netzwerk. Diesem Vorteil steht der Nachteil gegenüber, dass die Daten nicht so häufig aktualisiert werden (nur alle 5 Minuten, statt alle 5 Sekunden).
 

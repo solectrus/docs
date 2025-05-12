@@ -16,7 +16,7 @@ Damit der SENEC-Charger funktioniert, werden zwei weitere Container benötigt:
 
 {: .note }
 
-Da für die Beladung des Speichers ein direkter Zugriff auf den SENEC-Stromspeicher notwendig ist, funktioniert dies leider nicht mit dem Home 4 oder neuer. Es wird ausschließlich der SENEC V2.1 und V3 unterstützt.
+Da für die Beladung des Speichers ein direkter Zugriff auf den SENEC-Stromspeicher notwendig ist, funktioniert dies leider nicht mit dem SENEC.Home P4 oder neuer. Es wird ausschließlich der SENEC.Home V2.1 und V3 unterstützt.
 
 ## Protokollierung
 
