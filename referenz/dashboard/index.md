@@ -19,11 +19,11 @@ Das Dashboard schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussie
 
 ```plaintext
 SOLECTRUS Photovoltaic Dashboard
-Copyright (C) 2020-2024 Georg Ledermann
+Copyright (C) 2020-2025 Georg Ledermann
 License: GNU AGPLv3 - https://www.gnu.org/licenses/agpl-3.0.html
-Version v0.17.0, built on 2024-09-23T18:44:47+02:00
-Using ruby 3.3.5 (2024-09-03 revision ef084cc8f4) [aarch64-linux-musl]
-Based on Alpine Linux 3.20.3
+Version v0.19.1, built on 2025-04-22T15:26:27+02:00
+Using ruby 3.4.3 (2025-04-14 revision d0b7e5b6a0) +PRISM [aarch64-linux-musl]
+Based on Alpine Linux 3.21.3
 
 ## Waiting for services...
 redis (172.18.0.3:6379) open
@@ -38,32 +38,52 @@ Database is ready!
 
 ## Starting Rails application...
 => Booting Puma
-=> Rails 7.2.1 application starting in production
+=> Rails 8.0.2 application starting in production
 => Run `bin/rails server --help` for more startup options
-I, [2024-10-08T14:52:22.169801 #1]  INFO -- : Sensor initialization started
-I, [2024-10-08T14:52:22.171149 #1]  INFO -- :   - Sensor 'inverter_power' mapped to 'SENEC:inverter_power'
-I, [2024-10-08T14:52:22.171283 #1]  INFO -- :   - Sensor 'inverter_power_forecast' ignored
-I, [2024-10-08T14:52:22.171336 #1]  INFO -- :   - Sensor 'house_power' mapped to 'SENEC:house_power'
-I, [2024-10-08T14:52:22.171374 #1]  INFO -- :   - Sensor 'heatpump_power' ignored
-I, [2024-10-08T14:52:22.171411 #1]  INFO -- :   - Sensor 'grid_import_power' mapped to 'SENEC:grid_power_plus'
-I, [2024-10-08T14:52:22.171450 #1]  INFO -- :   - Sensor 'grid_export_power' mapped to 'SENEC:grid_power_minus'
-I, [2024-10-08T14:52:22.171487 #1]  INFO -- :   - Sensor 'grid_export_limit' mapped to 'SENEC:power_ratio'
-I, [2024-10-08T14:52:22.171529 #1]  INFO -- :   - Sensor 'battery_charging_power' mapped to 'SENEC:bat_power_plus'
-I, [2024-10-08T14:52:22.171568 #1]  INFO -- :   - Sensor 'battery_discharging_power' mapped to 'SENEC:bat_power_minus'
-I, [2024-10-08T14:52:22.171608 #1]  INFO -- :   - Sensor 'battery_soc' mapped to 'SENEC:bat_fuel_charge'
-I, [2024-10-08T14:52:22.171645 #1]  INFO -- :   - Sensor 'car_battery_soc' ignored
-I, [2024-10-08T14:52:22.171684 #1]  INFO -- :   - Sensor 'wallbox_car_connected' ignored
-I, [2024-10-08T14:52:22.171720 #1]  INFO -- :   - Sensor 'wallbox_power' mapped to 'SENEC:wallbox_charge_power'
-I, [2024-10-08T14:52:22.171757 #1]  INFO -- :   - Sensor 'case_temp' mapped to 'SENEC:case_temp'
-I, [2024-10-08T14:52:22.171798 #1]  INFO -- :   - Sensor 'system_status' mapped to 'SENEC:current_state'
-I, [2024-10-08T14:52:22.171836 #1]  INFO -- :   - Sensor 'system_status_ok' mapped to 'SENEC:current_state_ok'
-I, [2024-10-08T14:52:22.171887 #1]  INFO -- :   - Sensor 'house_power_grid' mapped to 'power_splitter:house_power_grid'
-I, [2024-10-08T14:52:22.171934 #1]  INFO -- :   - Sensor 'wallbox_power_grid' mapped to 'power_splitter:wallbox_power_grid'
-I, [2024-10-08T14:52:22.171974 #1]  INFO -- :   - Sensor 'heatpump_power_grid' mapped to 'power_splitter:heatpump_power_grid'
-I, [2024-10-08T14:52:22.172013 #1]  INFO -- :   - Sensor 'house_power' remains unchanged
-I, [2024-10-08T14:52:22.172072 #1]  INFO -- : Sensor initialization completed
+Sensor initialization started
+  - Sensor inverter_power                 → SENEC:inverter_power
+  - Sensor house_power                    → SENEC:house_power
+  - Sensor grid_import_power              → SENEC:grid_power_plus
+  - Sensor grid_export_power              → SENEC:grid_power_minus
+  - Sensor battery_charging_power         → SENEC:bat_power_plus
+  - Sensor battery_discharging_power      → SENEC:bat_power_minus
+  - Sensor wallbox_power                  → SENEC:wallbox_charge_power
+  - Sensor custom_power_01                → Fridge:power
+  - Sensor custom_power_02                → Dishwasher:power
+  - Sensor custom_power_03                → Washer:power
+  - Sensor custom_power_04                → Oven:power
+  - Sensor custom_power_05                → Dryer:power
+  - Sensor custom_power_06                → Hob:power
+  - Sensor custom_power_07                → Sauna:power
+  - Sensor custom_power_08                → Pool:power
+  - Sensor custom_power_09                → Garden:power
+  - Sensor custom_power_10                → Heating:power
+  - Sensor house_power_grid               → power_splitter:house_power_grid
+  - Sensor wallbox_power_grid             → power_splitter:wallbox_power_grid
+  - Sensor battery_charging_power_grid    → power_splitter:battery_charging_power_grid
+  - Sensor custom_power_01_grid           → power_splitter:custom_power_01_grid
+  - Sensor custom_power_02_grid           → power_splitter:custom_power_02_grid
+  - Sensor custom_power_03_grid           → power_splitter:custom_power_03_grid
+  - Sensor custom_power_04_grid           → power_splitter:custom_power_04_grid
+  - Sensor custom_power_05_grid           → power_splitter:custom_power_05_grid
+  - Sensor custom_power_06_grid           → power_splitter:custom_power_06_grid
+  - Sensor custom_power_07_grid           → power_splitter:custom_power_07_grid
+  - Sensor custom_power_08_grid           → power_splitter:custom_power_08_grid
+  - Sensor custom_power_09_grid           → power_splitter:custom_power_09_grid
+  - Sensor custom_power_10_grid           → power_splitter:custom_power_10_grid
+  - Sensor inverter_power_forecast        → forecast:watt
+  - Sensor grid_export_limit              → SENEC:power_ratio
+  - Sensor battery_soc                    → SENEC:bat_fuel_charge
+  - Sensor wallbox_car_connected          → SENEC:ev_connected
+  - Sensor case_temp                      → SENEC:case_temp
+  - Sensor system_status                  → SENEC:current_state
+  - Sensor system_status_ok               → SENEC:current_state_ok
+  - Sensor HOUSE_POWER remains unchanged
+Sensor initialization completed
+Configuration checked, no changes detected, summaries are still valid.
 Puma starting in single mode...
-* Puma version: 6.4.3 (ruby 3.3.5-p100) ("The Eagle of Durango")
+* Puma version: 6.6.0 ("Return to Forever")
+* Ruby version: ruby 3.4.3 (2025-04-14 revision d0b7e5b6a0) +YJIT +PRISM [aarch64-linux-musl]
 *  Min threads: 3
 *  Max threads: 3
 *  Environment: production
