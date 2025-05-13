@@ -10,6 +10,7 @@ nav_order: 1
 Einige Bereiche von SOLECTRUS sind geschützt und nur für autorisierte Benutzer zugänglich. Dazu gehören:
 
 - Festlegung der Strompreise, der Einspeisevergütung und weiterer Optionen
+- Zurücksetzen der Tageszusammenfassungen
 - Durchführung der Registrierung
 - Abschließen eines Sponsoring-Abos
 
