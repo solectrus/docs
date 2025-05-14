@@ -18,7 +18,7 @@ Diese Funktionen sind dem Administrator vorbehalten. Die normalen Benutzer haben
 
 Die Anmeldung erfolgt über das Seitenmenü und sieht dann so aus:
 
-<img src="{{ site.baseurl }}/assets/images/login.png" alt="Login" class="mx-auto w-full max-w-2xl rounded-full border-8 border-indigo-300" />
+<img src="{{ site.baseurl }}/assets/images/login.png" alt="Login" />
 
 Wie man hier sehen kann, ist es wirklich nur ein Passwort. Aus Gründen der Einfachheit gibt es keinen Benutzernamen oder E-Mail-Adresse. Das Passwort kann einer weiteren Person mitgeteilt werden, die dann ebenfalls Zugriff auf die Einstellungen erhält.
 
