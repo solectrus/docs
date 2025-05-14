@@ -2,6 +2,7 @@
 title: Konfiguration
 layout: page
 parent: Dashboard
+nav_order: 1
 ---
 
 # Konfigurieren des Dashboards
@@ -47,6 +48,11 @@ services:
       - INFLUX_BUCKET
       - INFLUX_POLL_INTERVAL
       - INFLUX_SENSOR_INVERTER_POWER
+      - INFLUX_SENSOR_INVERTER_POWER_1
+      - INFLUX_SENSOR_INVERTER_POWER_2
+      - INFLUX_SENSOR_INVERTER_POWER_3
+      - INFLUX_SENSOR_INVERTER_POWER_4
+      - INFLUX_SENSOR_INVERTER_POWER_5
       - INFLUX_SENSOR_HOUSE_POWER
       - INFLUX_SENSOR_GRID_IMPORT_POWER
       - INFLUX_SENSOR_GRID_EXPORT_POWER
@@ -219,7 +225,31 @@ INFLUX_SENSOR_HEATPUMP_POWER=
 
 ### `INFLUX_SENSOR_INVERTER_POWER`
 
-PV-Erzeugung (Leistung des Wechselrichters) in Watt
+PV-Erzeugung (Leistung des Wechselrichters) in Watt.
+
+Ab Version `0.20` ist damit die Gesamterzeugung gemeint, also inklusive etwaiger Balkonkraftwerke oder separat betriebener Wechselrichter.
+
+Falls es einen Gesamtwert nicht gibt, ist die Variable explizit als leer zu definieren, also so:
+
+```properties
+INFLUX_SENSOR_INVERTER_POWER=
+```
+
+Damit wird der Gesamtwert dann automatisch berechnet, indem die Werte der einzelnen Wechselrichter addiert werden.
+
+### `INFLUX_SENSOR_INVERTER_POWER_X` (ab Version 0.20, optional)
+
+Bis zu **fünf** separate Erzeuger. Diese Variablen sind optional und werden nur benötigt, wenn Messwerte für einzelne Wechselrichter (oder Stränge) vorhanden sind.
+
+Beispiel:
+
+```properties
+INFLUX_SENSOR_INVERTER_POWER_1=pv:mpp_1
+INFLUX_SENSOR_INVERTER_POWER_2=pv:mpp_2
+INFLUX_SENSOR_INVERTER_POWER_3=pv:mpp_3
+INFLUX_SENSOR_INVERTER_POWER_4=balcony:value
+INFLUX_SENSOR_INVERTER_POWER_5=
+```
 
 ### `INFLUX_SENSOR_HOUSE_POWER`
 

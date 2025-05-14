@@ -2,7 +2,7 @@
 title: Redis
 layout: page
 parent: Referenz
-nav_order: 12
+nav_order: 13
 ---
 
 # Redis
