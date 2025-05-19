@@ -13,7 +13,7 @@ Redis wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert, d
 ```yaml
 services:
   redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
     environment:
       - TZ
     volumes:
