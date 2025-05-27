@@ -7,21 +7,16 @@ nav_order: 10
 
 # InfluxDB v2
 
-SOLECTRUS speichert sämtliche Messwerte in der OpenSource-Zeitreihendatenbank **InfluxDB** ab. Es kommt die aktuelle Version **2.7** zum Einsatz, die Vorgängerversion v1 wird **nicht** unterstützt.
+SOLECTRUS speichert sämtliche Messwerte in der OpenSource-Zeitreihendatenbank **InfluxDB** ab.
+
+Es kommt die Version **2.7** zum Einsatz, die Vorgängerversion v1 wird **nicht** unterstützt. Die jüngst veröffentlichte Version v3 (von Grund auf neu entwickelt und ein ganz anderes Produkt) wird derzeit noch nicht unterstützt.
 
 ## Protokollierung
 
 Wie alle Docker-Container schreibt auch InfluxDB ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```plaintext
-{
-  "bolt-path": "/var/lib/influxdb2/influxd.bolt",
-  "engine-path": "/var/lib/influxdb2/engine",
-  "nats-port": 4222,
-  "http-bind-address": ":9999"
-}
-2024-10-05T15:47:32.	info	booting influxd server in the background	{"system": "docker"}
-ts=2024-10-05T15:47:32.396061Z lvl=info msg="Welcome to InfluxDB" log_id=0s3Lf~fl000 version=v2.7.10 commit=f302d9730c build_date=2024-08-16T20:19:39Z log_level=info
+ts=2025-05-24T04:45:34.359481Z lvl=info msg="Welcome to InfluxDB" log_id=0wh9bs5l000 version=v2.7.12 commit=ec9dcde5d6 build_date=2025-05-20T22:48:49Z log_level=info
 ...
 ```
 
