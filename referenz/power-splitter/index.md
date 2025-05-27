@@ -7,15 +7,15 @@ nav_order: 6
 
 # Power-Splitter
 
-Der Power-Splitter analysiert den Stromverbrauch großer Verbraucher (E-Auto, Wärmepumpe, Haus). Der Verbrauch wird aufgeteilt in den Anteil, der mit Photovoltaik-Strom gedeckt wird und den Anteil, der aus dem Netz bezogen wird. Daraus ergeben sich interessante Einblicke in die Verbrauchskosten, die sonst so nicht möglich waren.
+Der Power-Splitter analysiert den Stromverbrauch der Verbraucher (E-Auto, Wärmepumpe, Haus und selbstdefinierte Verbraucher). Der Verbrauch wird aufgeteilt in den Anteil, der mit Photovoltaik-Strom gedeckt wird und den Anteil, der aus dem Netz bezogen wird. Daraus ergeben sich interessante Einblicke in die Verbrauchskosten, die sonst so nicht möglich waren.
 
 Zunächst ein paar wichtige Hinweise:
 
-- Die Berechnung erfolgt für sämtliche Verbrauchswerte von Wärmepumpe und/oder E-Auto, die in der InfluxDB vorhanden sind. Das bedeutet, dass nicht nur zukünftige Messwerte, sondern **auch die Messwerte der Vergangenheit** berücksichtigt werden.
+- Die Berechnung erfolgt für sämtliche Verbrauchswerte, die in der InfluxDB vorhanden sind. Das bedeutet, dass nicht nur zukünftige Messwerte, sondern **auch die Messwerte der Vergangenheit** berücksichtigt werden.
 
 - Für die Berechnung kommt ein zusätzlicher Docker-Container (der eigentliche Power-Splitter) zum Einsatz. Dieser läuft dauerhaft im Hintergrund, berechnet die Aufteilung und schreibt sie in ein neues Measurement der InfluxDB.
 
-- Der Power-Splitter ergibt nur Sinn, wenn man ein E-Auto und/oder eine Wärmepumpe hat (also **nicht** zwingend beides) und erfolgreich an SOLECTRUS angebunden hat. Wer also **beides nicht** hat, für den ist es uninteressant, weil es dann nichts aufzuteilen gibt. Die von SOLECTRUS bereits berechnete Autarkie stellt in diesem Fall die Situation bereits dar.
+- Der Power-Splitter ergibt nur Sinn, wenn man neben dem Hausverbrauch weitere Verbraucher überwacht - z.B. ein E-Auto, eine Wärmepumpe oder Selbstdefinierte Verbraucher. Wer dies **nicht** hat, für den ist es uninteressant, weil es dann nichts aufzuteilen gibt. Die von SOLECTRUS bereits berechnete Autarkie stellt in diesem Fall die Situation bereits dar.
 
 ## Berechnete Werte
 
@@ -24,6 +24,8 @@ Der Power-Splitter schreibt die folgenden Werte als _Field_ in das Measurement `
 - `wallbox_power_grid`: Netzbezug der Wallbox, in Watt
 - `house_power_grid`: Netzbezug des Hauses, in Watt
 - `heatpump_power_grid`: Netzbezug der Wärmepumpe, in Watt
+- `custom_power_XX_grid`: Netzbezug eines benutzerdefinierten Verbrauchers (`XX` von 01 bis 20), in Watt
+- `battery_charging_power_grid`: Netzbezug der Batterie, in Watt
 
 Beim Start prüft der Power-Splitter zunächst, ob Messwerte aus der Vergangenheit vorliegen, für die noch kein Split erfolgt ist. Dies wird dann nachgeholt, beginnend beim ältesten noch nicht bearbeiteten Tag. Dies kann einige Zeit in Anspruch nehmen, je nachdem, wie viele Daten nachzuarbeiten sind. Etwa 30min sind hierbei nicht ungewöhnlich.
 
@@ -43,16 +45,16 @@ Dieser "Kill-Befehl" ist dabei nicht so drastisch, wie er sich anhört. Es wird 
 
 {: .important}
 
-Seit Version 0.18 von SOLECTRUS gibt es "Tageszusammenfassungen", die auch die Werte des Power-Splitters enthalten. Nach einer Neuberechnung des Power-Splitters müssen daher die Tageszusammenfassungen in SOLECTRUS zurückgesetzt werden. Hierzu ist in der SOLECTRUS-Oberfläche unter _Einstellungen_ der entsprechende Button zu betätigen.
+Seit Version `v0.18` von SOLECTRUS gibt es "Tageszusammenfassungen", die auch die Werte des Power-Splitters enthalten. Nach einer Neuberechnung des Power-Splitters müssen daher die Tageszusammenfassungen in SOLECTRUS zurückgesetzt werden. Hierzu ist in der SOLECTRUS-Oberfläche unter _Einstellungen_ der entsprechende Button zu betätigen.
 
 ## Protokollierung
 
 Der Power-Splitter schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```plaintext
-Power Splitter for SOLECTRUS, Version 0.5.1, built at 2024-10-13 06:34:29 +0200
-Using Ruby 3.3.5 on platform aarch64-linux-musl
-Copyright (c) 2024 Georg Ledermann <georg@ledermann.dev>
+Power Splitter for SOLECTRUS, Version 0.6.1, built at 2025-05-24 06:49:44 +0200
+Using Ruby 3.4.4 on platform aarch64-linux-musl
+Copyright (c) 2024-2025 Georg Ledermann <georg@ledermann.dev>
 https://github.com/solectrus/power-splitter
 
 Accessing InfluxDB at http://influxdb:8086, bucket solectrus
@@ -61,13 +63,20 @@ Sensor initialization started
   - Sensor 'house_power' mapped to 'SENEC:house_power'
   - Sensor 'heatpump_power' mapped to 'Consumer:power'
   - Sensor 'wallbox_power' mapped to 'SENEC:wallbox_charge_power'
+  - Sensor 'battery_charging_power' mapped to 'SENEC:bat_power_plus'
+  - Sensor 'custom_power_01' mapped to 'Washer:power'
+  - Sensor 'custom_power_02' mapped to 'Fridge:power'
+  - Sensor 'custom_power_03' mapped to 'KabelFritz:power'
+  - Sensor 'custom_power_04' mapped to 'Synology:power'
+  - Sensor 'custom_power_05' mapped to 'iMac:power'
+  - Sensor 'custom_power_06' mapped to 'Dishwasher:power'
   - Sensor 'house_power' excluded 'heatpump_power'
 Sensor initialization completed
 
 Starting endless loop for processing current data...
 
-2024-10-04 15:43:56 +0200 - Processing day 2024-10-04
-  Pushing 188 records to InfluxDB
+2025-05-27 10:07:34 +0200 - Processing day 2025-05-27
+  Pushing 121 records to InfluxDB
   Sleeping for 3600 seconds...
 ...
 ```

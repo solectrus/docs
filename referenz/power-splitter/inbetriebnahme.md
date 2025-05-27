@@ -19,50 +19,16 @@ Bei einer Neuinstallation von SOLECTRUS über den [Konfigurator](https://configu
 
    - `INFLUX_SENSOR_GRID_IMPORT_POWER`
    - `INFLUX_SENSOR_HOUSE_POWER`
-   - `INFLUX_SENSOR_WALLBOX_POWER` und/oder `INFLUX_SENSOR_HEATPUMP_POWER`
+   - `INFLUX_SENSOR_WALLBOX_POWER` (optional)
+   - `INFLUX_SENSOR_HEATPUMP_POWER` (optional)
+   - `INFLUX_SENSOR_BATTERY_CHARGING_POWER` (optional)
+   - `INFLUX_SENSOR_CUSTOM_POWER_01` bis `INFLUX_SENSOR_CUSTOM_POWER_20` (optional)
 
    Üblicherweise gibt es weitere Sensoren in der `.env`, die sind für den Power-Splitter aber nicht relevant.
 
 3. Abschließend ist sicherzustellen, dass Version `0.16.0` oder neuer von SOLECTRUS verwendet wird.
 
-4. Die eigentliche Integration des Power-Splitter erfolgt nun durch Anpassung der Dateien `compose.yaml`. Hier ist derPower-Splitter als zusätzlicher Service zu ergänzen:
-
-   ```yaml
-   services:
-     # ...
-     power-splitter:
-       image: ghcr.io/solectrus/power-splitter:latest
-       environment:
-         - TZ
-         - POWER_SPLITTER_INTERVAL
-         - INFLUX_HOST
-         - INFLUX_SCHEMA
-         - INFLUX_PORT
-         - INFLUX_TOKEN=${INFLUX_ADMIN_TOKEN}
-         - INFLUX_ORG
-         - INFLUX_BUCKET
-         - INFLUX_SENSOR_GRID_IMPORT_POWER
-         - INFLUX_SENSOR_HOUSE_POWER
-         - INFLUX_SENSOR_WALLBOX_POWER
-         - INFLUX_SENSOR_HEATPUMP_POWER
-         - INFLUX_EXCLUDE_FROM_HOUSE_POWER
-         - REDIS_URL
-       logging:
-         options:
-         max-size: 10m
-         max-file: '3'
-       restart: unless-stopped
-       depends_on:
-         influxdb:
-           condition: service_healthy
-         redis:
-           condition: service_healthy
-       links:
-         - influxdb
-         - redis
-       labels:
-         - com.centurylinklabs.watchtower.scope=solectrus
-   ```
+4. Die eigentliche Integration des Power-Splitter erfolgt nun durch Anpassung der Dateien `compose.yaml`. Hier ist der Power-Splitter als zusätzlicher Service zu ergänzen, siehe [Konfiguration](/referenz/power-splitter/konfiguration).
 
    Der Power-Splitter liest aus der InfluxDB die Messwerte der Verbraucher sowie des Netzbezugs und schreibt die Aufteilung in ein neues Measurement mit der (unveränderlichen) Bezeichnung `power_splitter`.
 
@@ -74,11 +40,11 @@ Bei einer Neuinstallation von SOLECTRUS über den [Konfigurator](https://configu
 
    Wenn sich die Container gar nicht starten lassen sollten, ist vermutlich der Service nicht richtig in die `compose.yaml` eingefügt worden. Hier ist insbesondere die Einrückung zu prüfen, das ist bei YAML-Dateien äußerst wichtig.
 
-   Die Log-Ausgabe des neuen Containers kann mit folgendem Befehl vefolgt werden:\
+   Die Log-Ausgabe des neuen Containers kann mit folgendem Befehl verfolgt werden:\
    `docker compose logs power-splitter -f` (kann beendet werden mit `Strg+C`)
 
    Bei etwaigen Fehlermeldungen muss unbedingt die Ursache gefunden und behoben werden.
 
    Wenn alles fehlerfrei läuft, wird der Power-Splitter zunächst die Daten der Vergangenheit bearbeiten, anschließend im Hintergrund weiterlaufen und jeweils den aktuellen Tag berechnen. Dies lässt sich alles genau im Log nachvollziehen. Es ist empfehlenswert, das zu tun. Nach einer gewissen Zeit (abhängig von Rechenpower und Datenmenge) wird die Berechnung der Vergangenheit abgeschlossen sein.
 
-Wenn jetzt in SOLECTRUS ein Zeitraum gewählt wird (Tag/Woche/Monat/Jahr/Gesamt), sieht man bei Haus, E-Auto und Wärmepumpe (sofern vorhanden) jeweils im Tooltip die Aufteilung des Verbrauchs. Außerdem erscheinen deren Diagramme in einer gestapelten Darstellung.
+Wenn jetzt in SOLECTRUS ein Zeitraum gewählt wird (Tag/Woche/Monat/Jahr/Gesamt), sieht man bei den verschiedenen Verbrauchern jeweils im Tooltip die Aufteilung des Verbrauchs. Außerdem erscheinen deren Diagramme in einer gestapelten Darstellung.
