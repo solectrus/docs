@@ -15,11 +15,11 @@ Wie alle Docker-Container schreibt auch PostgreSQL ein Protokoll ins Docker-Log,
 
 ```plaintext
 ...
-2025-03-18 06:29:53.768 CET [1] LOG:  starting PostgreSQL 17.4 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
-2025-03-18 06:29:53.768 CET [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
-2025-03-18 06:29:53.768 CET [1] LOG:  listening on IPv6 address "::", port 5432
-2025-03-18 06:29:53.769 CET [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-2025-03-18 06:29:53.787 CET [1] LOG:  database system is ready to accept connections
+2025-05-18 05:05:23.021 UTC [1] LOG:  starting PostgreSQL 17.5 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
+2025-05-18 05:05:23.021 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-05-18 05:05:23.021 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2025-05-18 05:05:23.025 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-05-18 05:05:23.051 UTC [1] LOG:  database system is ready to accept connections
 ...
 ```
 

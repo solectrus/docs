@@ -14,7 +14,7 @@ PostgreSQL wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integrie
 ```yaml
 services:
   postgresql:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     environment:
       - TZ
       - POSTGRES_PASSWORD
