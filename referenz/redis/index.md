@@ -7,7 +7,7 @@ nav_order: 13
 
 # Redis
 
-SOLECTRUS speichert seinen Cache in der OpenSource-InMemory-Datenbank **Redis** ab. Unterstützt wird die Version 5 oder höher, wobei die aktuelle Version **7** empfohlen wird.
+SOLECTRUS speichert seinen Cache in der OpenSource-InMemory-Datenbank **Redis** ab. Unterstützt wird die Version 5 oder höher, wobei die aktuelle Version **8** empfohlen wird.
 
 SOLECTRUS nutzt Redis insbesondere, um InfluxDB zu entlasten. Jede Abfrage an InfluxDB wird eine gewisse Zeit (oder dauerhaft) im Cache gespeichert.
 
@@ -19,13 +19,14 @@ Wie alle Docker-Container schreibt auch Redis ein Protokoll ins Docker-Log, das 
 
 ```plaintext
 ...
-1:C 17 Sep 2024 10:14:13.038 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-1:C 17 Sep 2024 10:14:13.038 * Redis version=7.4.0, bits=64, commit=00000000, modified=0, pid=1, just started
-1:C 17 Sep 2024 10:14:13.038 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-1:M 17 Sep 2024 10:14:13.039 * monotonic clock: POSIX clock_gettime
-1:M 17 Sep 2024 10:14:13.043 * Running mode=standalone, port=6379.
-1:M 17 Sep 2024 10:14:13.047 * Server initialized
-1:M 17 Sep 2024 10:14:13.047 * Ready to accept connections tcp
+Starting Redis Server
+1:C 19 May 2025 12:56:14.705 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 19 May 2025 12:56:14.705 * Redis version=8.0.1, bits=64, commit=00000000, modified=1, pid=1, just started
+1:C 19 May 2025 12:56:14.705 * Configuration loaded
+1:M 19 May 2025 12:56:14.706 * monotonic clock: POSIX clock_gettime
+1:M 19 May 2025 12:56:14.707 * Running mode=standalone, port=6379.
+...
+1:M 19 May 2025 12:56:14.742 * Ready to accept connections tcp
 ...
 ```
 
