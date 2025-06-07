@@ -21,6 +21,7 @@ services:
       - SHELLY_AUTH_KEY
       - SHELLY_DEVICE_ID
       - SHELLY_INTERVAL
+      - SHELLY_INVERT_POWER
       - INFLUX_HOST
       - INFLUX_SCHEMA
       - INFLUX_PORT
@@ -86,6 +87,12 @@ Welche ID hier einzutragen ist, lässt sich in der Shelly-Cloud beim jeweiligen 
 Häufigkeit der Abfrage des aktuellen Messwertes (in Sekunden). Es empfiehlt sich eine Abfrage alle 5 Sekunden, um eine gute Auflösung zu erhalten. Bei Nutzung des Cloud-Zugriff ist zu beachten, dass die Shelly-Cloud höchstens **einen Request pro Sekunde** zulässt. Das ist relevant, wenn man viele Shelly-Geräte abfragen möchte.
 
 Standardwert: `5`
+
+### `SHELLY_INVERT_POWER` (ab Version 0.9.0)
+
+Das Vorzeichen der Leistung wird umgedreht, d.h. negative Werte werden zu positiven und umgekehrt. Dies ist nützlich, wenn der Shelly eine Stromerzeugung überwacht, z.B. bei einem Balkonkraftwerk.
+
+Standardwert: `false`
 
 ### `INFLUX_HOST`
 
