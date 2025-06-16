@@ -37,33 +37,35 @@ Beim V2.1 und V3 ist es also möglich, sich für einen der beiden Adapter zu ent
 
 ## Überwachte Messwerte
 
-Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Measurement_ der InfluxDB. Einige Messwerte sind nur im lokalen Betrieb verfügbar.
+Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Measurement_ der InfluxDB. Einige Messwerte sind nur im lokalen Betrieb verfügbar (also nicht beim P4).
 
-- `application_version`: Version der Firmware
-- `bat_charge_current`: Batterie-Ladestrom, in A
-- `bat_fuel_charge`: Batterie-Ladestand, in %
-- `bat_power_minus`: Batterie-Entladeleistung, in W
-- `bat_power_plus`: Batterie-Ladeleistung, in W
-- `bat_voltage`: Batterie-Spannung, in V
-- `case_temp`: Gehäuse-Temperatur, in °C
-- `current_state_code`: Aktueller Betriebszustand, als Zahl (nur Lokal)
-- `current_state_ok`: Aktueller Betriebszustand gilt als OK, Ja/Nein
-- `current_state`: Aktueller Betriebszustand, als Text
-- `ev_connected`: Elektroauto verbunden, Ja/Nein
-- `grid_power_minus`: Netzeinspeisung, in W
-- `grid_power_plus`: Netzbezug, in W
-- `house_power`: Hausverbrauch, in W
-- `inverter_power`: Erzeugte Leistung des Wechselrichters, in W
-- `mpp1_power`: Leistung des MPP1, in W (nur Lokal)
-- `mpp2_power`: Leistung des MPP2, in W (nur Lokal)
-- `mpp3_power`: Leistung des MPP3, in W (nur Lokal)
-- `power_ratio`: Leistungsbegrenzung, in % (nur Lokal)
-- `response_duration`: Dauer der Antwort, in ms (nur Lokal)
-- `wallbox_charge_power`: Wallbox-Ladeleistung, in W
-- `wallbox_charge_power0`: Wallbox-Ladeleistung für erste Wallbox, in W (nur Lokal)
-- `wallbox_charge_power1`: Wallbox-Ladeleistung für zweite Wallbox, in W (nur Lokal)
-- `wallbox_charge_power2`: Wallbox-Ladeleistung für dritte Wallbox, in W (nur Lokal)
-- `wallbox_charge_power3`: Wallbox-Ladeleistung für vierte Wallbox, in W (nur Lokal)
+| Field                   | Beschreibung                                  | Lokal | Cloud |
+| :---------------------- | :-------------------------------------------- | :---: | :---: |
+| `application_version`   | Version der Firmware                          |  Ja   |  Ja   |
+| `bat_charge_current`    | Batterie-Ladestrom, in A                      |  Ja   |  Ja   |
+| `bat_fuel_charge`       | Batterie-Ladestand, in %                      |  Ja   |  Ja   |
+| `bat_power_minus`       | Batterie-Entladeleistung, in W                |  Ja   |  Ja   |
+| `bat_power_plus`        | Batterie-Ladeleistung, in W                   |  Ja   |  Ja   |
+| `bat_voltage`           | Batterie-Spannung, in V                       |  Ja   |  Ja   |
+| `case_temp`             | Gehäuse-Temperatur, in °C                     |  Ja   |  Ja   |
+| `current_state_code`    | Aktueller Betriebszustand, als Zahl           |  Ja   | Nein  |
+| `current_state`         | Aktueller Betriebszustand, als Text           |  Ja   | Nein  |
+| `current_state_ok`      | Aktueller Betriebszustand ist Ok (Boolean)    |  Ja   | Nein  |
+| `ev_connected`          | Elektroauto verbunden, Ja/Nein                |  Ja   |  Ja   |
+| `grid_power_minus`      | Netzeinspeisung, in W                         |  Ja   |  Ja   |
+| `grid_power_plus`       | Netzbezug, in W                               |  Ja   |  Ja   |
+| `house_power`           | Hausverbrauch, in W                           |  Ja   |  Ja   |
+| `inverter_power`        | Erzeugte Leistung des Wechselrichters, in W   |  Ja   |  Ja   |
+| `mpp1_power`            | Leistung des MPP1, in W                       |  Ja   | Nein  |
+| `mpp2_power`            | Leistung des MPP2, in W                       |  Ja   | Nein  |
+| `mpp3_power`            | Leistung des MPP3, in W                       |  Ja   | Nein  |
+| `power_ratio`           | Leistungsbegrenzung, in %                     |  Ja   | Nein  |
+| `response_duration`     | Dauer der Antwort, in ms                      |  Ja   | Nein  |
+| `wallbox_charge_power`  | Wallbox-Ladeleistung, in W                    |  Ja   |  Ja   |
+| `wallbox_charge_power0` | Wallbox-Ladeleistung für erste Wallbox, in W  |  Ja   | Nein  |
+| `wallbox_charge_power1` | Wallbox-Ladeleistung für zweite Wallbox, in W |  Ja   | Nein  |
+| `wallbox_charge_power2` | Wallbox-Ladeleistung für dritte Wallbox, in W |  Ja   | Nein  |
+| `wallbox_charge_power3` | Wallbox-Ladeleistung für vierte Wallbox, in W |  Ja   | Nein  |
 
 ## Protokollierung
 
