@@ -97,7 +97,7 @@ GEM
     nokogiri (1.18.8)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    ostruct (0.6.1)
+    ostruct (0.6.2)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     pdf-reader (2.14.1)
