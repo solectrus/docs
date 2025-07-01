@@ -9,6 +9,10 @@ nav_order: 2
 
 SOLECTRUS kann ab Version `0.20` mit mehreren Erzeugern umgehen. Das ist dann nützlich, wenn man beispielsweise ein **Balkonkraftwerk** ("Steckersolar") oder mehrere Flächen mit PV-Modulen betreibt.
 
+{: .note}
+
+Zur Nutzung dieses Features ist ein [Sponsoring-Abo](https://solectrus.de/preise/) erforderlich.
+
 Man kann bis zu fünf verschiedene Erzeuger konfigurieren, deren Messwerte getrennt voneinander sowie in Summe verwaltet werden. Dies können verschiedene Dachseiten sein (Südseite, Ost-Seite, etc.), zusätzliche PV-Module auf Nebengebäuden oder eben auch ein Balkonkraftwerk.
 
 Es gibt dafür insgesamt sechs Variablen:

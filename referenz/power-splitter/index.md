@@ -9,6 +9,10 @@ nav_order: 6
 
 Der Power-Splitter analysiert den Stromverbrauch der Verbraucher (E-Auto, Wärmepumpe, Haus und selbstdefinierte Verbraucher). Der Verbrauch wird aufgeteilt in den Anteil, der mit Photovoltaik-Strom gedeckt wird und den Anteil, der aus dem Netz bezogen wird. Daraus ergeben sich interessante Einblicke in die Verbrauchskosten, die sonst so nicht möglich waren.
 
+{: .note}
+
+Zur Nutzung dieses Features ist ein [Sponsoring-Abo](https://solectrus.de/preise/) erforderlich.
+
 Zunächst ein paar wichtige Hinweise:
 
 - Die Berechnung erfolgt für sämtliche Verbrauchswerte, die in der InfluxDB vorhanden sind. Das bedeutet, dass nicht nur zukünftige Messwerte, sondern **auch die Messwerte der Vergangenheit** berücksichtigt werden.
