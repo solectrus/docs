@@ -22,6 +22,7 @@ services:
     environment:
       - TZ
       - SHELLY_HOST=${SHELLY_HOST_HEATPUMP}
+      - SHELLY_PASSWORD
       - SHELLY_INTERVAL
       - INFLUX_HOST
       - INFLUX_SCHEMA
@@ -48,6 +49,7 @@ services:
     environment:
       - TZ
       - SHELLY_HOST=${SHELLY_HOST_FRIDGE}
+      - SHELLY_PASSWORD
       - SHELLY_INTERVAL
       - INFLUX_HOST
       - INFLUX_SCHEMA

@@ -17,6 +17,7 @@ services:
     environment:
       - TZ
       - SHELLY_HOST
+      - SHELLY_PASSWORD
       - SHELLY_CLOUD_SERVER
       - SHELLY_AUTH_KEY
       - SHELLY_DEVICE_ID
@@ -59,6 +60,10 @@ Die beiden Variablen `INFLUX_TOKEN` und `INFLUX_MEASUREMENT` werden anders laute
 ### `SHELLY_HOST` (nur für lokalen Zugriff, ab Version 0.6.0)
 
 Hostname des Shelly. Dies ist üblicherweise eine IP-Adresse, kann aber auch eine lokale Domain sein. Es darf **kein** `http://` oder `https://` enthalten sein!
+
+### `SHELLY_PASSWORD` (nur für lokalen Zugriff, ab Version 0.10.0)
+
+Optionales Passwort des Shelly. Dieses wird nur benötigt, wenn der Zugriff auf den Shelly durch ein Passwort geschützt ist. Das Passwort wird in der Regel im Web-Interface des Shelly unter _Settings / Device Settings / Authentication_ festgelegt.
 
 ### `SHELLY_CLOUD_SERVER` (nur für Cloud-Zugriff, ab Version 0.6.0)
 
@@ -142,6 +147,7 @@ Im `default`-Modus wird jeder erhaltene Messwert nach InfluxDB geschrieben.
 
 ```properties
 SHELLY_HOST=192.168.178.5
+SHELLY_PASSWORD=my-shelly-password
 SHELLY_INTERVAL=5
 INFLUX_MEASUREMENT_SHELLY=heatpump
 
