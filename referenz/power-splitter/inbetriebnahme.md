@@ -47,4 +47,8 @@ Bei einer Neuinstallation von SOLECTRUS über den [Konfigurator](https://configu
 
    Wenn alles fehlerfrei läuft, wird der Power-Splitter zunächst die Daten der Vergangenheit bearbeiten, anschließend im Hintergrund weiterlaufen und jeweils den aktuellen Tag berechnen. Dies lässt sich alles genau im Log nachvollziehen. Es ist empfehlenswert, das zu tun. Nach einer gewissen Zeit (abhängig von Rechenpower und Datenmenge) wird die Berechnung der Vergangenheit abgeschlossen sein.
 
+   {:.important}
+
+   Wenn der Power-Splitter die Daten der Vergangenheit vollständig abgearbeitet hat, müssen im Dashboard noch einmalig die Tageszusammenfassungen zurückgesetzt werden!
+
 Wenn jetzt in SOLECTRUS ein Zeitraum gewählt wird (Tag/Woche/Monat/Jahr/Gesamt), sieht man bei den verschiedenen Verbrauchern jeweils im Tooltip die Aufteilung des Verbrauchs. Außerdem erscheinen deren Diagramme in einer gestapelten Darstellung.
