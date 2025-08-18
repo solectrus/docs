@@ -23,6 +23,7 @@ services:
       - SENEC_LANGUAGE
       - SENEC_USERNAME
       - SENEC_PASSWORD
+      - SENEC_TOTP_URI
       - INFLUX_HOST
       - INFLUX_SCHEMA
       - INFLUX_PORT
@@ -99,6 +100,18 @@ Passwort für die Anmeldung bei `mein-senec.de`.
 
 Wird nur verwendet, wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist.
 
+### `SENEC_TOTP_URI`
+
+URI für die Multi-Faktor-Authentifizierung (MFA) bei `mein-senec.de` (sofern aktiviert). Anzugeben ist der vollständige String, sinnvollerweise mit Anführungszeichen also z.B. so:
+
+```env
+SENEC_TOTP_URI="otpauth://totp/SENEC:mail%40example.com?secret=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&digits=6&algorithm=SHA1&issuer=SENEC&period=30"
+```
+
+Hat man den initialen QR-Code von SENEC vorliegen oder verwendet den Google Authenticator, so lässt sich die URI mit dem [QR Code Secret Decoder](https://marq24.github.io/qr-code-decoder/) ermitteln.
+
+Wird nur verwendet, wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist.
+
 ### `SENEC_SYSTEM_ID`
 
 Die System-ID des SENEC-Geräts. Kann leer bleiben, wenn es nur ein System gibt. Der Collector ermittelt dann die verfügbaren IDs, listet sie im Protokoll auf und verwendet die **erste**.
@@ -111,7 +124,7 @@ Wird nur verwendet, wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist.
 
 Das Intervall in Sekunden für die Häufigkeit der Datenabfrage
 
-Wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist, ist das Minimum 30 Sekunden, Standard ist 60 Sekunden.
+Wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist, ist das Minimum 60 Sekunden, Standard ist 60 Sekunden.
 Wenn `SENEC_ADAPTER` auf `local` gesetzt ist, ist das Minimum 5 Sekunden, Standard ist 5 Sekunden.
 
 ### `SENEC_IGNORE`
