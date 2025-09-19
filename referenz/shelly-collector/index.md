@@ -13,14 +13,16 @@ Die Messwerte können entweder direkt vom Gerät (über die HTTP-Rest-API) oder 
 
 Unterstützt werden Shelly-Geräte der ersten, zweiten und dritten Generation. Erfolgreich getestet wurden (mit der aktuellen Version 0.7.0 des Collectors) die folgenden Geräte:
 
-- Shelly 1PM
-- Shelly 3EM
-- Shelly EM
-- Shelly Plug S Gen3
-- Shelly Plug 2
-- Shelly Plus Plug S
-- Shelly Plus 1PM
 - Shelly Pro 3EM
+- Shelly Pro EM-50
+- Shelly Pro 1PM
+- Shelly Pro 4PM
+- Shelly 3EM
+- Shelly Plus Plug S
+- Shelly PM Mini Gen3
+- Shelly Plug S (Gen3)
+- Shelly Plug 2
+- Shelly EM
 
 {:.note}
 
