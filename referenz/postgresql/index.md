@@ -7,7 +7,7 @@ nav_order: 12
 
 # PostgreSQL
 
-SOLECTRUS legt alle Daten, die nichts mit Messwerten zu tun haben (z.B. Einstellungen, Strompreise, Registrierung) in der OpenSource-Datenbank **PostgreSQL** ab. Unterstützt wird die Version 12 oder höher, wobei für eine Neuinstallation die Version **17** empfohlen wird.
+SOLECTRUS legt alle Daten, die nichts mit Messwerten zu tun haben (z.B. Einstellungen, Strompreise, Registrierung) in der OpenSource-Datenbank **PostgreSQL** ab. Unterstützt wird die Version 12 oder höher, wobei für eine Neuinstallation die Version **18** empfohlen wird.
 
 ## Protokollierung
 
@@ -15,7 +15,7 @@ Wie alle Docker-Container schreibt auch PostgreSQL ein Protokoll ins Docker-Log,
 
 ```plaintext
 ...
-2025-05-18 05:05:23.021 UTC [1] LOG:  starting PostgreSQL 17.5 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
+2025-05-18 05:05:23.021 UTC [1] LOG:  starting PostgreSQL 18.0 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
 2025-05-18 05:05:23.021 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
 2025-05-18 05:05:23.021 UTC [1] LOG:  listening on IPv6 address "::", port 5432
 2025-05-18 05:05:23.025 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"

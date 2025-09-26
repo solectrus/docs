@@ -14,12 +14,12 @@ PostgreSQL wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integrie
 ```yaml
 services:
   postgresql:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     environment:
       - TZ
       - POSTGRES_PASSWORD
     volumes:
-      - ${DB_VOLUME_PATH}:/var/lib/postgresql/data
+      - ${DB_VOLUME_PATH}:/var/lib/postgresql
     restart: unless-stopped
     healthcheck:
       test:
