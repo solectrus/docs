@@ -22,6 +22,15 @@ Keineswegs darf bei Verfügbarkeit einer neuen Major-Version von PostgreSQL einf
 
 Die folgende Anleitung beschreibt das Upgrade auf eine neue Major-Version, z.B. von PostgreSQL 17 auf PostgreSQL 18. Auch ältere Versionen (z.B. 13, 14, 15, 16) können auf diese Weise aktualisiert werden.
 
+{: .warning }
+Bitte führe die folgenden Schritte sorgfältig durch und versuche zu verstehen, was passiert. Bei Fehlern kann es passieren, dass SOLECTRUS nicht mehr startet.
+
+{: .note }
+In neueren SOLECTRUS-Installationen heißt der PostgreSQL-Service `postgresql`, in älteren Versionen hingegen wurde er `db` genannt. Ersetze in den folgenden Befehlen `postgresql` durch `db`, falls deine Installation den älteren Service-Namen verwendet.
+\
+\
+Möglich ist auch, dass der Ordner mit der Datenbank nicht `postgresql/` heißt, sondern anders oder an einem ganz anderen Ort liegt. Auch dann sind einige Befehle (`mv`, `mkdir` und `rm`) anzupassen.
+
 ### 1. In SOLECTRUS-Ordner wechseln
 
 Wechsle in den SOLECTRUS-Ordner, der die `compose.yaml` und `.env` Dateien enthält:
