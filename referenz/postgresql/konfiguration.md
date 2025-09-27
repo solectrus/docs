@@ -44,14 +44,6 @@ services:
 
 Es gibt im Normalfall keine Notwendigkeit, direkt auf die Datenbank zuzugreifen. Daher muss auch kein Port nach außen geöffnet werden. Der Zugriff erfolgt ausschließlich über den Dashboard-Container von SOLECTRUS.
 
-{: .important }
-
-PostgreSQL erscheint jährlich in einer neuen Major-Version. Ein Upgrade erfordert aber ein Backup/Restore. Da die Vorteile einer neuen Major-Version aus Sicht von SOLECTRUS überschaubar sind, kann problemlos bei einer älteren Version verblieben werden, für die es üblicherweise fünf Jahre lang Minor-Updates gibt. \
-\
-Keineswegs darf bei Verfügbarkeit einer neuen Version von PostgreSQL einfach die neue Versionsnummer in die `compose.yaml` eingetragen werden. PostgreSQL wird dann nicht mehr starten! \
-\
-Neue Minor-Versionen von PostgreSQL können (und sollten auch) problemlos eingespielt werden, ohne dass ein Backup/Restore erforderlich ist. Darum kümmert sich idealerweise Watchtower.
-
 ## Umgebungsvariablen
 
 - `TZ`
