@@ -56,8 +56,8 @@ Seit Version `v0.18` von SOLECTRUS gibt es "Tageszusammenfassungen", die auch di
 Der Power-Splitter schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```plaintext
-Power Splitter for SOLECTRUS, Version 0.6.1, built at 2025-05-24 06:49:44 +0200
-Using Ruby 3.4.4 on platform aarch64-linux-musl
+Power Splitter for SOLECTRUS, Version 0.7.0, built at 2025-09-27 10:30:07 +0200
+Using Ruby 3.4.6 on platform aarch64-linux-musl
 Copyright (c) 2024-2025 Georg Ledermann <georg@ledermann.dev>
 https://github.com/solectrus/power-splitter
 
