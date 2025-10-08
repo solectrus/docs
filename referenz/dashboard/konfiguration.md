@@ -173,6 +173,18 @@ Farbschema für die Web-Oberfläche. Mögliche Werte sind `light` und `dark`. We
 
 Optional, Standardwert: leer
 
+### `DB_HOST`
+
+Hostname der PostgreSQL-Datenbank. Muss dem Namen des Services in der `compose.yaml` entsprechen, also normalerweise `postgresql`.
+
+### `DB_USER`
+
+Benutzername für die PostgreSQL-Datenbank, normalerweise `postgres`.
+
+### `DB_PASSWORD`
+
+Passwort für die PostgreSQL-Datenbank. Da die Variable in der `.env` anders heißt (nämlich `POSTGRES_PASSWORD`), muss hier der Wert explizit zugewiesen werden, also `DB_PASSWORD=${POSTGRES_PASSWORD}`.
+
 ### `INFLUX_HOST`
 
 Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-Netzwerk läuft, ist das der Name des Containers (z.B. `influxdb`). Es kann aber auch ein externer InfluxDB-Server sein, z.B. `influxdb.example.com`.

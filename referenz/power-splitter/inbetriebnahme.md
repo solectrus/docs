@@ -34,7 +34,7 @@ Bei einer Neuinstallation von SOLECTRUS über den [Konfigurator](https://configu
 
    Wichtig beim `INFLUX_TOKEN` ist, dass dieses sowohl zum Schreiben als auch zum Lesen berechtigt. Es empfiehlt sich, hierfür das Admin-Token zu nehmen (wie oben angegeben).
 
-   Die `REDIS_URL` wird benötigt, um nach dem ersten Durchlauf einmalig den Cache leeren zu können.
+   Die `REDIS_URL` wird benötigt, um nach dem ersten Durchlauf einmalig den Cache leeren zu können. Analog dient der `DB_HOST` (sowie `DB_USER` und `DB_PASSWORD`) dazu, die Tageszusammenfassungen zurücksetzen zu können.
 
 5. Abschließend ist ein Neustart der Container durchzuführen, mit `docker compose up -d` wird nun wird der Power-Splitter mit gestartet.
 

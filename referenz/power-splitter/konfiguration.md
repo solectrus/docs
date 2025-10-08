@@ -56,6 +56,9 @@ services:
       - INFLUX_EXCLUDE_FROM_HOUSE_POWER
       - REDIS_URL
       - INSTALLATION_DATE
+      - DB_HOST=postgresql
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_USER=postgres
     logging:
       options:
         max-size: 10m
@@ -124,6 +127,18 @@ Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
 ### `REDIS_URL`
 
 URL für den Redis-Cache. Wird benötigt, um nach dem ersten Durchlauf einmalig den Cache leeren zu können.
+
+### `DB_HOST` (optional)
+
+Hostname der PostgreSQL-Datenbank. Wird benötigt, nach einer Neuberechnung die Tageszusammenfassungen zurücksetzen zu können. Muss dem Namen des Services in der `compose.yaml` entsprechen, also normalerweise `postgresql`.
+
+### `DB_USER` (optional)
+
+Benutzername für die PostgreSQL-Datenbank, normalerweise `postgres`.
+
+### `DB_PASSWORD` (optional)
+
+Passwort für die PostgreSQL-Datenbank. Da die Variable in der `.env` anders heißt (nämlich `POSTGRES_PASSWORD`), muss hier der Wert explizit zugewiesen werden, also `DB_PASSWORD=${POSTGRES_PASSWORD}`.
 
 ### `INSTALLATION_DATE`
 
