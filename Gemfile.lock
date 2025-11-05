@@ -37,7 +37,7 @@ GEM
       bigdecimal
       rake (>= 13)
     hashery (2.1.2)
-    html-proofer (5.0.10)
+    html-proofer (5.1.0)
       addressable (~> 2.3)
       async (~> 2.1)
       nokogiri (~> 1.13)
