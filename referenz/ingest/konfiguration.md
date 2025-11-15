@@ -69,10 +69,15 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 
 Passwort für den Zugriff auf die Web-Oberfläche
 
+### `RETENTION_HOURS` (ab v0.3.1)
+
+Dauer in Stunden, für die Daten lokal (in SQlite) aufbewahrt werden sollen. Standardwert ist 12 Stunden. Ein höherer Wert benötigt mehr RAM, erlaubt aber längere Ausfallzeiten, in denen die InfluxDB temporär nicht erreichbar ist.
+
 ## Beispielhafte .env
 
 ```properties
 TZ=Europe/Berlin
 STATS_PASSWORD=mysecretpassword
 INGEST_VOLUME_PATH=./ingest
+RETENTION_HOURS=36
 ```
