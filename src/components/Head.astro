@@ -1,0 +1,8 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import StarlightHead from '@astrojs/starlight/components/Head.astro';
+import PlausibleAnalytics from './PlausibleAnalytics.astro';
+---
+
+<StarlightHead {...Astro.props}><slot /></StarlightHead>
+<PlausibleAnalytics />

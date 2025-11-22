@@ -1,0 +1,19 @@
+---
+// Plausible Analytics tracking
+---
+
+<script>
+  import { init, track } from '@plausible-analytics/tracker';
+
+  init({
+    domain: 'docs.solectrus.de',
+    endpoint: 'https://p.solectrus.de/api/event',
+    autoCapturePageviews: true,
+    outboundLinks: true,
+  });
+
+  // Track pageviews on client-side navigation
+  document.addEventListener('astro:page-load', () => {
+    track('pageview', {});
+  });
+</script>

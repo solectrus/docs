@@ -1,12 +1,20 @@
 version: 2
 updates:
-  - package-ecosystem: bundler
+  - package-ecosystem: bun
     directory: /
     schedule:
       interval: daily
-    allow:
-      - dependency-type: direct
-      - dependency-type: indirect
+    open-pull-requests-limit: 10
+    versioning-strategy: auto
+    groups:
+      astro:
+        patterns:
+          - 'astro'
+          - '@astrojs/*'
+      tailwindcss:
+        patterns:
+          - 'tailwindcss'
+          - '@tailwindcss/*'
 
   - package-ecosystem: 'github-actions'
     directory: /
