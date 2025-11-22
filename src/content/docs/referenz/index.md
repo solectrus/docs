@@ -5,11 +5,9 @@ sidebar:
   label: Komponenten
 ---
 
-SOLECTRUS besteht aus etlichen Komponenten (Services), die jeweils als eigene Docker-Container betrieben werden.
+SOLECTRUS besteht aus etlichen Komponenten, die jeweils als eigene Docker-Services betrieben werden.
 
-Für den Einsatz von SOLECTRUS ist eine `compose.yaml` zu erstellen, in der jeder benötigte Service definiert wird. Die Konfiguration der Services erfolgt über Umgebungsvariablen, die in einer `.env`-Datei definiert werden. Es sind alo genau diese zwei Dateien zu erstellen, deren Aufbau in den folgenden Unterseiten beschrieben wird.
-
-Die Services gliedern sich in verschiedene Kategorien:
+Für die Verwendung mit Docker-Compose ist eine `compose.yaml` zu erstellen, in der jeder benötigte Service definiert wird. Die Konfiguration der Services erfolgt über Umgebungsvariablen, die in einer `.env`-Datei definiert werden. Es sind alo genau diese zwei Dateien zu erstellen und zu pflegen. Deren Aufbau wird in den folgenden Unterseiten beschrieben.
 
 ## Benutzeroberfläche
 
@@ -37,7 +35,7 @@ Einige Komponenten verarbeiten die gesammelten Daten weiter:
 
 ## Datenbanken
 
-Außerdem verwendet SOLECTRUS **drei** Datenbanken:
+Außerdem verwendet SOLECTRUS **drei** Datenbanken, die ebenfalls in eigenen Containern laufen:
 
 - [InfluxDB](influxdb): Zeitreihendatenbank für Messwerte
 - [PostgreSQL](postgresql): Relationale Datenbank für Einstellungen und Strompreise

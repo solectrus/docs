@@ -1,8 +1,8 @@
 ---
-title: Loslegen mit SOLECTRUS
+title: Was sollte ich wissen?
 sidebar:
   order: 1
-  label: Loslegen
+  label: Grundlagen
 ---
 
 Für die Installation von SOLECTRUS ist ein wenig **Erfahrung mit Linux und Docker** sehr hilfreich. Wer in der Lage ist, sich per SSH auf einen Linux-Server einzuloggen und das Konzept von _Docker-Compose_ grob verstanden hat, der wird die Installation schaffen. Andernfalls sollte vielleicht ein IT-Freund gefragt werden, der dabei hilft.
@@ -26,7 +26,3 @@ Jede Komponente läuft in einem separaten Docker-Container. Hierzu gehören:
 - [Power-Splitter](/referenz/power-splitter), der die Aufteilung des Netzbezugs auf verschiedene Verbraucher berechnet
 
 Die Container sind per Docker-Compose in einem Docker-Netzwerk miteinander verbunden und kommunizieren untereinander.
-
-## Erste Schritte
-
-Vor der Installation sind zunächst die [Systemvoraussetzungen](/installation/systemvoraussetzungen) zu prüfen. Anschließend hilft der [Konfigurator](/installation/konfigurator), die richtigen Einstellungen zu finden. Mit der dabei generierten Anleitung und den erstellten Konfigurationsdateien kann die Installation dann leicht über die Linux-Konsole durchgeführt werden.
