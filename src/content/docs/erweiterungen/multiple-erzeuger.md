@@ -1,13 +1,14 @@
 ---
-title: Multiple Erzeuger
+title: Multiple Erzeuger integrieren
 sidebar:
-  order: 3
+  order: 1
+  label: Multiple Erzeuger
 ---
 
 SOLECTRUS kann ab Version `0.20` mit mehreren Erzeugern umgehen. Das ist dann nützlich, wenn man beispielsweise ein **Balkonkraftwerk** ("Steckersolar") oder mehrere Flächen mit PV-Modulen betreibt.
 
 :::note
-Zur Nutzung dieses Features ist ein [Sponsoring-Abo](https://solectrus.de/preise/) erforderlich.
+Zur Darstellung multiple Erzeuger ist ein [Sponsoring-Abo](https://solectrus.de/sponsoring/) erforderlich.
 :::
 
 Man kann bis zu fünf verschiedene Erzeuger konfigurieren, deren Messwerte getrennt voneinander sowie in Summe verwaltet werden. Dies können verschiedene Dachseiten sein (Südseite, Ost-Seite, etc.), zusätzliche PV-Module auf Nebengebäuden oder eben auch ein Balkonkraftwerk.
@@ -112,6 +113,24 @@ INFLUX_SENSOR_INVERTER_POWER_5=balcony:inverter_power
 :::note
 Diese Konfiguration macht es erforderlich, dass man die Einzelwerte wirklich für den gesamten Zeitraum seit Installation des ersten Erzeugers vorliegen hat. Ist das nicht gegeben, greift man besser auf Szenario 3 zurück und differenziert nicht nach Dachflächen.
 :::
+
+## compose.yaml (Auszug)
+
+Wenn die Variablen in der `.env` definiert sind, müssen sie zusätzlich noch in der `compose.yaml` dem Dashboard-Container bekannt gemacht werden.
+
+```yaml
+services:
+  dashboard:
+    # ...
+    environment:
+      - INFLUX_SENSOR_INVERTER_POWER
+      - INFLUX_SENSOR_INVERTER_POWER_1
+      - INFLUX_SENSOR_INVERTER_POWER_2
+      - INFLUX_SENSOR_INVERTER_POWER_3
+      - INFLUX_SENSOR_INVERTER_POWER_4
+      - INFLUX_SENSOR_INVERTER_POWER_5
+    # ...
+```
 
 ## Zurücksetzen der Tageszusammenfassungen
 

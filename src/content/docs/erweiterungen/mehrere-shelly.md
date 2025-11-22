@@ -1,21 +1,34 @@
 ---
-title: Mehrere Shelly mit dem Shelly-Collector überwachen
+title: Zusätzliche Shelly-Verbrauchszähler integrieren
 sidebar:
-  order: 3
-  label: Mehrere Shelly
+  order: 2
+  label: Zusätzliche Shelly
 ---
 
-Hat man mehrere Shelly-Geräte im Einsatz und möchte deren Messwerte einsammeln, so ist für jedes Gerät ein **eigener** Collector einzurichten, es laufen dann also mehrere Container des Shelly-Collectors parallel.
+Hat man mehrere Shelly-Geräte im Einsatz und möchte deren Messwerte einsammeln, so ist für jedes Gerät ein **eigener** Collector einzurichten, es laufen dann also mehrere Container des [Shelly-Collectors](/referenz/shelly-collector/) parallel.
+
+Außerdem müssen dem Dashboard über benutzerdefinierte Sensoren die neuen Orte in der InfluxDB entsprechend bekannt gemacht werden, damit die Messwerte auch gefunden und dargestellt werden können.
 
 Dies lässt sich wie folgt einrichten, hier ein Beispiel für folgendes Szenario:
 
 - Wärmepumpe, überwacht mit einem Shelly der 2. Generation
 - Kühlschrank, überwacht mit einem Shelly der 1. Generation
 
-## compose.yaml
+:::note
+Zur Darstellung benutzerdefinierte Verbraucher ist ein [Sponsoring-Abo](https://solectrus.de/sponsoring/) erforderlich.
+:::
+
+## compose.yaml (Auszug)
 
 ```yaml
 services:
+  dashboard:
+    # ...
+    environment:
+      - INFLUX_SENSOR_CUSTOM_POWER_01
+      - INFLUX_SENSOR_CUSTOM_POWER_02
+    # ...
+
   shelly-collector-heatpump:
     image: ghcr.io/solectrus/shelly-collector:latest
     environment:
@@ -31,6 +44,7 @@ services:
       - INFLUX_BUCKET
       - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_SHELLY_HEATPUMP}
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -58,6 +72,7 @@ services:
       - INFLUX_BUCKET
       - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_SHELLY_FRIDGE}
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -77,18 +92,18 @@ services:
     # ...
 ```
 
-## .env
+## .env (Auszug)
 
-```properties
+```dotenv
+# Zugriff auf die Shelly-Geräte
 SHELLY_HOST_HEATPUMP=192.168.178.5
 SHELLY_HOST_FRIDGE=192.168.178.6
-SHELLY_INTERVAL=5
+
+# Bezeichnungen der Measurements in InfluxDB
 INFLUX_MEASUREMENT_SHELLY_HEATPUMP=heatpump
 INFLUX_MEASUREMENT_SHELLY_FRIDGE=fridge
-INFLUX_HOST=influxdb
-INFLUX_SCHEMA=http
-INFLUX_PORT=8086
-INFLUX_TOKEN_WRITE=my-super-secret-admin-token
-INFLUX_ORG=solectrus
-INFLUX_BUCKET=solectrus
+
+# Definition der Sensoren für das Dashboard
+INFLUX_SENSOR_CUSTOM_POWER_01=heatpump:power
+INFLUX_SENSOR_CUSTOM_POWER_02=fridge:power
 ```

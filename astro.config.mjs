@@ -128,6 +128,11 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Erweiterungen',
+          collapsed: true,
+          autogenerate: { directory: 'erweiterungen' },
+        },
+        {
           label: 'Wartung',
           collapsed: true,
           autogenerate: { directory: 'wartung' },
