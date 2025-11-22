@@ -1,16 +1,15 @@
 ---
-title: Direktzugriff
+title: Zugriff auf die Weboberfläche von InfluxDB
 sidebar:
   order: 3
+  label: Direktzugriff
 ---
-
-# Zugriff auf die Weboberfläche von InfluxDB
 
 Es kann praktisch sein, auf InfluxDB auch direkt zugreifen zu können, um beispielsweise ganz spezielle Abfragen zu machen oder auszugsweise Daten zu exportieren.
 
 InfluxDB bietet dafür eine sehr benutzerfreundliche Weboberfläche, die über den Browser erreichbar ist. Dazu muss der Port `8086` nach außen geöffnet werden, was durch folgende Ergänzung in der `compose.yaml` gelingt:
 
-```yaml
+```yaml title="compose.yaml"
 services:
   influxdb:
     # ...

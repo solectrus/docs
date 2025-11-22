@@ -5,9 +5,9 @@ sidebar:
   label: Konfiguration
 ---
 
-PostgreSQL wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert, d.h. die bestehenden Dateien `compose.yaml` und `.env` sind zu erweitern.
+PostgreSQL wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert, d.h. die Dateien `compose.yaml` und `.env` enthalten auch die Konfiguration für PostgreSQL.
 
-## compose.yaml
+## `compose.yaml`
 
 ```yaml
 services:
@@ -28,6 +28,7 @@ services:
       retries: 5
       start_period: 60s
     logging:
+      driver: json-file
       options:
         max-size: 10m
         max-file: '3'
@@ -39,31 +40,35 @@ services:
 ```
 
 :::note
-Es gibt im Normalfall keine Notwendigkeit, direkt auf die Datenbank zuzugreifen. Daher muss auch kein Port nach außen geöffnet werden. Der Zugriff erfolgt ausschließlich über den Dashboard-Container von SOLECTRUS.
+Es gibt normalerweise keine Notwendigkeit, von außen direkt auf die Datenbank zuzugreifen. Daher muss auch kein Port nach außen geöffnet werden.
 :::
 
-## Umgebungsvariablen
+## Umgebungsvariablen (`.env`)
 
-- `TZ`
+#### TZ
 
-  Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
-- `POSTGRES_PASSWORD`
-
-  Passwort für den internen Benutzer `postgres`. Da die Datenbank nicht von außen erreichbar ist, ist das Passwort nicht sonderlich kritisch, es muss aber auf einen Wert gesetzt werden.
-
-  Wird beim ersten Start gesetzt und darf danach nicht mehr geändert werden!
-
-- `DB_VOLUME_PATH`
-
-  Pfad, in dem die Datenbank gespeichert wird. Dieser Pfad wird als Volume in den Container gemountet.
-
-  Wenn am angegebenen Pfad bereits eine Datenbank existiert, wird diese verwendet. Andernfalls wird eine neue Datenbank angelegt. Dies ist normalerweise nur beim ersten Start des Containers der Fall.
-
-## Beispielhafte .env
-
-```properties
+```dotenv title="Beispiel"
 TZ=Europe/Berlin
-POSTGRES_PASSWORD=geheimes-datenbank-passwort
+```
+
+#### POSTGRES_PASSWORD
+
+Passwort für den internen Benutzer `postgres`. Da die Datenbank nicht von außen erreichbar ist, ist das Passwort nicht sonderlich kritisch, es muss aber auf einen Wert gesetzt werden.
+
+**Bitte beachten:** Dieses Passwort darf nach dem ersten Start von PostgreSQL nicht mehr geändert werden, da es in der Datenbank selbst gespeichert wird.
+
+```dotenv title="Beispiel"
+POSTGRES_PASSWORD=my-secret-db-password
+```
+
+#### DB_VOLUME_PATH
+
+Pfad, in dem die Datenbank gespeichert wird. Dieser Pfad wird als Volume in den Container gemountet.
+
+Wenn am angegebenen Pfad bereits eine Datenbank existiert, wird diese verwendet. Andernfalls wird eine neue Datenbank angelegt, was üblicherweise nur beim ersten Start des Containers der Fall ist.
+
+```dotenv title="Beispiel"
 DB_VOLUME_PATH=/somewhere/solectrus/postgresql
 ```

@@ -5,26 +5,34 @@ sidebar:
   label: Übersicht
 ---
 
-SOLECTRUS speichert seinen Cache in der OpenSource-InMemory-Datenbank **Redis** ab. Unterstützt wird die Version 5 oder höher, wobei die aktuelle Version **8** empfohlen wird.
+SOLECTRUS legt seinen Cache in der In-Memory-Datenbank **Redis** ab. SOLECTRUS nutzt den Cache insbesondere, um InfluxDB zu entlasten und die Performance zu verbessern. Jede Abfrage an InfluxDB wird eine gewisse Zeit im Cache gespeichert.
 
-SOLECTRUS nutzt Redis insbesondere, um InfluxDB zu entlasten. Jede Abfrage an InfluxDB wird eine gewisse Zeit (oder dauerhaft) im Cache gespeichert.
+Wenn Redis beendet wird (z.B. im Rahmen eines Reboots), geht der Cache nicht verloren (wie man bei einer In-Memory-Datenbank vermuten könnte), sondern Redis speichert sie beim Herunterfahren in der Datei `dump.rdb` ab. Beim nächsten Start wird die Datei dann wieder eingelesen.
 
-Wenn Redis beendet wird, geht der Cache nicht verloren (wie man bei einer InMemory-Datenbank vermuten könnte), sondern Redis speichert sie in einer Datei ab. Beim nächsten Start wird der Cache wieder eingelesen. Das ist der Grund, warum Redis überhaupt ein Volume für die Dateiablage benötigt.
+Unterstützt wird Redis in Version 5 oder höher, wobei die aktuelle Version **8** empfohlen wird.
 
-## Protokollierung
+## Cache löschen
 
-Wie alle Docker-Container schreibt auch Redis ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
+Der Cache kann bei Bedarf gelöscht werden:
+
+```bash
+docker compose exec redis redis-cli FLUSHALL
+```
+
+Im Erfolgsfall gibt Redis `OK` zurück. Bei der nachfolgenden Verwendung von SOLECTRUS wird der Cache dann sukzessive wieder aufgebaut.
+
+## Logging
+
+Wie alle Docker-Container schreibt auch Redis ein Protokoll ins Docker-Log, das in etwa so aussieht:
 
 ```plaintext
 ...
 Starting Redis Server
-1:C 19 May 2025 12:56:14.705 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-1:C 19 May 2025 12:56:14.705 * Redis version=8.0.1, bits=64, commit=00000000, modified=1, pid=1, just started
-1:C 19 May 2025 12:56:14.705 * Configuration loaded
-1:M 19 May 2025 12:56:14.706 * monotonic clock: POSIX clock_gettime
-1:M 19 May 2025 12:56:14.707 * Running mode=standalone, port=6379.
+1:C 21 Nov 2025 04:58:46.220 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 21 Nov 2025 04:58:46.220 * Redis version=8.4.0, bits=64, commit=00000000, modified=1, pid=1, just started
+1:C 21 Nov 2025 04:58:46.220 * Configuration loaded
 ...
-1:M 19 May 2025 12:56:14.742 * Ready to accept connections tcp
+1:M 21 Nov 2025 04:58:46.272 * Ready to accept connections tcp
 ...
 ```
 
@@ -34,17 +42,7 @@ Das Protokoll kann über folgenden Befehl abgerufen werden:
 docker compose logs redis
 ```
 
-Dass es hier Probleme gibt, ist sehr unwahrscheinlich. Dennoch sollte im Zweifelsfall das Protokoll geprüft werden.
-
-## Löschung des Caches
-
-Der Cache kann bei Bedarf gelöscht werden:
-
-```bash
-docker compose exec redis redis-cli FLUSHALL
-```
-
-Im Erfolgsfall gibt Redis `OK` zurück.
+Dass es hier Probleme geben könnte, ist sehr unwahrscheinlich. Dennoch sollte im Zweifelsfall das Protokoll geprüft werden.
 
 ## Offizielles Docker-Image
 
