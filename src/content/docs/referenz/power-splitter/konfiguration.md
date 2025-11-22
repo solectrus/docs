@@ -1,7 +1,7 @@
 ---
 title: Konfiguration des Power-Splitters
 sidebar:
-  order: 4
+  order: 3
   label: Konfiguration
 ---
 
@@ -84,92 +84,178 @@ services:
 Die Variable `INFLUX_TOKEN` wird anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Container und vermeidet Redundanzen.
 :::
 
-## Umgebungsvariablen
+## Umgebungsvariablen (`.env`)
 
 #### POWER_SPLITTER_INTERVAL
 
-Häufigkeit der Berechnung durch den Power-Splitter. Bei kleineren Werten wird der Power-Splitter häufiger ausgeführt, was nicht zu einer genaueren Berechnung führt, aber zu einer erhöhten Aktualität. Bemerken wird man den Unterschied nur in der Anzeige des aktuellen Tages im Dashboard. Beim Standardwert von `3600` ist der dargestellte Wert um bis zu einer Stunde veraltet.
+Häufigkeit der Berechnung durch den Power-Splitter in Sekunden. Bei kleineren Werten wird der Power-Splitter häufiger ausgeführt, was nicht zu einer genaueren Berechnung führt, aber zu einer erhöhten Aktualität. Bemerken wird man den Unterschied nur in der Anzeige des aktuellen Tages im Dashboard.
 
-Ein niedriger Wert führt zu einer etwas höheren Auslastung des Systems, die Standardvorgabe ist daher konservativ gewählt. Das Minimum beträgt `300` (5 Minuten).
+:::note[Optional]
+Standard: `3600` (= 1 Stunde)
+
+Ein niedriger Wert führt zu einer etwas höheren Auslastung des Systems, die Standardvorgabe ist daher konservativ gewählt. Das Minimum beträgt `300` (= 5 Minuten).
+
+:::
+
+```dotenv title="Beispiel"
+POWER_SPLITTER_INTERVAL=300
+```
+
+#### TZ
+
+Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+:::note[Optional]
+Standard: `Europe/Berlin`
+:::
+
+```dotenv title="Beispiel"
+TZ=Europe/Rome
+```
 
 #### INFLUX_HOST
 
 Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-Netzwerk läuft, ist das der Name des Containers (z.B. `influxdb`). Es kann aber auch ein externer InfluxDB-Server sein, z.B. `influxdb.example.com`.
 
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INFLUX_HOST=influxdb
+```
+
 #### INFLUX_SCHEMA
 
 Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, die über TLS abgesichert ist, muss dieser Wert auf `https` gesetzt werden.
 
-Standardwert: `http`
+:::note[Optional]
+Standard: `http`
+:::
+
+```dotenv title="Beispiel"
+INFLUX_SCHEMA=https
+```
 
 #### INFLUX_PORT
 
-Port für die Verbindung zu InfluxDB.
+Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen, per TLS abgesicherten InfluxDB kann z.B. `443` eingestellt werden.
 
-Optional, Standard ist `8086`
+:::note[Optional]
+Standard: `8086`
+:::
 
-Bei Verwendung einer externen, per TLS abgesicherten InfluxDB kann z.B. `443` eingestellt werden.
+```dotenv title="Beispiel"
+INFLUX_PORT=443
+```
 
 #### INFLUX_TOKEN
 
-Token für den Zugriff auf InfluxDB. Dieser Token muss in InfluxDB erstellt werden und die Berechtigung haben, Daten in den angegebenen Bucket zu **lesen** und zu **schreiben**.
+Token für den Zugriff auf InfluxDB. Dieses Token muss die Berechtigung haben, Daten in den angegebenen Bucket zu **lesen** und zu **schreiben**.
+
+Das Token kann manuell in InfluxDB erstellt werden, alternativ kann aber auch das `INFLUX_ADMIN_TOKEN` verwendet werden.
+
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INFLUX_TOKEN=my-super-secret-admin-token
+```
 
 #### INFLUX_ORG
 
 Organisation in InfluxDB, in der die Messwerte gespeichert werden sollen.
 
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INFLUX_ORG=solectrus
+```
+
 #### INFLUX_BUCKET
 
 Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
 
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INFLUX_BUCKET=solectrus
+```
+
 #### REDIS_URL
 
-URL für den Redis-Cache. Wird benötigt, um nach dem ersten Durchlauf einmalig den Cache leeren zu können.
+URL für den Redis-Cache. Wird benötigt, um nach dem ersten Durchlauf (oder einer erzwungenen Neuberechnung) einmalig den Cache leeren zu können.
 
-#### DB_HOST (optional)
+:::note[Optional]
+Wenn nicht gesetzt, kann der Redis-Cache bei Bedarf nicht geleert werden und im Log erscheint eine Warnung. Man muss den Cache dann manuell leeren, z.B. mit dem Befehl `docker compose exec redis redis-cli FLUSHALL`.
+:::
+
+```dotenv title="Beispiel"
+REDIS_URL=redis://redis:6379/1
+```
+
+#### DB_HOST
 
 Hostname der PostgreSQL-Datenbank. Wird benötigt, nach einer Neuberechnung die Tageszusammenfassungen zurücksetzen zu können. Muss dem Namen des Services in der `compose.yaml` entsprechen, also normalerweise `postgresql`.
 
-#### DB_USER (optional)
+:::note[Optional]
+Wenn nicht gesetzt, kann können die Tageszusammenfassungen bei Bedarf nicht gelöscht werden und im Log erscheint eine Warnung. Man muss dann die Tageszusammenfassungen manuell im Dashboard zurücksetzen.
+
+Gilt in Verbindung mit den Variablen `DB_USER` und `DB_PASSWORD`.
+:::
+
+```dotenv title="Beispiel"
+DB_HOST=postgresql
+```
+
+#### DB_USER
 
 Benutzername für die PostgreSQL-Datenbank, normalerweise `postgres`.
 
-#### DB_PASSWORD (optional)
+:::note[Optional]
+Wenn nicht gesetzt, kann können die Tageszusammenfassungen nicht gelöscht werden und im Log erscheint eine Warnung. Man muss dann die Tageszusammenfassungen manuell im Dashboard zurücksetzen.
 
-Passwort für die PostgreSQL-Datenbank. Da die Variable in der `.env` anders heißt (nämlich `POSTGRES_PASSWORD`), muss hier der Wert explizit zugewiesen werden, also `DB_PASSWORD=${POSTGRES_PASSWORD}`.
+Gilt in Verbindung mit den Variablen `DB_HOST` und `DB_PASSWORD`.
+:::
+
+```dotenv title="Beispiel"
+DB_USER=postgres
+```
+
+#### DB_PASSWORD
+
+Passwort für die PostgreSQL-Datenbank. Da die Variable in der `.env` anders heißt (nämlich `POSTGRES_PASSWORD`), muss hier der Wert explizit in der `compose.yaml` zugewiesen werden, also `DB_PASSWORD=${POSTGRES_PASSWORD}`.
+
+:::note[Optional]
+Wenn nicht gesetzt, kann können die Tageszusammenfassungen nicht gelöscht werden und im Log erscheint eine Warnung. Man muss dann die Tageszusammenfassungen manuell im Dashboard zurücksetzen.
+
+Gilt in Verbindung mit den Variablen `DB_HOST` und `DB_USER`.
+:::
+
+```dotenv title="Beispiel"
+DB_PASSWORD=ExAmPl3PA55W0rD
+```
 
 #### INSTALLATION_DATE
 
-Datum der Installation von SOLECTRUS. Wird benötigt, um bei einer Neuberechnung einen definierten Startpunkt zu haben. Fehlt die Variable, sucht der Power-Splitter nach dem ältesten Tag, für den Messwerte vorliegen, und beginnt dort mit der Neuberechnung.
+Datum der Installation von SOLECTRUS. Wird benötigt, um bei einer Neuberechnung einen definierten Startpunkt zu haben.
 
-## Beispielhafte .env
+:::note[Optional]
+Wenn nicht gesetzt, sucht der Power-Splitter nach dem ältesten Tag, für den Messwerte vorliegen, und beginnt dort mit der Neuberechnung. Das kann in manchen Fällen zu einem sehr frühen Datum führen, was die Neuberechnung unnötig verlängert.
+:::
 
-```properties
-POWER_SPLITTER_INTERVAL=300
-
-INFLUX_SENSOR_GRID_IMPORT_POWER=SENEC:grid_power_plus
-INFLUX_SENSOR_HOUSE_POWER=SENEC:house_power
-INFLUX_SENSOR_WALLBOX_POWER=SENEC:wallbox_charge_power
-INFLUX_SENSOR_BATTERY_CHARGING_POWER=SENEC:bat_power_plus
-INFLUX_SENSOR_HEATPUMP_POWER=DAIKIN:power
-INFLUX_SENSOR_CUSTOM_POWER_01=Washer:power
-INFLUX_EXCLUDE_FROM_HOUSE_POWER=HEATPUMP_POWER
-
-INFLUX_HOST=influxdb
-INFLUX_SCHEMA=http
-INFLUX_PORT=8086
-INFLUX_ADMIN_TOKEN=my-super-secret-admin-token
-INFLUX_ORG=solectrus
-INFLUX_BUCKET=solectrus
-
-REDIS_URL=redis://redis:6379/1
-
+```dotenv title="Beispiel"
 INSTALLATION_DATE=2020-11-27
 ```
 
-## Sensor-Mapping
+## Sensor-Definition
 
-Der Power-Splitter verwendete einige der Sensoren, die auch vom Dashboard werden und somit bereits in der `.env` definiert werden. Im Einzelnen sind dies diese Variablen:
+Der Power-Splitter verwendete einige der Sensoren, die auch vom [Dashboard](/referenz/dashboard/) werden und somit bereits in der `.env` definiert werden. Im Einzelnen sind dies diese Variablen:
 
 - `INFLUX_SENSOR_GRID_IMPORT_POWER`
 - `INFLUX_SENSOR_HOUSE_POWER`
@@ -198,4 +284,8 @@ Der Power-Splitter verwendete einige der Sensoren, die auch vom Dashboard werden
 - `INFLUX_SENSOR_CUSTOM_POWER_20`
 - `INFLUX_EXCLUDE_FROM_HOUSE_POWER`
 
-Es genügt also, wenn man diese Variablen in der `compose.yml` aufführt und somit den Zugriff ermöglicht. Es ist nicht notwendig und auch nicht sinnvoll, für den Power-Splitter eigene Werte zu definieren.
+Es genügt also, wenn man diese Variablen in der `compose.yml` aufführt und somit den Zugriff ermöglicht (wie [oben](#composeyaml) dargestellt). Es ist nicht notwendig und auch nicht sinnvoll, für den Power-Splitter eigene Sensor-Variablen zu definieren.
+
+## Sonstiges
+
+Der Power-Splitter schreibt seine Berechnungen in ein neues Measurement mit der (unveränderlichen) Bezeichnung `power_splitter`. Daher ist es nicht notwendig, eine eigene Variable für das Measurement zu definieren.
