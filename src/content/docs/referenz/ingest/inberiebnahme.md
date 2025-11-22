@@ -1,7 +1,7 @@
 ---
 title: Inbetriebnahme von Ingest
 sidebar:
-  order: 2
+  order: 3
   label: Inbetriebnahme
 ---
 
@@ -9,7 +9,7 @@ sidebar:
 
 Füge die notwendigen Zeilen in deine `compose.yaml` sowie `.env` ein (siehe [Konfiguration](konfiguration)).
 
-Ingest greift auf die bestehende Variablen der SOLECTRUS-Konfiguration zu und benötigt außerdem die Zugangsdaten zu InfluxDB.
+Ingest greift auf die bestehende Variablen der SOLECTRUS-Konfiguration zu.
 
 Ingest speichert Messwerte der letzten 12 Stunden in einer SQLite-Datenbank. Diese wird in einem Volume abgelegt (`INGEST_VOLUME_PATH=./ingest`). Der Ordner muss vorhanden sein, daher bitte vorher `mkdir ./ingest` ausführen.
 
@@ -30,14 +30,15 @@ docker compose logs ingest -f
 Das sollte beispielsweise so aussehen:
 
 ```
-Ingest for SOLECTRUS, Version 0.2.0 (02a7de0), built at 2025-05-06 15:42 CEST
+Ingest for SOLECTRUS, Version 0.3.1 (4dfeeb2), built at 2025-11-15 16:47 CET
 https://github.com/solectrus/ingest
 Copyright (c) 2025 Georg Ledermann
 
-Using Ruby 3.4.3 on platform aarch64-linux-musl
+Using Ruby 3.4.7 on platform aarch64-linux-musl
 
 Configured sensors:
-  inverter_power            → SENEC:inverter_power
+  inverter_power_1          → SENEC:inverter_power
+  inverter_power_2          → Garage:inverter_power
   grid_import_power         → SENEC:grid_power_plus
   grid_export_power         → SENEC:grid_power_minus
   battery_discharging_power → SENEC:bat_power_minus
@@ -50,6 +51,8 @@ Calculated house_power will OVERRIDE the incoming value!
 
 Forwarding to http://influxdb:8086
 
+SQLite retention: 12 hours
+
 Compacting database...
 Done.
 
@@ -60,21 +63,22 @@ Starting OutboxWorker...
 Starting CleanupWorker...
 
 Puma starting in single mode...
-* Puma version: 6.6.0 ("Return to Forever")
-* Ruby version: ruby 3.4.3 (2025-04-14 revision d0b7e5b6a0) +YJIT +PRISM [aarch64-linux-musl]
+* Puma version: 7.1.0 ("Neon Witch")
+* Ruby version: ruby 3.4.7 (2025-10-08 revision 7a5688e2a2) +YJIT +PRISM [aarch64-linux-musl]
 *  Min threads: 0
 *  Max threads: 5
 *  Environment: production
 *          PID: 1
 * Listening on http://0.0.0.0:4567
 Use Ctrl-C to stop
+
 ```
 
 Wenn das Log so ungefähr aussieht, ist alles gut. Wenn nicht, dann bitte nicht weitermachen, sondern erst die Fehler beseitigen.
 
 Bitte auch prüfen, ob das Web-Interface unter `http://<IP>:4567` erreichbar und funktionsfähig ist.
 
-Bis zu dieser Stelle ist die Änderung an der Konfiguration noch unkritisch. Es läuft nun ein weiter Container, der aber noch nichts tun. Das Dashboard wird unverändert weiter funktionieren und die exakt gleichen Messwerte anzeigen wie vorher.
+Bis zu dieser Stelle ist die Änderung an der Konfiguration noch unkritisch. Es läuft nun ein weiter Container, der aber noch keine Messwerte empfängt. Das Dashboard wird unverändert weiter funktionieren und die exakt gleichen Messwerte anzeigen wie vorher.
 
 ### 3. Kollektoren anpassen
 
@@ -106,23 +110,20 @@ Nun müssen unbedingt wieder die Logs geprüft werden, und zwar diesmal der Koll
 Beim SENEC-Collector würde das so aussehen:
 
 ```
-SENEC collector for SOLECTRUS, Version 0.17.1, built at 2025-03-07T15:05:05.542Z
+SENEC collector for SOLECTRUS, Version 0.19.2, built at 2025-11-11T06:03:32.524Z
 https://github.com/solectrus/senec-collector
 Copyright (c) 2020-2025 Georg Ledermann, released under the MIT License
 
-Using Ruby 3.4.2 on platform aarch64-linux-musl
+Using Ruby 3.4.7 on platform aarch64-linux-musl
 Pushing to InfluxDB at http://ingest:4567, bucket solectrus, measurement SENEC
 
-....
-
-Got record #1 at 2025-03-31 09:15:53 +0200, LADEN, Inverter 745 W, House 373 W, Wallbox 0 W
-Successfully pushed record #1 to InfluxDB
+Wait until InfluxDB is ready ... OK
 ```
 
-Die Kollektoren gehen weiterhin davon aus, dass sie nach InfluxDB schreiben. Tatsächlich schreiben sie aber (aufgrund der veränderten Angabe für HOST und PORT) nach Ingest, wo ein kompatibles Interface zur Entgegennahme von Messwerten bereitsteht.
+Die Kollektoren gehen also weiterhin davon aus, dass sie nach InfluxDB schreiben. Tatsächlich schreiben sie aber (aufgrund der veränderten Angabe für `INFLUX_HOST` und `INFLUX_PORT`) nach Ingest, wo ein kompatibles Interface zur Entgegennahme von Messwerten bereitsteht.
 
 ### 4. Fertig!
 
 Im Dashboard ist **nichts** anzupassen. Wenn alles korrekt eingerichtet ist, wird das Dashboard für die neu eingehenden Messwerte einen korrigierten Hausverbrauch anzeigen.
 
-Das Web-Interface von Ingest mit ein paar statistischen Daten ist unter `http://<IP>:4567` erreichbar.
+Die [Web-Oberfläche von Ingest](../web-oberflaeche) mit einigen Kennzahlen ist unter `http://<IP>:4567` erreichbar.

@@ -8,6 +8,7 @@ sidebar:
 **Ingest** hat eine kleine Web-Oberfläche, die einige Kennzahlen zum Betrieb anzeigt, u.a.:
 
 - Datendurchsatz
+- Warteschlangenlänge
 - Messwerte mit ihrer Häufigkeit
 - CPU-Auslastung
 - RAM-Auslastung

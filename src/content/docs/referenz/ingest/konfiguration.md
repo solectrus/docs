@@ -1,7 +1,7 @@
 ---
 title: Konfiguration von Ingest
 sidebar:
-  order: 3
+  order: 2
   label: Konfiguration
 ---
 
@@ -59,23 +59,54 @@ services:
 
 ## Umgebungsvariablen
 
+#### INGEST_VOLUME_PATH
+
+Pfad auf dem Host, in dem Ingest seine SQLite-Datenbank ablegt.
+
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INGEST_VOLUME_PATH=./ingest
+```
+
 #### TZ
 
 Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+:::note[Optional]
+Standard: `Europe/Berlin`
+:::
+
+```dotenv title="Beispiel"
+TZ=Europe/Rome
+```
 
 #### STATS_PASSWORD
 
 Passwort für den Zugriff auf die Web-Oberfläche
 
-#### RETENTION_HOURS (ab v0.3.1)
+:::note[Optional]
+Wenn nicht gesetzt, ist der Zugriff ohne Passwort möglich.
+:::
 
-Dauer in Stunden, für die Daten lokal (in SQlite) aufbewahrt werden sollen. Standardwert ist 12 Stunden. Ein höherer Wert benötigt mehr RAM, erlaubt aber längere Ausfallzeiten, in denen die InfluxDB temporär nicht erreichbar ist.
-
-## Beispielhafte .env
-
-```properties
-TZ=Europe/Berlin
+```dotenv title="Beispiel"
 STATS_PASSWORD=mysecretpassword
-INGEST_VOLUME_PATH=./ingest
+```
+
+#### RETENTION_HOURS
+
+Dauer in Stunden, für die Daten lokal (in SQLite) aufbewahrt werden sollen.
+
+:::note[Optional]
+Standard: `12`
+
+Ein höherer Wert benötigt mehr RAM, erlaubt aber längere Ausfallzeiten. Das kann sinnvoll sein, wenn InfluxDB extern gehostet wird und bei einem Ausfall der Internetverbindung möglicherweise länger nicht erreichbar ist.
+
+**Verfügbar ab Ingest v0.3.1**
+:::
+
+```dotenv title="Beispiel"
 RETENTION_HOURS=36
 ```
