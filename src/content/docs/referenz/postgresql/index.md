@@ -29,7 +29,7 @@ docker compose logs postgresql
 
 Dass es hier Probleme gibt, ist recht unwahrscheinlich. Dennoch sollte im Zweifelsfall das Protokoll geprüft werden.
 
-### Datensicherung
+## Datensicherung
 
 Für die [Sicherung und -wiederherstellung von SOLECTRUS](/wartung/datensicherung) stehen einfach zu bedienende Scripte bereit, die auch PostgreSQL berücksichtigen.
 
