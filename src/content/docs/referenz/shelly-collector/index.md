@@ -9,7 +9,7 @@ Der **Shelly-Collector** sammelt den Stromverbrauch, der von einem Shelly-Stromz
 
 Die Messwerte können entweder direkt vom Gerät (über die HTTP-Rest-API) oder über die Shelly-Cloud abgerufen werden. Letzteres ermöglicht es, den Shelly-Collector auch von außerhalb des lokalen Netzwerks zu betreiben, z.B. auf einem Cloud-Server.
 
-Unterstützt werden Shelly-Geräte der ersten, zweiten und dritten Generation. Erfolgreich getestet wurden (mit der aktuellen Version 0.7.0 des Collectors) die folgenden Geräte:
+Unterstützt werden Shelly-Geräte der ersten, zweiten und dritten Generation. Erfolgreich getestet wurden die folgenden Geräte:
 
 - Shelly Pro 3EM
 - Shelly Pro EM-50
@@ -26,31 +26,39 @@ Unterstützt werden Shelly-Geräte der ersten, zweiten und dritten Generation. E
 Wer den Collector mit einen nicht aufgeführten Shelly erfolgreich getestet hat, kann die Liste gerne ergänzen.
 :::
 
-## Überwachte Messwerte
+## Erfasste Messwerte
 
 Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Measurement_ der InfluxDB:
 
-- `power`: Leistung, in Watt
-- `power_a`: Leistung Phase A, in Watt (sofern vorhanden)
-- `power_b`: Leistung Phase B, in Watt (sofern vorhanden)
-- `power_c`: Leistung Phase C, in Watt (sofern vorhanden)
-- `temp`: Temperatur, in °C (sofern vorhanden)
-- `response_duration`: Dauer der Antwort, in ms
+| Field               | Beschreibung             |
+| :------------------ | :----------------------- |
+| `power`             | Leistung, in W           |
+| `power_a`           | Leistung Phase A, in W   |
+| `power_b`           | Leistung Phase B, in W   |
+| `power_c`           | Leistung Phase C, in W   |
+| `temp`              | Temperatur, in °C        |
+| `response_duration` | Dauer der Antwort, in ms |
 
-## Protokollierung
+:::note
+Die Verfügbarkeit einzelner Messwerte hängt vom verwendeten Shelly-Gerät ab. Nicht alle Geräte liefern alle Messwerte.
+:::
+
+## Logging
 
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```log
-Shelly collector for SOLECTRUS, Version 0.6.0, built at 2025-03-11T09:47:38.489Z
+Shelly collector for SOLECTRUS, Version 0.11.2, built at 2025-11-11T08:28:58.284Z
 https://github.com/solectrus/shelly-collector
 Copyright (c) 2024-2025 Georg Ledermann, released under the MIT License
 
-Using Ruby 3.4.2 on platform aarch64-linux-musl
+Using Ruby 3.4.7 on platform aarch64-linux-musl
 Pushing to InfluxDB at http://influxdb:8086, bucket solectrus, measurement heatpump
-Pulling from your Shelly at http://192.168.178.5 every 5 seconds
+Wait until InfluxDB is ready ... OK
 
-Got record #1 at 2025-03-11 10:53:00 +0100 within 37 ms, Power 5.1 W, Temperature 37.3 °C
+Pulling from your Shelly at http://192.168.178.83 every 19 seconds
+
+Got record #1 at 2025-11-23 11:44:52 +0100 within 75 ms, Power 430.9 W, Temperature 46.2 °C
 Successfully pushed record #1 to InfluxDB
 ...
 ```
