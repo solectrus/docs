@@ -71,7 +71,7 @@ Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Me
 
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
-```plaintext
+```log
 SENEC collector for SOLECTRUS, Version 0.16.1, built at 2024-09-03T04:48:19.640Z
 https://github.com/solectrus/senec-collector
 Copyright (c) 2020-2024 Georg Ledermann, released under the MIT License

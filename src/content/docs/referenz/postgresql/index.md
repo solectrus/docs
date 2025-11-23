@@ -11,7 +11,7 @@ Neben den eigentlichen Messwerten, die in [InfluxDB](../influxdb) abgelegt werde
 
 Wie alle Docker-Container schreibt auch PostgreSQL ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
-```plaintext
+```log
 ...
 2025-11-22 13:44:06.380 CET [1] LOG:  starting PostgreSQL 18.1 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
 2025-11-22 13:44:06.380 CET [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432

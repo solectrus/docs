@@ -26,7 +26,7 @@ Der Collector schreibt die folgenden Werte als _Field_ in das angegebene _Measur
 
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
-```plaintext
+```log
 Forecast collector for SOLECTRUS, Version 0.5.3, built at 2024-08-30T23:27:59.224Z
 https://github.com/solectrus/forecast-collector
 Copyright (c) 2020-2024 Georg Ledermann, released under the MIT License

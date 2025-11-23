@@ -41,7 +41,7 @@ Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Me
 
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
-```plaintext
+```log
 Shelly collector for SOLECTRUS, Version 0.6.0, built at 2025-03-11T09:47:38.489Z
 https://github.com/solectrus/shelly-collector
 Copyright (c) 2024-2025 Georg Ledermann, released under the MIT License

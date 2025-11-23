@@ -54,7 +54,7 @@ Zukünftige Versionen werden sicherlich weitere Sensoren einführen.
 
 In der `.env`-Datei werden die Sensoren definiert. Ein Beispiel:
 
-```properties
+```dotenv
 INFLUX_SENSOR_BATTERY_CHARGING_POWER=SENEC:bat_power_plus
 ```
 
@@ -86,7 +86,7 @@ Die Umstellung betrifft sowohl das Dashboard als auch den MQTT-Collector (sofern
 
 Eine Warnung im Docker-Log des Dashboards sieht z.B. so aus:
 
-```plaintext
+```log
 DEPRECATION WARNING: Missing environment variable INFLUX_SENSOR_INVERTER_POWER.
   To remove this warning, add the following to your environment:
     INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
@@ -101,7 +101,7 @@ Es ist dann folgendes zu tun:
 
 ### .env
 
-```properties
+```dotenv
 # ...
 INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
 ```
@@ -146,7 +146,7 @@ Es muss also wie folgt aussehen:
 
 ### .env
 
-```properties
+```dotenv
 # ...
 MAPPING_3_TOPIC=PV/SignedBat
 MAPPING_3_FIELD_POSITIVE=bat_power_minus

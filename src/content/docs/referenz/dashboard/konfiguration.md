@@ -224,13 +224,13 @@ In InfluxDB werden die Messwerte in Form von Zeitreihen gespeichert. Jeder Messw
 
 Ein Sensor wird durch einen Namen identifiziert und einem "Measurement" und einem "Field" in InfluxDB zugeordnet. Die Umgebungsvariable gibt die Zuordnung mit einem Doppelpunkt getrennt an. Wenn beispielsweise die PV-Erzeugung im Measurement "SENEC" und dort im Field "inverter_power" erfolgt, sieht der Eintrag wie folgt aus:
 
-```properties
+```dotenv
 INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
 ```
 
 Jeder Sensor muss definiert werden, um keine Warnung im Protokoll zu provozieren. Wenn für einen Sensor keine Werte zur Verfügung stehen (weil man z.B. keine Wärmepumpe hat), muss der Sensor "leer" definiert werden, und zwar so:
 
-```properties
+```dotenv
 INFLUX_SENSOR_HEATPUMP_POWER=
 ```
 
@@ -242,7 +242,7 @@ Ab Version `0.20` ist damit die Gesamterzeugung gemeint, also inklusive etwaiger
 
 Falls es einen Gesamtwert nicht gibt, ist die Variable explizit als leer zu definieren, also so:
 
-```properties
+```dotenv
 INFLUX_SENSOR_INVERTER_POWER=
 ```
 
@@ -254,7 +254,7 @@ Bis zu **fünf** separate Erzeuger. Diese Variablen sind optional und werden nur
 
 Beispiel:
 
-```properties
+```dotenv
 INFLUX_SENSOR_INVERTER_POWER_1=pv:mpp_1
 INFLUX_SENSOR_INVERTER_POWER_2=pv:mpp_2
 INFLUX_SENSOR_INVERTER_POWER_3=pv:mpp_3
@@ -338,7 +338,7 @@ Im Docker-Protokoll finden sich dann Hinweise, welche Konfiguration vorgenommen 
 
 Da der Hausverbrauch möglicherweise die Leistung von Wärmepumpe und/oder die Wallbox enthält, können Letztere aus dem Hausverbrauch herausgerechnet werden, um eine doppelte Zählung zu verhindern. Hierzu wird eine Liste von Sensoren angegeben, die aus dem Hausverbrauch ausgeschlossen werden sollen:
 
-```properties
+```dotenv
 INFLUX_EXCLUDE_FROM_HOUSE_POWER=HEATPUMP_POWER,WALLBOX_POWER
 ```
 
@@ -346,7 +346,7 @@ Die Angabe erfolgt als Komma-separierte Liste von Sensor-Namen.
 
 Auch die Angabe eines benutzerdefinierten Sensors ist hier möglich, z.B. so:
 
-```properties
+```dotenv
 INFLUX_EXCLUDE_FROM_HOUSE_POWER=WALLBOX_POWER,CUSTOM_POWER_02,CUSTOM_POWER_08
 ```
 

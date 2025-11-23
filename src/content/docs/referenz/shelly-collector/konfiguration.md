@@ -144,7 +144,7 @@ Im `default`-Modus wird jeder erhaltene Messwert nach InfluxDB geschrieben.
 
 ### Für lokalen Zugriff
 
-```properties
+```dotenv
 SHELLY_HOST=192.168.178.5
 SHELLY_PASSWORD=my-shelly-password
 SHELLY_INTERVAL=5
@@ -161,7 +161,7 @@ INFLUX_MODE=essential
 
 ### Für Cloud-Zugriff
 
-```properties
+```dotenv
 SHELLY_CLOUD_SERVER=https://shelly-42-eu.shelly.cloud
 SHELLY_AUTH_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
 SHELLY_DEVICE_ID=12345abcdef0

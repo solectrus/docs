@@ -61,7 +61,7 @@ flowchart LR
 
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
-```plaintext
+```log
 MQTT collector for SOLECTRUS, Version 0.3.0, built at 2024-09-13T23:14:19.973Z
 https://github.com/solectrus/mqtt-collector
 Copyright (c) 2023-2024 Georg Ledermann and contributors, released under the MIT License

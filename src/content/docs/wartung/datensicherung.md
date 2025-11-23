@@ -33,7 +33,7 @@ Das Erstellen einer Sicherung erfolgt durch das Script `backup.sh`. Es erstellt 
 
 Das Backup wird im laufenden Betrieb erstellt. Es muss (und darf) kein Container gestoppt werden. Das Ergebnis ist eine Datei wie `solectrus-backup-2024-10-06.tar.gz`. Das Script zeigt eine Ausgabe wie folgt:
 
-```plaintext
+```log
 SOLECTRUS Backup Script
 
 Checking if PostgreSQL and InfluxDB containers are running...
@@ -105,7 +105,7 @@ Das Script wird mit dem Pfad zur Backup-Datei als Parameter aufgerufen:
 
 Da eine Wiederherstellung den aktuellen Zustand der Datenbanken überschreibt, wird aus Sicherheitsgründen vor dem Wiederherstellen eine Bestätigung eingeholt. Die Ausgabe des Scripts sieht wie folgt aus:
 
-```plaintext
+```log
 SOLECTRUS Restore Script
 
 Validating backup files in solectrus-backup-2024-10-06.tar.gz...

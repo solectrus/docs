@@ -13,7 +13,7 @@ Es kommt die Version **2.7** zum Einsatz, die Vorgängerversion **v1** wird nich
 
 Wie alle Docker-Container schreibt auch InfluxDB ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
-```plaintext
+```log
 ts=2025-11-22T13:04:56.228867Z lvl=info msg="Welcome to InfluxDB" log_id=0~MvXDe0000 version=v2.7.12 commit=ec9dcde5d6 build_date=2025-05-20T22:48:49Z log_level=info
 ...
 ```

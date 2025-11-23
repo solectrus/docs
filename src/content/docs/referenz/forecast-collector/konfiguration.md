@@ -227,7 +227,7 @@ Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 
 ## Beispielhafte .env für forecast.solar
 
-```properties
+```dotenv
 FORECAST_PROVIDER=forecast.solar
 FORECAST_CONFIGURATIONS=2
 FORECAST_INTERVAL=1800
@@ -251,7 +251,7 @@ INFLUX_BUCKET=solectrus
 
 ## Beispielhafte .env für solcast.com
 
-```properties
+```dotenv
 FORECAST_PROVIDER=solcast
 FORECAST_CONFIGURATIONS=2
 FORECAST_INTERVAL=17280

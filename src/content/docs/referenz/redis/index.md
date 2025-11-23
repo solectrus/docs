@@ -25,7 +25,7 @@ Im Erfolgsfall gibt Redis `OK` zurück. Bei der nachfolgenden Verwendung von SOL
 
 Wie alle Docker-Container schreibt auch Redis ein Protokoll ins Docker-Log, das in etwa so aussieht:
 
-```plaintext
+```log
 ...
 Starting Redis Server
 1:C 21 Nov 2025 04:58:46.220 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo

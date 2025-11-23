@@ -54,7 +54,7 @@ docker compose ps
 
 In der ausgegeben Liste muss ein Eintrag für PostgreSQL vorhanden sein, z.B.:
 
-```plaintext
+```log
 ...
 solectrus-postgresql-1  postgres:17-alpine  "docker-entrypoint.s…"  postgresql  2 days ago  Up 2 days (healthy). 5432/tcp
 ...
@@ -120,7 +120,7 @@ docker compose logs -f postgresql
 
 Es muss darin (nach kurzer Zeit) folgende Meldung erscheinen:
 
-```plaintext
+```log
 postgresql-1  | starting PostgreSQL 18.0 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
 ...
 postgresql-1  | database system is ready to accept connections

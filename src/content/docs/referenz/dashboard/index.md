@@ -15,7 +15,7 @@ Das Dashboard benötigt Zugriff auf die drei Datenbanken (InfluxDB, PostgreSQL u
 
 Das Dashboard schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
-```plaintext
+```log
 SOLECTRUS Photovoltaic Dashboard
 Copyright (C) 2020-2025 Georg Ledermann
 License: GNU AGPLv3 - https://www.gnu.org/licenses/agpl-3.0.html

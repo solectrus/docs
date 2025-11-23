@@ -133,7 +133,7 @@ Dies ist nützlich, wenn einzelne Messwerte (z.B. der Wallbox) aus einer anderen
 
 Komma-getrennte Liste von Feldern, keine Leerzeichen. Beispiel:
 
-```properties
+```dotenv
 SENEC_IGNORE=wallbox_charge_power,grid_power_minus
 ```
 
@@ -177,7 +177,7 @@ Optional, Standard ist `SENEC`
 
 ## Beispielhafte .env
 
-```properties
+```dotenv
 SENEC_ADAPTER=local
 SENEC_HOST=192.168.178.29
 SENEC_INTERVAL=5
