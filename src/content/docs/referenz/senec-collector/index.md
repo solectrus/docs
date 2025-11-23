@@ -7,7 +7,7 @@ sidebar:
 
 Der **SENEC-Collector** sammelt die Messwerte, die von einem SENEC Stromspeicher gemeldet werden und schreibt diese in die InfluxDB.
 
-Erfolgreich getestet wurde der Collector mit folgenden Stromspeichern:
+Der Collector ist kompatibel mit folgenden Stromspeichern:
 
 - SENEC.Home V2.1
 - SENEC.Home V3
@@ -35,7 +35,7 @@ Grundsätzlich kann der Collector in zwei verschiedenen **Betriebsmodi** eingese
 
 Beim V2.1 und V3 ist es also möglich, sich für einen der beiden Adapter zu entscheiden. Dies eröffnet die Möglichkeit, SOLECTRUS vollständig auf einem Cloud-Server zu betreiben, also ohne einen Raspberry o.ä. im lokalen Netzwerk. Diesem Vorteil steht der Nachteil gegenüber, dass die Daten nicht so häufig aktualisiert werden (nur alle 5 Minuten, statt alle 5 Sekunden).
 
-## Überwachte Messwerte
+## Erfasste Messwerte
 
 Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Measurement_ der InfluxDB. Einige Messwerte sind nur im lokalen Betrieb verfügbar (also nicht beim P4).
 
@@ -56,9 +56,9 @@ Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Me
 | `grid_power_plus`       | Netzbezug, in W                               |  Ja   |  Ja   |
 | `house_power`           | Hausverbrauch, in W                           |  Ja   |  Ja   |
 | `inverter_power`        | Erzeugte Leistung des Wechselrichters, in W   |  Ja   |  Ja   |
-| `mpp1_power`            | Leistung des MPP1, in W                       |  Ja   | Nein  |
-| `mpp2_power`            | Leistung des MPP2, in W                       |  Ja   | Nein  |
-| `mpp3_power`            | Leistung des MPP3, in W                       |  Ja   | Nein  |
+| `mpp1_power`            | Leistung von Strang 1, in W                   |  Ja   | Nein  |
+| `mpp2_power`            | Leistung von Strang 2, in W                   |  Ja   | Nein  |
+| `mpp3_power`            | Leistung von Strang 3, in W                   |  Ja   | Nein  |
 | `power_ratio`           | Leistungsbegrenzung, in %                     |  Ja   | Nein  |
 | `response_duration`     | Dauer der Antwort, in ms                      |  Ja   | Nein  |
 | `wallbox_charge_power`  | Wallbox-Ladeleistung, in W                    |  Ja   |  Ja   |
@@ -67,23 +67,25 @@ Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Me
 | `wallbox_charge_power2` | Wallbox-Ladeleistung für dritte Wallbox, in W |  Ja   | Nein  |
 | `wallbox_charge_power3` | Wallbox-Ladeleistung für vierte Wallbox, in W |  Ja   | Nein  |
 
-## Protokollierung
+## Logging
 
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```log
-SENEC collector for SOLECTRUS, Version 0.16.1, built at 2024-09-03T04:48:19.640Z
+SENEC collector for SOLECTRUS, Version 0.19.2, built at 2025-11-11T06:03:32.524Z
 https://github.com/solectrus/senec-collector
-Copyright (c) 2020-2024 Georg Ledermann, released under the MIT License
+Copyright (c) 2020-2025 Georg Ledermann, released under the MIT License
 
-Using Ruby 3.3.4 on platform aarch64-linux-musl
+Using Ruby 3.4.7 on platform aarch64-linux-musl
 Pushing to InfluxDB at http://influxdb:8086, bucket solectrus, measurement SENEC
-Pulling from your local SENEC at https://192.168.178.29 every 5 seconds
 
+Wait until InfluxDB is ready ... OK
+
+Pulling from your local SENEC at https://192.168.178.29 every 5 seconds
 Getting state names (language: de) from SENEC by parsing source code...
 OK, got 99 state names
 
-Got record #1 at 2024-10-02 10:00:42 +0200 within 7 ms, LADEN, Inverter 766 W, House 413 W, Wallbox 0 W
+Got record #1 at 2025-11-23 07:42:42 +0100 within 14 ms, AKKU LEER, Inverter 0 W, House 894 W, Wallbox 0 W
 Successfully pushed record #1 to InfluxDB
 ...
 ```

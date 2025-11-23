@@ -9,8 +9,11 @@ Der SENEC-Collector wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS
 
 ## compose.yaml
 
+In der `compose.yaml` wird ein neuer Service namens `senec-collector` hinzugefügt. Dieser sollte so aussehen:
+
 ```yaml
 services:
+  # ...
   senec-collector:
     image: ghcr.io/solectrus/senec-collector:latest
     environment:
@@ -30,11 +33,12 @@ services:
       - INFLUX_ORG
       - INFLUX_BUCKET
       - INFLUX_MEASUREMENT=${INFLUX_MEASUREMENT_SENEC}
-    restart: unless-stopped
     logging:
+      driver: 'json-file'
       options:
         max-size: 10m
         max-file: '3'
+    restart: unless-stopped
     depends_on:
       influxdb:
         condition: service_healthy
@@ -42,12 +46,7 @@ services:
       - influxdb
     labels:
       - com.centurylinklabs.watchtower.scope=solectrus
-
-  influxdb:
-    # ...
-
-  watchtower:
-    # ...
+  # ...
 ```
 
 :::note
@@ -60,140 +59,240 @@ Einige Variablen für den Service werden anders lautenden Umgebungsvariablen ent
 
 :::
 
-## Umgebungsvariablen
+## Umgebungsvariablen (`.env`)
 
 #### SENEC_ADAPTER
 
-Betriebsmodus des Collectors
+Betriebsmodus des Collectors. Bestimmt, ob die Daten lokal vom SENEC-Gerät oder aus der SENEC-Cloud abgerufen werden.
 
-Erlaubte Werte: `local` oder `cloud` \
+:::note[Optional]
 Standard: `local`
+
+Mögliche Werte: `local`, `cloud`
+:::
+
+```dotenv title="Beispiel"
+SENEC_ADAPTER=cloud
+```
 
 #### SENEC_HOST
 
 Hostname des SENEC Stromspeichers. Dies ist üblicherweise eine IP-Adresse, kann aber auch eine lokale Domain sein. Es darf **kein** `http://` oder `https://` enthalten sein!
 
-Wird nur verwendet, wenn `SENEC_ADAPTER` auf `local` gesetzt ist.
+:::note[Pflicht bei `SENEC_ADAPTER=local`]
+Für den lokalen Zugriff zwingend benötigt.
+:::
+
+```dotenv title="Beispiel"
+SENEC_HOST=192.168.178.29
+```
 
 #### SENEC_SCHEMA
 
 Das zu verwendende Protokoll für die Verbindung zum SENEC-Stromspeicher.
 
-Erlaubte Werte: `http`, `https` \
+:::note[Optional]
 Standard: `https`
 
-Wird nur verwendet, wenn `SENEC_ADAPTER` auf `local` gesetzt ist.
+Mögliche Werte: `http`, `https`
+
+Wird nur verwendet, wenn `SENEC_ADAPTER=local`.
+:::
+
+```dotenv title="Beispiel"
+SENEC_SCHEMA=http
+```
 
 #### SENEC_LANGUAGE
 
 Die Sprache, die für Status-Texte verwendet werden soll.
 
-Erlaubte Werte: `de` (Deutsch), `en` (Englisch), `it` (Italienisch) \
+:::note[Optional]
 Standard: `de`
 
-Wird nur verwendet, wenn `SENEC_ADAPTER` auf `local` gesetzt ist.
+Mögliche Werte: `de` (Deutsch), `en` (Englisch), `it` (Italienisch)
+
+Wird nur verwendet, wenn `SENEC_ADAPTER=local`.
+:::
+
+```dotenv title="Beispiel"
+SENEC_LANGUAGE=de
+```
 
 #### SENEC_USERNAME
 
 E-Mail-Adresse für die Anmeldung bei `mein-senec.de`.
 
-Wird nur verwendet, wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist.
+:::note[Pflicht bei `SENEC_ADAPTER=cloud`]
+Für den Cloud-Zugriff zwingend benötigt.
+:::
+
+```dotenv title="Beispiel"
+SENEC_USERNAME=mail@example.com
+```
 
 #### SENEC_PASSWORD
 
 Passwort für die Anmeldung bei `mein-senec.de`.
 
-Wird nur verwendet, wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist.
+:::note[Pflicht bei `SENEC_ADAPTER=cloud`]
+Für den Cloud-Zugriff zwingend benötigt.
+:::
+
+```dotenv title="Beispiel"
+SENEC_PASSWORD=my-secret-password
+```
 
 #### SENEC_TOTP_URI
 
-URI für die Multi-Faktor-Authentifizierung (MFA) bei `mein-senec.de` (sofern aktiviert). Anzugeben ist der vollständige String, sinnvollerweise mit Anführungszeichen also z.B. so:
-
-```dotenv
-SENEC_TOTP_URI="otpauth://totp/SENEC:mail%40example.com?secret=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&digits=6&algorithm=SHA1&issuer=SENEC&period=30"
-```
+URI für die Multi-Faktor-Authentifizierung (MFA) bei `mein-senec.de` (sofern aktiviert). Anzugeben ist der vollständige String, sinnvollerweise mit Anführungszeichen.
 
 Hat man den initialen QR-Code von SENEC vorliegen oder verwendet den Google Authenticator, so lässt sich die URI mit dem [QR Code Secret Decoder](https://marq24.github.io/qr-code-decoder/) ermitteln.
 
-Wird nur verwendet, wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist.
+:::note[Optional]
+Wird nur bei Cloud-Zugriff verwendet und auch nur, wenn MFA aktiviert ist.
+:::
+
+```dotenv title="Beispiel"
+SENEC_TOTP_URI="otpauth://totp/SENEC:mail%40example.com?secret=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&digits=6&algorithm=SHA1&issuer=SENEC&period=30"
+```
 
 #### SENEC_SYSTEM_ID
 
 Die System-ID des SENEC-Geräts. Kann leer bleiben, wenn es nur ein System gibt. Der Collector ermittelt dann die verfügbaren IDs, listet sie im Protokoll auf und verwendet die **erste**.
 
-Um eine andere als die erste ID zu verwenden, sollte die Angabe nächst leer bleiben, der Collector gestartet und die ID aus dem Protokoll entnommen werden. Die gewünschte ID kann dann in die Umgebungsvariablen eingetragen werden und wird beim nächsten Start verwendet.
+Um eine andere als die erste ID zu verwenden, sollte die Angabe zunächst leer bleiben, der Collector gestartet und die ID aus dem Protokoll entnommen werden. Die gewünschte ID kann dann in die Umgebungsvariablen eingetragen werden und wird beim nächsten Start verwendet.
 
-Wird nur verwendet, wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist.
+:::note[Optional]
+Wird nur bei Cloud-Zugriff verwendet.
+:::
+
+```dotenv title="Beispiel"
+SENEC_SYSTEM_ID=12345
+```
 
 #### SENEC_INTERVAL
 
-Das Intervall in Sekunden für die Häufigkeit der Datenabfrage
+Das Intervall in Sekunden für die Häufigkeit der Datenabfrage.
 
-Wenn `SENEC_ADAPTER` auf `cloud` gesetzt ist, ist das Minimum 60 Sekunden, Standard ist 60 Sekunden.
-Wenn `SENEC_ADAPTER` auf `local` gesetzt ist, ist das Minimum 5 Sekunden, Standard ist 5 Sekunden.
+:::note[Optional]
+Standard bei `SENEC_ADAPTER=cloud`: `60` Sekunden (Minimum: 60)
+
+Standard bei `SENEC_ADAPTER=local`: `5` Sekunden (Minimum: 5)
+:::
+
+```dotenv title="Beispiel"
+SENEC_INTERVAL=10
+```
 
 #### SENEC_IGNORE
 
-Deaktivieren bestimmter Messwerte, die nicht an InfluxDB gesendet werden sollen.
-Dies ist nützlich, wenn einzelne Messwerte (z.B. der Wallbox) aus einer anderen Quelle entnommen werden sollen.
+Deaktivieren bestimmter Messwerte, die **nicht** an InfluxDB gesendet werden sollen. Dies kann nützlich sein, wenn einzelne Messwerte (z.B. der Wallbox) aus einer anderen Quelle entnommen werden sollen.
 
-Komma-getrennte Liste von Feldern, keine Leerzeichen. Beispiel:
+Komma-getrennte Liste von Feldern, keine Leerzeichen.
 
-```dotenv
+:::note[Optional]
+Standard: leer (d.h. alle Messwerte werden gesendet)
+:::
+
+```dotenv title="Beispiel"
 SENEC_IGNORE=wallbox_charge_power,grid_power_minus
 ```
-
-Optional, Standard ist leer (d.h. alle Messwerte werden gesendet)
 
 #### INFLUX_HOST
 
 Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-Netzwerk läuft, ist das der Name des Docker-Services (z.B. `influxdb`). Es kann aber auch ein externer InfluxDB-Server sein, z.B. `influxdb.example.com`.
 
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INFLUX_HOST=influxdb
+```
+
 #### INFLUX_SCHEMA
 
 Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, die über TLS abgesichert ist, muss dieser Wert auf `https` gesetzt werden.
 
-Optional, Standard ist `http`
+:::note[Optional]
+Standard: `http`
+:::
+
+```dotenv title="Beispiel"
+INFLUX_SCHEMA=https
+```
 
 #### INFLUX_PORT
 
-Port für die Verbindung zu InfluxDB.
+Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen, per TLS abgesicherten InfluxDB kann z.B. `443` eingestellt werden.
 
-Optional, Standard ist `8086`
+:::note[Optional]
+Standard: `8086`
+:::
 
-Bei Verwendung einer externen, per TLS abgesicherten InfluxDB kann z.B. `443` eingestellt werden.
+```dotenv title="Beispiel"
+INFLUX_PORT=443
+```
 
 #### INFLUX_TOKEN
 
-Token für den Zugriff auf InfluxDB. Dieser Token muss in InfluxDB erstellt werden und die Berechtigung haben, Daten in den angegebenen Bucket zu **schreiben**.
+Token für den Zugriff auf InfluxDB. Dieser Token muss die Berechtigung haben, Daten in den angegebenen Bucket zu **schreiben**.
+
+Das Token kann manuell in InfluxDB erstellt werden, alternativ kann aber auch das `INFLUX_ADMIN_TOKEN` verwendet werden.
+
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INFLUX_TOKEN=my-super-secret-admin-token
+```
 
 #### INFLUX_ORG
 
 Organisation in InfluxDB, in der die Messwerte gespeichert werden sollen.
 
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INFLUX_ORG=solectrus
+```
+
 #### INFLUX_BUCKET
 
 Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
+
+:::note[Pflicht]
+Muss zwingend gesetzt werden
+:::
+
+```dotenv title="Beispiel"
+INFLUX_BUCKET=solectrus
+```
 
 #### INFLUX_MEASUREMENT
 
 Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 
-Optional, Standard ist `SENEC`
+:::note[Optional]
+Standard: `SENEC`
+:::
 
-## Beispielhafte .env
+```dotenv title="Beispiel"
+INFLUX_MEASUREMENT=power_storage
+```
 
-```dotenv
-SENEC_ADAPTER=local
-SENEC_HOST=192.168.178.29
-SENEC_INTERVAL=5
-SENEC_IGNORE=wallbox_charge_power
-INFLUX_MEASUREMENT_SENEC=SENEC
+#### TZ
 
-INFLUX_HOST=influxdb
-INFLUX_SCHEMA=http
-INFLUX_PORT=8086
-INFLUX_TOKEN_WRITE=my-super-secret-admin-token
-INFLUX_ORG=solectrus
-INFLUX_BUCKET=solectrus
+Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+:::note[Optional]
+Standard: `Europe/Berlin`
+:::
+
+```dotenv title="Beispiel"
+TZ=Europe/Rome
 ```
