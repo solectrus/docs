@@ -1,8 +1,8 @@
 ---
-title: Konfiguration des CSV-Importers
+title: Ausführung des CSV-Importers
 sidebar:
   order: 2
-  label: Konfiguration
+  label: Ausführung
 ---
 
 Der CSV-Importer nutzt die gleiche `.env`-Datei wie die bestehende SOLECTRUS-Installation.
@@ -11,7 +11,7 @@ Der CSV-Importer nutzt die gleiche `.env`-Datei wie die bestehende SOLECTRUS-Ins
 
 Der CSV-Importer wird nicht in die `compose.yaml` eingetragen, da er nur **einmalig** ausgeführt wird. Stattdessen wird er direkt per `docker run` gestartet.
 
-CSV-Dateien im Ordner `csv` ablegen und Import starten:
+Die CSV-Dateien müssen in einem Ordner `csv` im aktuellen Verzeichnis abgelegt werden. Anschließend wird der Import mit folgendem Befehl gestartet:
 
 ```bash
 docker run -it --rm \
@@ -21,7 +21,7 @@ docker run -it --rm \
   ghcr.io/solectrus/csv-importer
 ```
 
-Der Prozess ist idempotent und kann mehrfach ausgeführt werden.
+Der Prozess ist idempotent und kann gefahrlos mehrfach ausgeführt werden. Der Importer erkennt eigenständig, ob es sich um Daten von SENEC, Sungrow oder SolarEdge handelt.
 
 ### Nach dem Import
 
@@ -38,6 +38,8 @@ docker exec -it solectrus-redis-1 redis-cli FLUSHALL
 In SOLECTRUS selbst unter "Einstellungen" muss die Funktion "Tageswerte zurücksetzen" ausgeführt werden.
 
 ## Umgebungsvariablen
+
+Durch obigen Befehl werden alle in der `.env`-Datei definierten Umgebungsvariablen an den Container übergeben. Folgende Variablen sind für den CSV-Importer relevant:
 
 ### InfluxDB-Verbindung
 
@@ -62,12 +64,40 @@ In SOLECTRUS selbst unter "Einstellungen" muss die Funktion "Tageswerte zurücks
 | `INFLUX_SENSOR_BATTERY_POWER_MINUS` | Batterieentladung      |
 | `INFLUX_SENSOR_BATTERY_SOC`         | Batterieladestand      |
 
-Die Zuordnung hängt von der SOLECTRUS-Installation ab.
+### Weitere Variablen
 
-### Weitere Einstellungen
+#### IMPORT_FOLDER
 
-| Variable        | Beschreibung                                  | Standard        |
-| --------------- | --------------------------------------------- | --------------- |
-| `IMPORT_FOLDER` | Pfad zum Import-Ordner                        | `/data`         |
-| `TZ`            | Zeitzone                                      | `Europe/Berlin` |
-| `SENEC_IGNORE`  | Auszuschließende SENEC-Felder (kommagetrennt) | -               |
+Pfad zum Import-Ordner, in dem die CSV-Dateien liegen.
+
+:::note[Optional]
+Standard: `/data`
+:::
+
+#### TZ
+
+Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+:::note[Optional]
+Standard: `Europe/Berlin`
+:::
+
+```dotenv title="Beispiel"
+TZ=Europe/Rome
+```
+
+#### SENEC_IGNORE
+
+Deaktivieren bestimmter Messwerte, die **nicht** an InfluxDB gesendet werden sollen. Dies kann nützlich sein, wenn einzelne Messwerte (z.B. der Wallbox) aus einer anderen Quelle entnommen werden sollen.
+
+Komma-getrennte Liste von Feldern, keine Leerzeichen.
+
+:::note[Optional]
+Standard: leer (d.h. alle Messwerte werden gesendet)
+
+Wirkt sich nur aus, wenn SENEC-Daten importiert werden.
+:::
+
+```dotenv title="Beispiel"
+SENEC_IGNORE=wallbox_charge_power,grid_power_minus
+```

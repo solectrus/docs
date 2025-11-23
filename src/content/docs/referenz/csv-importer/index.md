@@ -5,7 +5,7 @@ sidebar:
   label: Übersicht
 ---
 
-Der **CSV-Importer** ist ein Werkzeug, das historische Messwerte im CSV-Format einmalig nach InfluxDB überträgt. Das ist nützlich, um nach der Installation direkt mit Daten arbeiten zu können, ohne auf die ersten Messwerte warten zu müssen.
+Der **CSV-Importer** ist ein Werkzeug, das historische Messwerte im CSV-Format einmalig nach InfluxDB überträgt. Das ist nützlich, um nach der Installation direkt mit Daten arbeiten zu können, ohne auf die ersten Messwerte warten zu müssen. Hat man im Idealfall die Messwerte seit Installation der PV-Anlage vorliegen, kann man dadurch auch rückwirkend vollständige Analysen mit SOLECTRUS durchführen (z.B. Ersparnis etc.)
 
 Unterstützt werden die Datenformate der Stromspeicher/Wechselrichter von:
 
