@@ -49,3 +49,14 @@ Watchtower lässt sich ansonsten vielfältig konfigurieren. Die hier angegebene 
 :::note
 Watchtower läuft standardmäßig einmal täglich, die erste Prüfung erfolgt 24 Stunden nach dem Start. Wenn Watchtower gerade erst eingerichtet wurde, musst also für die erste Update-Prüfung einen Tag gewartet werden.
 :::
+
+## Alternativen
+
+Watchtower scheint vom ursprünglichen Entwickler nicht mehr aktiv gepflegt zu werden. Die Verwendung in SOLECTRUS ist jedoch weiterhin unverändert und problemlos möglich.
+
+Bei Interesse kann man sich diese zwei Forks anschauen, die man statt des Originals verwenden kann:
+
+- https://github.com/beatkind/watchtower (Docker-Image: [beatkind/watchtower](https://hub.docker.com/r/beatkind/watchtower))
+- https://github.com/nicholas-fedor/watchtower (Docker-Image: [nickfedor/watchtower](https://hub.docker.com/r/nickfedor/watchtower))
+
+Die Forks sind kompatibel zum Original-Watchtower, es genügt also, in der `compose.yaml`-Datei das Image auszutauschen. Die Konfiguration bleibt ansonsten unverändert.
