@@ -5,9 +5,9 @@ sidebar:
   label: Übersicht
 ---
 
-Der **SENEC-Charger** ist ein Steuerungswerkzeug, das einen SENEC-Stromspeicher bei Verwendung eines dynamischen Stromtarifs (von [Tibber](https://tibber.com/de)) aus dem Netz belädt, wenn dies lohnenswert ist.
+Der **SENEC-Charger** steuert einen SENEC-Stromspeicher bei Verwendung eines dynamischen Stromtarifs (von [Tibber](https://tibber.com/de)) und belädt ihn aus dem Netz, wenn dies lohnenswert ist.
 
-Damit der SENEC-Charger funktioniert, werden zwei weitere Container benötigt:
+Damit der SENEC-Charger funktioniert, werden zwei weitere Collector benötigt:
 
 - Der [Tibber-Collector](/referenz/tibber-collector/) sammelt die Strompreise von Tibber und schreibt sie in die InfluxDB.
 - Der [Forecast-Collector](/referenz/forecast-collector/) sammelt die Wettervorhersage und schreibt sie ebenfalls in die InfluxDB.
@@ -16,27 +16,37 @@ Damit der SENEC-Charger funktioniert, werden zwei weitere Container benötigt:
 Da für die Beladung des Speichers ein direkter Zugriff auf den SENEC-Stromspeicher notwendig ist, funktioniert dies leider nicht mit dem SENEC.Home P4 oder neuer. Es wird ausschließlich der SENEC.Home V2.1 und V3 unterstützt.
 :::
 
-## Protokollierung
+## Funktionsweise
 
-Der SENEC-Charger schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
+Der SENEC-Charger liest stündlich die Strompreise und Wettervorhersage aus der InfluxDB und entscheidet auf Basis dieser Daten, ob der Stromspeicher aus dem Netz beladen werden soll. Dabei werden folgende Faktoren berücksichtigt:
 
-```plaintext
-SENEC charger for SOLECTRUS, Version 0.4.5, built at 2024-08-30T10:32:56.142Z
+- Aktueller Ladestand des Stromspeichers
+- Strompreis in den kommenden Stunden
+- Erwartete Solarproduktion basierend auf der Wettervorhersage
+
+## Logging
+
+Der Charger schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
+
+```log
+SENEC charger for SOLECTRUS, Version 0.7.0, built at 2025-09-26T13:44:58.476Z
 https://github.com/solectrus/senec-charger
-Copyright (c) 2023-2024 Georg Ledermann, released under the MIT License
+Copyright (c) 2023-2025 Georg Ledermann, released under the MIT License
 
-Using Ruby 3.3.4 on platform aarch64-linux-musl
-Connecting to SENEC at https://senec
-Connecting to InfluxDB at http://influxdb:8086, bucket solectrus, measurements my-prices and my-forecast
+Using Ruby 3.4.6 on platform aarch64-linux-musl
+Connecting to SENEC at https://192.168.178.29
+Connecting to InfluxDB at http://influxdb:8086, bucket solectrus, measurements prices and forecast
 
-#1 - 2024-10-05 16:48:10 +0200
-Battery not empty, nothing to do
-  Battery charge level: 75.8 %
+#1 - 2025-11-23 07:19:23 +0100
+Grid power not cheap, nothing to do
+Checked prices between Sunday, 07:15 - Monday, 00:45, ⌀ 1.06
+Best 4-hour range: Sunday, 07:15 - Sunday, 09:00, ⌀ 0.75
+Ratio best/average: 70.9 %
 Sleeping for 3600 seconds ...
 ...
 ```
 
-Nützlich ist hier, dass jede Entscheidung, die der SENEC-Charger trifft, protokolliert wird. So kann nachvollzogen werden, warum der Stromspeicher beladen oder nicht beladen wurde.
+Jede Entscheidung wird protokolliert, sodass nachvollzogen werden kann, warum der Stromspeicher beladen oder nicht beladen wurde.
 
 Das Protokoll kann über folgenden Befehl abgerufen werden:
 

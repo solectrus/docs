@@ -21,19 +21,19 @@ Jede einzelne Prüfung finden nach einem festen Ablauf statt, der in folgendem F
 
 ```mermaid
 flowchart
-  BEGIN --> CHA{Findet eine Aufladung statt?}
-  CHA -->|yes| INC{Ladestand erhöht seit letzter Prüfung?}
-  CHA -->|no| EMPTY{Akku leer?}
-  INC -->|yes| END1[END]
-  INC -->|no| STOP[Entladung zulassen!]
-  EMPTY -->|yes| SUN{PV-Ertrag in Kürze?}
-  EMPTY -->|no| END4[END]
-  SUN -->|yes| END3[END]
-  SUN -->|no| CHEAP{Netzstrom günstig?}
-  CHEAP -->|yes| START[Starte Beladung!]
-  CHEAP -->|no| END5[END]
+  BEGINN --> CHA{Findet gerade eine Aufladung statt?}
+  CHA -->|JA| INC{Ladestand erhöht seit letzter Prüfung?}
+  CHA -->|NEIN| EMPTY{Akku leer?}
+  INC -->|JA| END1[ENDE]
+  INC -->|NEIN| STOP[Entladung zulassen!]
+  EMPTY -->|JA| SUN{Wird es nennenswert Sonnenschein geben?}
+  EMPTY -->|NEIN| END4[ENDE]
+  SUN -->|JA| END3[ENDE]
+  SUN -->|NEIN| CHEAP{Netzstrom günstig?}
+  CHEAP -->|JA| START[Starte Beladung!]
+  CHEAP -->|NEIN| END5[ENDE]
 ```
 
 :::note
-Der SENEC-Charger kann auch im "Trockenlauf" betrieben werden, d.h. es wird nur simuliert, ob der Speicher beladen werden würde, also ohne tatsächlich eine Beladung durchzuführen. Mehr dazu in der [Konfiguration](../konfiguration#charger_dry_run) unter `CHARGER_DRY_RUN`.
+Der SENEC-Charger kann auch im Trockenlauf ("dry run") betrieben werden, d.h. es wird nur **simuliert**, ob der Speicher beladen werden würde, also ohne tatsächlich eine Beladung durchzuführen. Mehr dazu in der [Konfiguration](../konfiguration#charger_dry_run) unter `CHARGER_DRY_RUN`.
 :::
