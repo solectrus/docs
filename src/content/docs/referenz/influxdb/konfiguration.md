@@ -47,7 +47,16 @@ services:
 ```
 
 :::note
-Einige Variablen (wie z.B. `DOCKER_INFLUXDB_INIT_USERNAME`) werden anders lautenden Umgebungsvariablen entnommen (wie z.B. `INFLUX_USERNAME`). Dies ermöglicht eine Nutzung von Variablen für verschiedene Container und vermeidet Redundanzen.
+Einige Variablen für den Service werden anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Services und vermeidet Redundanzen.
+
+| Name der Variablen in `.env` | Name der Variablen im Service      |
+| ---------------------------- | ---------------------------------- |
+| `INFLUX_USERNAME`            | `DOCKER_INFLUXDB_INIT_USERNAME`    |
+| `INFLUX_PASSWORD`            | `DOCKER_INFLUXDB_INIT_PASSWORD`    |
+| `INFLUX_ORG`                 | `DOCKER_INFLUXDB_INIT_ORG`         |
+| `INFLUX_BUCKET`              | `DOCKER_INFLUXDB_INIT_BUCKET`      |
+| `INFLUX_ADMIN_TOKEN`         | `DOCKER_INFLUXDB_INIT_ADMIN_TOKEN` |
+
 :::
 
 ## Umgebungsvariablen (`.env`)

@@ -81,7 +81,13 @@ services:
 ```
 
 :::note
-Die Variable `INFLUX_TOKEN` wird anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Container und vermeidet Redundanzen.
+Einige Variablen für den Service werden anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Services und vermeidet Redundanzen.
+
+| Name der Variablen in `.env` | Name der Variablen im Service |
+| ---------------------------- | ----------------------------- |
+| `INFLUX_ADMIN_TOKEN`         | `INFLUX_TOKEN`                |
+| `POSTGRES_PASSWORD`          | `DB_PASSWORD`                 |
+
 :::
 
 ## Umgebungsvariablen (`.env`)

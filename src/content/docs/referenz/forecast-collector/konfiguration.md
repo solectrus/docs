@@ -72,7 +72,13 @@ services:
 ```
 
 :::note
-Die beiden Variablen `INFLUX_TOKEN` und `INFLUX_MEASUREMENT` werden anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Container und vermeidet Redundanzen.
+Einige Variablen für den Service werden anders lautenden Umgebungsvariablen entnommen. Dies ermöglicht eine Nutzung von Variablen für verschiedene Services und vermeidet Redundanzen.
+
+| Name der Variablen in `.env`  | Name der Variablen im Service |
+| ----------------------------- | ----------------------------- |
+| `INFLUX_TOKEN_WRITE`          | `INFLUX_TOKEN`                |
+| `INFLUX_MEASUREMENT_FORECAST` | `INFLUX_MEASUREMENT`          |
+
 :::
 
 ## Umgebungsvariablen
