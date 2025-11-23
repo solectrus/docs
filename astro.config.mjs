@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeRapide from 'starlight-theme-rapide';
 import mermaid from 'astro-mermaid';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    sitemap(),
     mermaid(),
     starlight({
       plugins: [starlightThemeRapide()],
