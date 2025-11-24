@@ -1,7 +1,18 @@
 {
-  "name": "solectrus-docs",
+  "name": "@solectrus/docs",
   "type": "module",
+  "description": "Documentation for SOLECTRUS",
   "version": "0.0.1",
+  "private": true,
+  "author": "Georg Ledermann",
+  "homepage": "https://docs.solectrus.de",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solectrus/docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/solectrus/docs/issues"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
