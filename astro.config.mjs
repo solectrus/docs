@@ -22,7 +22,7 @@ export default defineConfig({
       description: 'Dokumentation für SOLECTRUS',
       logo: {
         light: './public/logo-light.svg',
-        dark: './public/logo.svg',
+        dark: './public/logo-dark.svg',
       },
       defaultLocale: 'root',
       locales: {

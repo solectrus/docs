@@ -1,12 +1,20 @@
 /* Accent color override - blue instead of green */
 :root {
-  --sl-color-accent-low: #e0e7ff;
+  --sl-color-accent-low: #c7d2fe;
   --sl-color-accent: #312e81;
   --sl-color-accent-high: #1e1b4b;
 }
 
-[data-theme='dark'] {
-  --sl-color-accent-low: #1e3a8a;
-  --sl-color-accent: #60a5fa;
-  --sl-color-accent-high: #bfdbfe;
+main img {
+  border-radius: 8px;
+}
+
+html[data-theme='dark'] {
+  --sl-color-accent-low: #312e81;
+  --sl-color-accent: #c7d2fe;
+  --sl-color-accent-high: #c7d2fe;
+
+  main img {
+    filter: brightness(0.8);
+  }
 }
