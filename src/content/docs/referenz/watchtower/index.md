@@ -5,11 +5,22 @@ sidebar:
   label: Übersicht
 ---
 
-**Watchtower** ist ein Tool, das Docker-Container automatisch aktuell hält. Es überprüft regelmäßig, ob für ein verwendetes Docker-Image eine neuere Version verfügbar ist. Falls ja, wird das neue Image heruntergeladen und der zugehörige Container neu gestartet.
+**Watchtower** ist ein Tool, das Docker-Container automatisch aktuell hält.
 
-Die Grundlage für diese Überprüfung ist das Docker-Tag, das in der `compose.yaml`-Datei für die Docker-Services angegeben ist. Wenn z. B. `latest` verwendet wird, bedeutet das, dass die neueste Version des Images genutzt werden soll. Docker selbst überprüft jedoch nicht automatisch, ob ein neues Image verfügbar ist. Ein Image wird nur heruntergeladen, wenn es lokal noch nicht vorhanden ist – oder wenn man explizit `docker compose pull` ausführt.
+## Das Problem
 
-Watchtower schließt diese Lücke, indem es im laufenden Betrieb regelmäßig prüft und Updates vornimmt. Watchtower selbst läuft dabei als Docker-Container und aktualisiert sich auch selbst.
+Docker lädt ein Image nur einmal herunter und verwendet es dann immer wieder. Auch wenn du in deiner `compose.yaml` das Tag `latest` verwendest, prüft Docker **nicht** automatisch, ob eine neuere Version verfügbar ist.
+
+**Beispiel:** Du hast SOLECTRUS mit dem Image `ghcr.io/solectrus/solectrus:latest` installiert. Eine Woche später gibt es eine neue Version mit Bugfixes. Deine laufenden Container verwenden aber weiterhin die alte Version – solange, bis du manuell `docker compose pull` und `docker compose up -d` ausführst.
+
+## Die Lösung
+
+Watchtower übernimmt genau diese Aufgabe automatisch:
+
+- Es prüft regelmäßig (z.B. täglich), ob neue Versionen der verwendeten Docker-Images verfügbar sind
+- Findet es eine neue Version, lädt es das Image herunter, stoppt dann den alten Container und startet ihn mit der neuen Version neu
+
+Watchtower selbst läuft als Docker-Container und aktualisiert sich auch selbst.
 
 ## Website
 
