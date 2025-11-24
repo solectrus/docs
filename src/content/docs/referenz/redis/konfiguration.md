@@ -47,7 +47,7 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 
 ##### Beispiel
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Berlin
 ```
 
@@ -59,6 +59,6 @@ Wenn am angegebenen Pfad bereits eine Datenbank existiert (in Form der Datei `du
 
 ##### Beispiel
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 REDIS_VOLUME_PATH=/somewhere/solectrus/redis
 ```

@@ -67,7 +67,7 @@ Pfad auf dem Host, in dem Ingest seine SQLite-Datenbank ablegt.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INGEST_VOLUME_PATH=./ingest
 ```
 
@@ -79,7 +79,7 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 Standard: `Europe/Berlin`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Rome
 ```
 
@@ -91,7 +91,7 @@ Passwort für den Zugriff auf die Web-Oberfläche
 Wenn nicht gesetzt, ist der Zugriff ohne Passwort möglich.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 STATS_PASSWORD=mysecretpassword
 ```
 
@@ -107,6 +107,6 @@ Ein höherer Wert benötigt mehr RAM, erlaubt aber längere Ausfallzeiten. Das k
 **Verfügbar ab Ingest v0.3.1**
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 RETENTION_HOURS=36
 ```

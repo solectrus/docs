@@ -83,7 +83,7 @@ Bei `false` oder wenn die Variable nicht gesetzt ist, wird ein Messwert von `NUL
 
 Topic wird abonniert, der erhaltene Wert wird unverändert als Fließkommazahl in die InfluxDB geschrieben:
 
-```dotenv
+```properties
 MAPPING_0_TOPIC=senec/0/ENERGY/GUI_INVERTER_POWER
 MAPPING_0_MEASUREMENT=PV
 MAPPING_0_FIELD=inverter_power
@@ -94,7 +94,7 @@ MAPPING_0_TYPE=float
 
 Wenn die Werte des Topics positiv oder negativ sein können, erfolgt hier eine Aufteilung. Positive Werte werden in `grid_import_power` geschrieben, negative Werte in `grid_export_power`.
 
-```dotenv
+```properties
 MAPPING_1_TOPIC=senec/0/ENERGY/GUI_GRID_POW
 MAPPING_1_MEASUREMENT_POSITIVE=PV
 MAPPING_1_MEASUREMENT_NEGATIVE=PV
@@ -111,7 +111,7 @@ MAPPING_1_TYPE=float
 
 Verwendung von `JSON_KEY`:
 
-```dotenv
+```properties
 MAPPING_2_TOPIC=my/little/nuclear/plant
 MAPPING_2_JSON_KEY=radiation_level
 MAPPING_2_MEASUREMENT=nuclear_power_plant
@@ -125,7 +125,7 @@ Aus einem JSON von beispielsweise `{"radiation_level": 90.5, "reactivity": 0.7}`
 
 Verwendung von `JSON_PATH`:
 
-```dotenv
+```properties
 MAPPING_3_TOPIC=go-e/ATTR
 MAPPING_3_JSON_PATH=$.ccp[2]
 MAPPING_3_MEASUREMENT=WALLBOX
@@ -144,7 +144,7 @@ Es gibt zwei Möglichkeiten, eine Formel zu verwenden:
 
 #### a) Bei JSON-Payload
 
-```dotenv
+```properties
 MAPPING_4_TOPIC=my/little/nuclear/plant
 MAPPING_4_JSON_FORMULA="round({reactivity} * {radiation_level}) + 42"
 MAPPING_4_MEASUREMENT=nuclear_power_plant
@@ -156,7 +156,7 @@ Aus einem JSON von z.B. `{"radiation_level": 90.5, "reactivity": 0.7}` entsteht 
 
 #### b) Bei String-Payload (ab Version 0.5.0)
 
-```dotenv
+```properties
 MAPPING_4_TOPIC=my/little/nuclear/plant/powerInKwH
 MAPPING_4_FORMULA="round({value} * 1000)"
 MAPPING_4_MEASUREMENT=nuclear_power_plant
@@ -170,7 +170,7 @@ Aus einem Payload von z.B. `42.5` entsteht `power` mit `round(42.5 * 1000)`, als
 
 ### 6. Mapping mit Grenzwerten
 
-```dotenv
+```properties
 MAPPING_0_TOPIC=senec/0/ENERGY/GUI_INVERTER_POWER
 MAPPING_0_MEASUREMENT=PV
 MAPPING_0_FIELD=inverter_power

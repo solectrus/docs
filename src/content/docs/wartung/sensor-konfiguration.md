@@ -54,7 +54,7 @@ Zukünftige Versionen werden sicherlich weitere Sensoren einführen.
 
 In der `.env`-Datei werden die Sensoren definiert. Ein Beispiel:
 
-```dotenv
+```properties
 INFLUX_SENSOR_BATTERY_CHARGING_POWER=SENEC:bat_power_plus
 ```
 
@@ -101,7 +101,7 @@ Es ist dann folgendes zu tun:
 
 ### .env
 
-```dotenv
+```properties
 # ...
 INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
 ```
@@ -146,7 +146,7 @@ Es muss also wie folgt aussehen:
 
 ### .env
 
-```dotenv
+```properties
 # ...
 MAPPING_3_TOPIC=PV/SignedBat
 MAPPING_3_FIELD_POSITIVE=bat_power_minus

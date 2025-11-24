@@ -65,7 +65,7 @@ Einige Variablen für den Service werden anders lautenden Umgebungsvariablen ent
 
 Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Berlin
 ```
 
@@ -73,7 +73,7 @@ TZ=Europe/Berlin
 
 Organisation, mit der die Benutzer und Daten in InfluxDB gruppiert werden. Für die Nutzung von SOLECTRUS ist die Organisation sinnvollerweise `solectrus` zu nennen, weitere Organisationen werden nicht benötigt.
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DOCKER_INFLUXDB_INIT_ORG=solectrus
 ```
 
@@ -86,7 +86,7 @@ Diese Variable wirkt sich nur auf den ersten Start von InfluxDB aus, wenn noch k
 Gewünschter Benutzername für den Administrator-Zugriff (per Login) auf InfluxDB.
 Der Administrator wird beim ersten Start von InfluxDB angelegt.
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DOCKER_INFLUXDB_INIT_USERNAME=admin
 ```
 
@@ -99,7 +99,7 @@ Diese Variable wirkt sich nur auf den ersten Start von InfluxDB aus, wenn noch k
 Gewünschtes Passwort für den Administrator-Zugriff (per Login) auf InfluxDB.
 Der Administrator wird beim ersten Start von InfluxDB angelegt.
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DOCKER_INFLUXDB_INIT_PASSWORD=ExAmPl3PA55W0rD
 ```
 
@@ -112,7 +112,7 @@ Diese Variable wirkt sich nur auf den ersten Start von InfluxDB aus, wenn noch k
 Token für den Administrator-Zugriff auf InfluxDB, das für die Authentifizierung (per API) verwendet wird und Zugriff auf alles gewährt.
 Das Token wird beim ersten Start von InfluxDB angelegt.
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-admin-token
 ```
 
@@ -124,7 +124,7 @@ Diese Variable wirkt sich nur auf den ersten Start von InfluxDB aus, wenn noch k
 
 Anzulegender Bucket für die Aufnahme der Messwerte. Das ist die Datenbank, in der die Messwerte gespeichert werden. Der Bucket wird beim ersten Start von InfluxDB angelegt. SOLECTRUS verwendet nur einen Bucket, dieser wird daher sinnvollerweise `solectrus` benannt.
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DOCKER_INFLUXDB_INIT_BUCKET=solectrus
 ```
 
@@ -138,6 +138,6 @@ Pfad, in dem die Datenbank gespeichert wird. Dieser Pfad wird als Volume in den 
 
 Wenn am angegebenen Pfad bereits eine Datenbank existiert, wird diese verwendet. Andernfalls wird eine neue Datenbank angelegt. Dies ist normalerweise nur beim ersten Start des Containers der Fall.
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_VOLUME_PATH=/somewhere/solectrus/influxdb
 ```

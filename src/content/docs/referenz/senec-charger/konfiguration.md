@@ -68,7 +68,7 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 Standard: `Europe/Berlin`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Rome
 ```
 
@@ -80,7 +80,7 @@ Hostname des SENEC-Stromspeichers. Dies ist üblicherweise eine IP-Adresse, kann
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_HOST=192.168.1.42
 ```
 
@@ -94,7 +94,7 @@ Standard: `https`
 Erlaubte Werte: `http`, `https`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_SCHEMA=http
 ```
 
@@ -106,7 +106,7 @@ Intervall, in dem der Charger die Strompreise prüft und Ladeentscheidungen trif
 Standard: `3600` (= 1 Stunde)
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 CHARGER_INTERVAL=1800
 ```
 
@@ -120,7 +120,7 @@ Standard: `70`
 Beim Wert von `70` wird geladen, wenn der Preis 70% oder weniger des 24-Stunden-Durchschnitts beträgt.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 CHARGER_PRICE_MAX=60
 ```
 
@@ -134,7 +134,7 @@ Für diese Zeitspanne wird der erwartete Preis berechnet und mit den Preisen dan
 Standard: `4`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 CHARGER_PRICE_TIME_RANGE=3
 ```
 
@@ -148,7 +148,7 @@ Standard: `20`
 Wenn die Prognose einen PV-Ertrag von mehr als diesem Wert vorhersagt, wird der Speicher **nicht** aus dem Netz geladen, da genug Solarstrom erwartet wird.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 CHARGER_FORECAST_THRESHOLD=25
 ```
 
@@ -162,7 +162,7 @@ Standard: `false`
 Erlaubte Werte: `true`, `false`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 CHARGER_DRY_RUN=true
 ```
 
@@ -174,7 +174,7 @@ Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-N
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_HOST=influxdb
 ```
 
@@ -186,7 +186,7 @@ Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, 
 Standard: `http`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_SCHEMA=https
 ```
 
@@ -198,7 +198,7 @@ Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen, per TLS abg
 Standard: `8086`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_PORT=443
 ```
 
@@ -212,7 +212,7 @@ Das Token kann manuell in InfluxDB erstellt werden, alternativ kann aber auch da
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_TOKEN=my-super-secret-admin-token
 ```
 
@@ -224,7 +224,7 @@ Organisation in InfluxDB, aus der die Messwerte gelesen werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_ORG=solectrus
 ```
 
@@ -236,7 +236,7 @@ Bucket in InfluxDB, aus dem die Messwerte gelesen werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_BUCKET=solectrus
 ```
 
@@ -250,7 +250,7 @@ Muss zwingend gesetzt werden
 Üblicherweise ist das das Measurement, in das der [Tibber-Collector](/referenz/tibber-collector) die Preise schreibt.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_MEASUREMENT_PRICES=prices
 ```
 
@@ -264,6 +264,6 @@ Muss zwingend gesetzt werden
 Üblicherweise ist das das Measurement, in das der [Forecast-Collector](/referenz/forecast-collector) die PV-Prognose schreibt.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_MEASUREMENT_FORECAST=forecast
 ```

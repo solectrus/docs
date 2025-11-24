@@ -82,7 +82,7 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 Standard: `Europe/Berlin`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Rome
 ```
 
@@ -98,6 +98,6 @@ Standard: leer (d.h. alle Messwerte werden gesendet)
 Wirkt sich nur aus, wenn SENEC-Daten importiert werden.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_IGNORE=wallbox_charge_power,grid_power_minus
 ```

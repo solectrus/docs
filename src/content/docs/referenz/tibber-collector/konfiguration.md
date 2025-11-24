@@ -63,7 +63,7 @@ _Access Token_ von Tibber, erforderlich für den Zugriff auf die Tibber-API. Die
 Muss zwingend gesetzt werden. Erfordert einen Account und einen aktiven Vertrag bei Tibber.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TIBBER_TOKEN=3A77EECF61BD445F47241A5A36202185C35AF3AF58609E19B53F3A8872AD7BE1-1
 ```
 
@@ -77,7 +77,7 @@ Standard: `3600` (= 1 Stunde)
 Es ist nicht empfehlenswert, dieses Intervall zu verkürzen, da Tibber die Preise nur einmal täglich aktualisiert. Ein kürzeres Intervall würde lediglich zu unnötigen API-Anfragen führen.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TIBBER_INTERVAL=7200
 ```
 
@@ -89,7 +89,7 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 Standard: `Europe/Berlin`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Rome
 ```
 
@@ -101,7 +101,7 @@ Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-N
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_HOST=influxdb
 ```
 
@@ -113,7 +113,7 @@ Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, 
 Standard: `http`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_SCHEMA=https
 ```
 
@@ -125,7 +125,7 @@ Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen, per TLS abg
 Standard: `8086`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_PORT=443
 ```
 
@@ -139,7 +139,7 @@ Das Token kann manuell in InfluxDB erstellt werden, alternativ kann aber auch da
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_TOKEN=my-super-secret-admin-token
 ```
 
@@ -151,7 +151,7 @@ Organisation in InfluxDB, in der die Messwerte gespeichert werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_ORG=solectrus
 ```
 
@@ -163,7 +163,7 @@ Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_BUCKET=solectrus
 ```
 
@@ -175,6 +175,6 @@ Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_MEASUREMENT=prices
 ```

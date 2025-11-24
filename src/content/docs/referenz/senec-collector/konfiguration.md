@@ -71,7 +71,7 @@ Standard: `local`
 Mögliche Werte: `local`, `cloud`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_ADAPTER=cloud
 ```
 
@@ -83,7 +83,7 @@ Hostname des SENEC Stromspeichers. Dies ist üblicherweise eine IP-Adresse, kann
 Für den lokalen Zugriff zwingend benötigt.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_HOST=192.168.178.29
 ```
 
@@ -99,7 +99,7 @@ Mögliche Werte: `http`, `https`
 Wird nur verwendet, wenn `SENEC_ADAPTER=local`.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_SCHEMA=http
 ```
 
@@ -115,7 +115,7 @@ Mögliche Werte: `de` (Deutsch), `en` (Englisch), `it` (Italienisch)
 Wird nur verwendet, wenn `SENEC_ADAPTER=local`.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_LANGUAGE=de
 ```
 
@@ -127,7 +127,7 @@ E-Mail-Adresse für die Anmeldung bei `mein-senec.de`.
 Für den Cloud-Zugriff zwingend benötigt.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_USERNAME=mail@example.com
 ```
 
@@ -139,7 +139,7 @@ Passwort für die Anmeldung bei `mein-senec.de`.
 Für den Cloud-Zugriff zwingend benötigt.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_PASSWORD=my-secret-password
 ```
 
@@ -153,7 +153,7 @@ Hat man den initialen QR-Code von SENEC vorliegen oder verwendet den Google Auth
 Wird nur bei Cloud-Zugriff verwendet und auch nur, wenn MFA aktiviert ist.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_TOTP_URI="otpauth://totp/SENEC:mail%40example.com?secret=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&digits=6&algorithm=SHA1&issuer=SENEC&period=30"
 ```
 
@@ -167,7 +167,7 @@ Um eine andere als die erste ID zu verwenden, sollte die Angabe zunächst leer b
 Wird nur bei Cloud-Zugriff verwendet.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_SYSTEM_ID=12345
 ```
 
@@ -181,7 +181,7 @@ Standard bei `SENEC_ADAPTER=cloud`: `60` Sekunden (Minimum: 60)
 Standard bei `SENEC_ADAPTER=local`: `5` Sekunden (Minimum: 5)
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_INTERVAL=10
 ```
 
@@ -195,7 +195,7 @@ Komma-getrennte Liste von Feldern, keine Leerzeichen.
 Standard: leer (d.h. alle Messwerte werden gesendet)
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SENEC_IGNORE=wallbox_charge_power,grid_power_minus
 ```
 
@@ -207,7 +207,7 @@ Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-N
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_HOST=influxdb
 ```
 
@@ -219,7 +219,7 @@ Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, 
 Standard: `http`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_SCHEMA=https
 ```
 
@@ -231,7 +231,7 @@ Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen, per TLS abg
 Standard: `8086`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_PORT=443
 ```
 
@@ -245,7 +245,7 @@ Das Token kann manuell in InfluxDB erstellt werden, alternativ kann aber auch da
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_TOKEN=my-super-secret-admin-token
 ```
 
@@ -257,7 +257,7 @@ Organisation in InfluxDB, in der die Messwerte gespeichert werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_ORG=solectrus
 ```
 
@@ -269,7 +269,7 @@ Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_BUCKET=solectrus
 ```
 
@@ -281,7 +281,7 @@ Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 Standard: `SENEC`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_MEASUREMENT=power_storage
 ```
 
@@ -293,6 +293,6 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 Standard: `Europe/Berlin`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Rome
 ```

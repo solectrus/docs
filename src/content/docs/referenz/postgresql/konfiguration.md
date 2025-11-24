@@ -49,7 +49,7 @@ Es gibt normalerweise keine Notwendigkeit, von außen direkt auf die Datenbank z
 
 Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Berlin
 ```
 
@@ -59,7 +59,7 @@ Passwort für den internen Benutzer `postgres`. Da die Datenbank nicht von auße
 
 **Bitte beachten:** Dieses Passwort darf nach dem ersten Start von PostgreSQL nicht mehr geändert werden, da es in der Datenbank selbst gespeichert wird.
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 POSTGRES_PASSWORD=my-secret-db-password
 ```
 
@@ -69,6 +69,6 @@ Pfad, in dem die Datenbank gespeichert wird. Dieser Pfad wird als Volume in den 
 
 Wenn am angegebenen Pfad bereits eine Datenbank existiert, wird diese verwendet. Andernfalls wird eine neue Datenbank angelegt, was üblicherweise nur beim ersten Start des Containers der Fall ist.
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DB_VOLUME_PATH=/somewhere/solectrus/postgresql
 ```

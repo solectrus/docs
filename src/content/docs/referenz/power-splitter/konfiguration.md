@@ -103,7 +103,7 @@ Ein niedriger Wert führt zu einer etwas höheren Auslastung des Systems, die St
 
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 POWER_SPLITTER_INTERVAL=300
 ```
 
@@ -115,7 +115,7 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 Standard: `Europe/Berlin`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Rome
 ```
 
@@ -127,7 +127,7 @@ Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-N
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_HOST=influxdb
 ```
 
@@ -139,7 +139,7 @@ Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, 
 Standard: `http`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_SCHEMA=https
 ```
 
@@ -151,7 +151,7 @@ Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen, per TLS abg
 Standard: `8086`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_PORT=443
 ```
 
@@ -165,7 +165,7 @@ Das Token kann manuell in InfluxDB erstellt werden, alternativ kann aber auch da
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_TOKEN=my-super-secret-admin-token
 ```
 
@@ -177,7 +177,7 @@ Organisation in InfluxDB, in der die Messwerte gespeichert werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_ORG=solectrus
 ```
 
@@ -189,7 +189,7 @@ Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_BUCKET=solectrus
 ```
 
@@ -201,7 +201,7 @@ URL für den Redis-Cache. Wird benötigt, um nach dem ersten Durchlauf (oder ein
 Wenn nicht gesetzt, kann der Redis-Cache bei Bedarf nicht geleert werden und im Log erscheint eine Warnung. Man muss den Cache dann manuell leeren, z.B. mit dem Befehl `docker compose exec redis redis-cli FLUSHALL`.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 REDIS_URL=redis://redis:6379/1
 ```
 
@@ -215,7 +215,7 @@ Wenn nicht gesetzt, kann können die Tageszusammenfassungen bei Bedarf nicht gel
 Gilt in Verbindung mit den Variablen `DB_USER` und `DB_PASSWORD`.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DB_HOST=postgresql
 ```
 
@@ -229,7 +229,7 @@ Wenn nicht gesetzt, kann können die Tageszusammenfassungen nicht gelöscht werd
 Gilt in Verbindung mit den Variablen `DB_HOST` und `DB_PASSWORD`.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DB_USER=postgres
 ```
 
@@ -243,7 +243,7 @@ Wenn nicht gesetzt, kann können die Tageszusammenfassungen nicht gelöscht werd
 Gilt in Verbindung mit den Variablen `DB_HOST` und `DB_USER`.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 DB_PASSWORD=ExAmPl3PA55W0rD
 ```
 
@@ -255,7 +255,7 @@ Datum der Installation von SOLECTRUS. Wird benötigt, um bei einer Neuberechnung
 Wenn nicht gesetzt, sucht der Power-Splitter nach dem ältesten Tag, für den Messwerte vorliegen, und beginnt dort mit der Neuberechnung. Das kann in manchen Fällen zu einem sehr frühen Datum führen, was die Neuberechnung unnötig verlängert.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INSTALLATION_DATE=2020-11-27
 ```
 

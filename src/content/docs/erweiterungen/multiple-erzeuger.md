@@ -45,7 +45,7 @@ Man gibt nur die Gesamterzeugung an. Die einzelnen Teile bleiben hingegen leer. 
 
 Beispiel:
 
-```dotenv
+```properties
 INFLUX_SENSOR_INVERTER_POWER=my-pv:inverter_power
 INFLUX_SENSOR_INVERTER_POWER_1=
 INFLUX_SENSOR_INVERTER_POWER_2=
@@ -60,7 +60,7 @@ Man gibt einen Sensor für jede Fläche an. Falls man die Erzeugung der einzelne
 
 Beispiel:
 
-```dotenv
+```properties
 INFLUX_SENSOR_INVERTER_POWER=my-pv:inverter_power
 INFLUX_SENSOR_INVERTER_POWER_1=my-pv:east
 INFLUX_SENSOR_INVERTER_POWER_2=my-pv:west
@@ -71,7 +71,7 @@ INFLUX_SENSOR_INVERTER_POWER_5=
 
 Weiteres Beispiel bei Verwendung eines SENEC-Stromspeichers:
 
-```dotenv
+```properties
 INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
 INFLUX_SENSOR_INVERTER_POWER_1=SENEC:mpp1_power
 INFLUX_SENSOR_INVERTER_POWER_2=SENEC:mpp2_power
@@ -86,7 +86,7 @@ Man definiert das Dach sowie das BKW als einzelne Sensoren. Die Summe gibt man N
 
 Beispiel:
 
-```dotenv
+```properties
 INFLUX_SENSOR_INVERTER_POWER=
 INFLUX_SENSOR_INVERTER_POWER_1=my-pv:inverter_power
 INFLUX_SENSOR_INVERTER_POWER_2=balcony:inverter_power
@@ -101,7 +101,7 @@ Auch hier wird man höchstwahrscheinlich nicht die Gesamtsumme verfügbar habe, 
 
 Beispiel:
 
-```dotenv
+```properties
 INFLUX_SENSOR_INVERTER_POWER=
 INFLUX_SENSOR_INVERTER_POWER_1=my-pv:east
 INFLUX_SENSOR_INVERTER_POWER_2=my-pv:west

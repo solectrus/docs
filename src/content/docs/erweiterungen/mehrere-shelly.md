@@ -94,7 +94,7 @@ services:
 
 ## .env (Auszug)
 
-```dotenv
+```properties
 # Zugriff auf die Shelly-Geräte
 SHELLY_HOST_HEATPUMP=192.168.178.5
 SHELLY_HOST_FRIDGE=192.168.178.6

@@ -70,7 +70,7 @@ Hostname des Shelly. Dies ist üblicherweise eine IP-Adresse, kann aber auch ein
 Für den lokalen Zugriff auf das Gerät zwingend benötigt. Kann leer bleiben, wenn der Zugriff über die Shelly-Cloud erfolgt, also `SHELLY_CLOUD_SERVER` gesetzt sind.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SHELLY_HOST=192.168.178.5
 ```
 
@@ -82,7 +82,7 @@ Optionales Passwort des Shelly. Dieses wird nur benötigt, wenn der Zugriff auf 
 Wird nur bei lokalem Zugriff verwendet, wenn das Gerät passwortgeschützt ist.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SHELLY_PASSWORD=my-shelly-password
 ```
 
@@ -99,7 +99,7 @@ Der Shelly muss in der Shelly-Cloud registriert sein und die Datenübermittlung 
 Für den Zugriff über die Shelly-Cloud zwingend benötigt. Muss leer bleiben, wenn der lokale Zugriff auf das Gerät erfolgen soll. Dann muss stattdessen `SHELLY_HOST` gesetzt werden.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SHELLY_CLOUD_SERVER=https://shelly-42-eu.shelly.cloud
 ```
 
@@ -114,7 +114,7 @@ Welcher Schlüssel hier einzutragen ist, lässt sich in der Shelly-Cloud unter f
 Für den Zugriff über die Shelly-Cloud zwingend benötigt, für lokalen Zugriff nicht benötigt.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SHELLY_AUTH_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
 ```
 
@@ -128,7 +128,7 @@ Welche ID hier einzutragen ist, lässt sich in der Shelly-Cloud beim jeweiligen 
 Für den Zugriff über die Shelly-Cloud zwingend benötigt, für lokalen Zugriff nicht benötigt.
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SHELLY_DEVICE_ID=12345abcdef0
 ```
 
@@ -140,7 +140,7 @@ Häufigkeit der Abfrage des aktuellen Messwertes (in Sekunden). Es empfiehlt sic
 Standard: `5`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SHELLY_INTERVAL=10
 ```
 
@@ -154,7 +154,7 @@ Standard: `false`
 Mögliche Werte: `true`, `false`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 SHELLY_INVERT_POWER=true
 ```
 
@@ -166,7 +166,7 @@ Hostname des InfluxDB-Servers. Im Normalfall, wenn InfluxDB im gleichen Docker-N
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_HOST=influxdb
 ```
 
@@ -178,7 +178,7 @@ Schema für die Verbindung zu InfluxDB. Bei Verwendung einer externen InfluxDB, 
 Standard: `http`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_SCHEMA=https
 ```
 
@@ -190,7 +190,7 @@ Port für die Verbindung zu InfluxDB. Bei Verwendung einer externen, per TLS abg
 Standard: `8086`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_PORT=443
 ```
 
@@ -204,7 +204,7 @@ Das Token kann manuell in InfluxDB erstellt werden, alternativ kann aber auch da
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_TOKEN=my-super-secret-admin-token
 ```
 
@@ -216,7 +216,7 @@ Organisation in InfluxDB, in der die Messwerte gespeichert werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_ORG=solectrus
 ```
 
@@ -228,7 +228,7 @@ Bucket in InfluxDB, in der die Messwerte gespeichert werden sollen.
 Muss zwingend gesetzt werden
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_BUCKET=solectrus
 ```
 
@@ -240,7 +240,7 @@ Name des Measurements in InfluxDB, das die Messwerte aufnehmen soll.
 Standard: `Consumer`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_MEASUREMENT=Heatpump
 ```
 
@@ -260,7 +260,7 @@ Standard: `default`
 Mögliche Werte: `default`, `essential`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_MODE=essential
 ```
 
@@ -274,7 +274,7 @@ Standard: `Float`
 Mögliche Werte: `Float`, `Integer`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 INFLUX_POWER_DATA_TYPE=Integer
 ```
 
@@ -286,6 +286,6 @@ Zeitzone gemäß [Liste](https://en.wikipedia.org/wiki/List_of_tz_database_time_
 Standard: `Europe/Berlin`
 :::
 
-```dotenv title="Beispiel"
+```properties title="Beispiel"
 TZ=Europe/Berlin
 ```
