@@ -44,7 +44,7 @@ docker compose logs redis
 
 Dass es hier Probleme geben könnte, ist sehr unwahrscheinlich. Dennoch sollte im Zweifelsfall das Protokoll geprüft werden.
 
-## Offizielles Docker-Image
+## Docker-Image
 
 Das offizielle Docker-Image von Redis ist auf Docker Hub verfügbar: \
 [https://hub.docker.com/\_/redis](https://hub.docker.com/_/redis)

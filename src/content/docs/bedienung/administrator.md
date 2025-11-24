@@ -21,7 +21,7 @@ Wie man hier sehen kann, ist es wirklich nur ein Passwort. Aus Gründen der Einf
 
 Diese Funktion ist besonders nützlich, wenn eine Installation von SOLECTRUS von mehreren Benutzern genutzt wird, insbesondere wenn sie über das Internet zugänglich ist. Es wird dadurch sichergestellt, dass nur berechtigte Personen Zugriff auf die Einstellungen haben.
 
-### Festlegen und Ändern des Passwortes
+## Passwort festlegen
 
 Das Passwort für den Administrator-Zugang wird während der Installation von SOLECTRUS festgelegt und befindet sich in der `.env`-Datei:
 

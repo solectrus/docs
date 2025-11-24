@@ -33,7 +33,7 @@ Dass es hier Probleme gibt, ist recht unwahrscheinlich. Dennoch sollte im Zweife
 
 Für die [Sicherung und -wiederherstellung von SOLECTRUS](/wartung/datensicherung) stehen einfach zu bedienende Scripte bereit, die auch PostgreSQL berücksichtigen.
 
-## Offizielles Docker-Image
+## Docker-Image
 
 Das offizielle Docker-Image von PostgreSQL ist auf Docker Hub verfügbar: \
 [https://hub.docker.com/\_/postgres](https://hub.docker.com/_/postgres)
