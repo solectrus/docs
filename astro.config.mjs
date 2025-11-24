@@ -38,9 +38,6 @@ export default defineConfig({
           href: 'https://github.com/solectrus/docs',
         },
       ],
-      editLink: {
-        baseUrl: 'https://github.com/solectrus/docs/tree/main/',
-      },
       sidebar: [
         {
           label: 'Installation',
