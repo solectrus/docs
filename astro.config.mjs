@@ -43,9 +43,6 @@ export default defineConfig({
       },
       sidebar: [
         {
-          slug: 'index',
-        },
-        {
           label: 'Installation',
           collapsed: true,
           autogenerate: { directory: 'installation' },
