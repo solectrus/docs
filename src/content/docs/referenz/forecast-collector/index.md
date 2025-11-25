@@ -5,7 +5,7 @@ sidebar:
   label: Übersicht
 ---
 
-Der **Forecast-Collector** ermittelt den erwarteten Photovoltaik-Ertrag einer PV-Anlage über die Anbieter [forecast.solar](https://forecast.solar) oder [solcast.com](https://solcast.com) und schreibt diesen in die InfluxDB.
+Der **Forecast-Collector** ermittelt den erwarteten Photovoltaik-Ertrag einer PV-Anlage über die Anbieter [Forecast.Solar](https://forecast.solar) oder [solcast.com](https://solcast.com) und schreibt diesen in die InfluxDB.
 
 Die Ermittlung des Ertrags erfolgt auf Basis von Wetterdaten und der Anlagenkonfiguration. Folgende Parameter sind erforderlich:
 
@@ -14,31 +14,35 @@ Die Ermittlung des Ertrags erfolgt auf Basis von Wetterdaten und der Anlagenkonf
 
 Die beiden Anbieter arbeiten mit unterschiedlichen Modellen zur Prognose des Ertrags, die sich in der Genauigkeit der Vorhersage unterscheiden.
 
-Zur Nutzung ist bei `solcast.com` eine (kostenfreie) Registrierung erforderlich, die Daten der Anlagen werden dann dort hinterlegt. Bei `forecast.solar` ist keine Registrierung erforderlich, die Daten werden direkt im Collector konfiguriert. Beide Anbieter bieten auch eine kostenpflichtige Variante an.
+Zur Nutzung ist bei `solcast.com` eine (kostenfreie) Registrierung erforderlich, die Daten der Anlagen werden dann dort hinterlegt. Bei `Forecast.Solar` ist keine Registrierung erforderlich, die Daten werden direkt im Collector konfiguriert. Beide Anbieter bieten auch eine kostenpflichtige Variante an.
 
-## Ermittelte Werte
+## Erfasste Messwerte
 
-Der Collector schreibt die folgenden Werte als _Field_ in das angegebene _Measurement_ der InfluxDB:
+Der Collector schreibt die folgenden Messwerte als _Field_ in das angegebene _Measurement_ der InfluxDB:
 
-- `watt`: Erwarteter Ertrag, in Watt
+| Field  | Beschreibung            |
+| :----- | :---------------------- |
+| `watt` | Erwarteter Ertrag, in W |
 
-## Protokollierung
+## Logging
 
 Der Collector schreibt ein Protokoll ins Docker-Log, das im Normalfall so aussieht:
 
 ```log
-Forecast collector for SOLECTRUS, Version 0.5.3, built at 2024-08-30T23:27:59.224Z
+Forecast collector for SOLECTRUS, Version 0.6.0, built at 2025-07-31T13:30:06.300Z
 https://github.com/solectrus/forecast-collector
-Copyright (c) 2020-2024 Georg Ledermann, released under the MIT License
+Copyright (c) 2020-2025 Georg Ledermann, released under the MIT License
 
-Using Ruby 3.3.5 on platform x86_64-linux-musl
-Pulling from api.solcast.com.au every 1800 seconds
-Pushing to InfluxDB at http://influxdb:8086, bucket SENEC, measurement Forecast
+Using Ruby 3.4.5 on platform aarch64-linux-musl
+Pulling from api.forecast.solar every 3000 seconds
+Pushing to InfluxDB at http://influxdb:8086, bucket solectrus, measurement forecast
 
-#1 Fetching forecast at 2024-10-02T06:53:49+02:00
-  0: https://api.solcast.com.au/rooftop_sites/1234-4567-89012-3456/forecasts?format=json&api_key=xxxx ... OK
+Wait until InfluxDB is ready ... OK
+
+#1 Fetching forecast at 2025-11-25T18:48:02+01:00
+  0: https://api.forecast.solar/estimate/50.12345/6.12345/28/29/9.24?damping=0,0&time=seconds ... OK
   Pushing forecast to InfluxDB ... OK
-  Sleeping for 1800 seconds (until 2024-10-02 07:23:51 +0200) ...
+  Sleeping for 3000 seconds (until 2025-11-25 19:38:03 +0100) ...
 ...
 ```
 
@@ -48,7 +52,7 @@ Das Protokoll kann über folgenden Befehl abgerufen werden:
 docker compose logs forecast-collector
 ```
 
-Bei Problemen oder Fehlern (z.B. wenn der Anbieter erreichbar ist oder der API-Key nicht akzeptiert wird) wird dies ebenfalls protokolliert. Es empfiehlt sich daher, im Zweifelsfall zuerst das Protokoll zu prüfen.
+Bei Problemen oder Fehlern (z.B. wenn der Anbieter nicht erreichbar ist oder der API-Key nicht akzeptiert wird) wird dies ebenfalls protokolliert. Es empfiehlt sich daher, im Zweifelsfall zuerst das Protokoll zu prüfen.
 
 ## Quelltext
 
