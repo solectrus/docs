@@ -47,6 +47,13 @@ services:
       - SOLCAST_SITE
       - SOLCAST_0_SITE
       - SOLCAST_1_SITE
+      - PVNODE_APIKEY
+      - PVNODE_PAID
+      - PVNODE_EXTRA_PARAMS
+      - PVNODE_0_EXTRA_PARAMS
+      - PVNODE_1_EXTRA_PARAMS
+      - PVNODE_2_EXTRA_PARAMS
+      - PVNODE_3_EXTRA_PARAMS
       - INFLUX_HOST
       - INFLUX_PORT
       - INFLUX_SCHEMA
@@ -89,11 +96,11 @@ Anbieter für die Ertragsprognose.
 :::note[Pflicht]
 Muss zwingend gesetzt werden
 
-Mögliche Werte: `forecast.solar`, `solcast`
+Mögliche Werte: `forecast.solar`, `solcast`, `pvnode`
 :::
 
 ```properties title="Beispiel"
-FORECAST_PROVIDER=forecast.solar
+FORECAST_PROVIDER=pvnode
 ```
 
 #### TZ
