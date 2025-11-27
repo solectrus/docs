@@ -6,6 +6,19 @@ import PlausibleAnalytics from './PlausibleAnalytics.astro';
 <StarlightHead><slot /></StarlightHead>
 <PlausibleAnalytics />
 
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon-light.svg"
+  media="(prefers-color-scheme: light)"
+/>
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon-dark.svg"
+  media="(prefers-color-scheme: dark)"
+/>
+
 <script is:inline>
   // Redirect legacy .html URLs to clean URLs
   // This handles old bookmarks/links that include .html extension
