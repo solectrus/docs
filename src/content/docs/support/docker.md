@@ -37,7 +37,7 @@ docker compose up -d
 
 Docker erkennt hierbei automatisch, welche Container betroffen sind und startet nur diese neu.
 
-# Protokoll der Docker-Container
+## Protokoll der Docker-Container
 
 Jeder Docker-Container erstellt ein Protokoll (Log) über seine Aktivitäten, das bei der Fehlersuche äußerst hilfreich ist. Wenn es Schwierigkeiten mit SOLECTRUS gibt, hilft ein ein Blick in die Logs meist weiter.
 
