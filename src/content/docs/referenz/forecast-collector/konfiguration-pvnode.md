@@ -135,16 +135,11 @@ FORECAST_KWP=9.24
 
 Zusätzliche Query-Parameter für die pvnode-API. Diese werden an alle Dachflächen-Abfragen angehängt.
 
-Weitere Informationen zu den verfügbaren Parametern finden sich in der pvnode-Dokumentation: \
-https://www.pvnode.com/docs/de/forecast#optional-parameters
-
 :::note[Optional]
 Format: `key1=value1&key2=value2` (ohne führendes `?` oder `&`)
 
-Unterstützte Parameter (siehe [pvnode-Dokumentation](https://pvnode.com/docs/)):
-
-- `diffuse_radiation_model` - Modell für diffuse Strahlung (z.B. `perez`)
-- `snow_slide_coefficient` - Schneerutsch-Koeffizient (0.0 - 0.8)
+Informationen zu den verfügbaren Parametern finden sich in der pvnode-Dokumentation: \
+https://www.pvnode.com/docs/de/forecast#optional-parameters
 
 :::
 
