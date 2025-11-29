@@ -9,7 +9,68 @@ Diese Seite beschreibt die spezifischen Umgebungsvariablen für den Anbieter [pv
 
 Zusätzlich zu den hier beschriebenen Variablen müssen die [allgemeinen Einstellungen](/referenz/forecast-collector/allgemeine-konfiguration/) konfiguriert werden.
 
-## Zugangsdaten
+## Vollständiges Beispiel
+
+```properties title=".env"
+# Anbieter
+FORECAST_PROVIDER=pvnode
+
+# Zeitzone
+TZ=Europe/Berlin
+
+# Standort
+FORECAST_LATITUDE=50.12345
+FORECAST_LONGITUDE=6.12345
+
+# Anzahl der Dachflächen
+FORECAST_CONFIGURATIONS=2
+
+# Erste Dachfläche
+FORECAST_0_DECLINATION=30
+FORECAST_0_AZIMUTH=180
+FORECAST_0_KWP=5.5
+
+# Zweite Dachfläche
+FORECAST_1_DECLINATION=30
+FORECAST_1_AZIMUTH=270
+FORECAST_1_KWP=3.9
+
+# Dritte Dachfläche
+# FORECAST_2_DECLINATION=25
+# FORECAST_2_AZIMUTH=200
+# FORECAST_2_KWP=4.2
+
+# Vierte Dachfläche
+# FORECAST_3_DECLINATION=35
+# FORECAST_3_AZIMUTH=150
+# FORECAST_3_KWP=6.0
+
+# pvnode-Zugangsdaten
+PVNODE_APIKEY=pvn_my-secret-api-key
+
+# Optional: Kostenpflichtiger Account
+# PVNODE_PAID=true
+
+# Optional: Zusätzliche API-Parameter
+# PVNODE_EXTRA_PARAMS=diffuse_radiation_model=perez
+
+# Optional: Zusätzliche API-Parameter für einzelne Dachflächen
+# PVNODE_0_EXTRA_PARAMS=snow_slide_coefficient=0.5
+# PVNODE_1_EXTRA_PARAMS=snow_slide_coefficient=0.3
+
+# InfluxDB
+INFLUX_HOST=influxdb
+INFLUX_SCHEMA=http
+INFLUX_PORT=8086
+INFLUX_TOKEN_WRITE=my-super-secret-admin-token
+INFLUX_ORG=solectrus
+INFLUX_BUCKET=solectrus
+INFLUX_MEASUREMENT_FORECAST=forecast
+```
+
+## Die Variablen im Detail
+
+### Zugangsdaten
 
 #### PVNODE_APIKEY
 
@@ -43,7 +104,7 @@ Eine Aktivierung wirkt sich wie folgt aus:
 - Nutzung von bis zu 1.000 API-Anfragen **pro Monat** (statt **40 pro Monat** bei kostenlosem Account)
 - Abfrage von 7-Tage-Vorhersagen (statt 1 Tag bei kostenlosem Account)
 
-## Abfrageintervall
+### Abfrageintervall
 
 Das Abfrageintervall (`FORECAST_INTERVAL`) muss bei pvnode **nicht konfiguriert werden**. Der Collector ermittelt automatisch die optimalen Abrufzeitpunkte basierend auf:
 
@@ -54,7 +115,7 @@ Das Abfrageintervall (`FORECAST_INTERVAL`) muss bei pvnode **nicht konfiguriert 
 
 Der Forecast-Collector minimiert die Anzahl der Anfragen, indem er gleiche Parameter für mehrere Dachflächen zusammenfasst und nach Möglichkeit mit einer Abfrage zwei Dachflächen abdeckt. Falls notwendig, werden einzelne Slots oder auch ganze Tage übersprungen, um das monatliche Kontingent nicht zu überschreiten.
 
-## Standort
+### Standort
 
 pvnode arbeitet mit einem monatlichen **Standort-Limit** (Site-Limit). Im kostenlosen Tarif ist **ein Standort** enthalten. Standorte werden bei pvnode automatisch gespeichert, sobald eine Abfrage mit Koordinaten an die API gesendet wird.
 
@@ -75,7 +136,7 @@ Wertebereich: -90 (Süd) ... 90 (Nord)
 :::
 
 ```properties title="Beispiel"
-FORECAST_LATITUDE=51.312801
+FORECAST_LATITUDE=50.12345
 ```
 
 #### FORECAST_LONGITUDE
@@ -87,10 +148,10 @@ Wertebereich: -180 (West) ... 180 (Ost)
 :::
 
 ```properties title="Beispiel"
-FORECAST_LONGITUDE=9.481544
+FORECAST_LONGITUDE=6.12345
 ```
 
-## Einzelne Dachfläche
+### Einzelne Dachfläche
 
 Bei einer einzelnen Dachfläche werden die folgenden Variablen verwendet:
 
@@ -147,7 +208,7 @@ https://www.pvnode.com/docs/de/forecast#optional-parameters
 PVNODE_EXTRA_PARAMS=diffuse_radiation_model=perez&snow_slide_coefficient=0.5
 ```
 
-## Mehrere Dachflächen
+### Mehrere Dachflächen
 
 Bei mehreren Dachflächen muss zunächst die Anzahl festgelegt werden. Anschließend werden die Variablen für jede Dachfläche gesetzt, wobei `X` für die Nummer der Dachfläche steht (0, 1, 2, 3).
 
