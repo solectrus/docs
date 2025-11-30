@@ -108,3 +108,35 @@ Dieser Befehl lädt neue Container-Images herunter (sofern verfügbar) und start
 Es ist zu beachten, dass Änderungen an der `compose.yaml` oder `.env` **nicht** automatisch zu einem Update führen. Es ist **immer** explizit der Befehl `docker compose up -d` ausführen.
 
 Updates können übrigens auch automatisiert werden. Mehr dazu im [Referenzkapital zu Watchtower](/referenz/watchtower/).
+
+## Speicherplatz freigeben
+
+Nach mehreren Updates sammeln sich alte, nicht mehr verwendete Docker-Images an, die unnötig Speicherplatz belegen. Um den aktuellen Speicherverbrauch von Docker zu prüfen, dient folgender Befehl:
+
+```
+docker system df
+```
+
+Dieser zeigt eine Übersicht über den Speicherverbrauch von Images, Containern, Volumes und dem Build-Cache. Mit der Option `-v` wird eine detaillierte Auflistung ausgegeben.
+
+Ungenutzte Images lassen sich mit folgendem Befehl entfernen:
+
+```
+docker image prune -a
+```
+
+Die Option `-a` entfernt alle Images, die nicht von einem laufenden Container verwendet werden.
+
+:::caution
+Dieser Befehl sollte bei laufenden Containern ausgeführt werden. Nach einem `docker compose down` sind keine Container aktiv, sodass `docker image prune -a` dann sämtliche Images löscht. Diese werden beim nächsten `docker compose up -d` zwar automatisch neu heruntergeladen, was aber Zeit und Bandbreite kostet.
+:::
+
+:::note
+[Watchtower](/referenz/watchtower/) löscht nach jedem automatischen Update nur das jeweils ersetzte Image. Bei manuellen Updates per `docker compose pull` muss hingegen selbst aufgeräumt werden.
+:::
+
+Wer noch gründlicher aufräumen möchte, kann zusätzlich ungenutzte Netzwerke und andere Reste entfernen:
+
+```
+docker system prune -a
+```
