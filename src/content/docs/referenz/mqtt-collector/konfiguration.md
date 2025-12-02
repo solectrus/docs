@@ -134,7 +134,7 @@ Es stehen folgende Variablen zur Verfügung:
 - `MAPPING_X_NULL_TO_ZERO`
 
 Eine ausführliche Beschreibung eines Mappings findet sich auf der folgenden Seite: \
-[Abonnieren von Topics](topics).
+[Abonnieren von Topics](../topics).
 
 :::note
 Es ist unbedingt darauf zu achten, dass die definierten Variablen **alle** auch in der `compose.yaml` aufgeführt sind. Andernfalls sind sie für den MQTT-Collector nicht erreichbar.
