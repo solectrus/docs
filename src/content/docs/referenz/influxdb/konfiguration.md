@@ -12,7 +12,7 @@ InfluxDB wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert
 ```yaml
 services:
   influxdb:
-    image: influxdb:2.7-alpine
+    image: influxdb:2-alpine
     volumes:
       - ${INFLUX_VOLUME_PATH}:/var/lib/influxdb2
     environment:
