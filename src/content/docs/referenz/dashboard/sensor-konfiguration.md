@@ -13,15 +13,13 @@ Die Umgebungsvariable gibt dabei die Zuordnung in einer speziellen Schreibweise 
 INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
 ```
 
-:::caution
-Die Angabe von Measurement und Field ist **case-sensitive**, also auf die Groß- und Kleinschreibung ist unbedingt zu achten, da InfluxDB hier unterscheidet!
-:::
-
 Jeder Sensor muss definiert werden, um keine Warnung im Protokoll zu provozieren. Wenn für einen Sensor keine Werte zur Verfügung stehen (weil man z.B. keine Wärmepumpe hat), muss der Sensor "leer" definiert werden, und zwar so:
 
 ```properties
 INFLUX_SENSOR_HEATPUMP_POWER=
 ```
+
+Die Angabe von Measurement und Field ist übrigens **case-sensitive**, es ist also unbedingt auf die Groß- und Kleinschreibung zu achten, da InfluxDB hier unterscheidet!
 
 ## Verfügbare Sensoren
 
@@ -79,24 +77,30 @@ Die von SOLECTRUS unterstützten Sensoren lassen sich in verschiedene Kategorien
 | [CUSTOM_POWER_19](#influx_sensor_custom_power_xx) | Watt    |
 | [CUSTOM_POWER_20](#influx_sensor_custom_power_xx) | Watt    |
 
-#### Wallbox
+#### Wallbox und E-Auto
 
 | Sensor-Name                                                   | Einheit              |
 | ------------------------------------------------------------- | -------------------- |
 | [WALLBOX_POWER](#influx_sensor_wallbox_power)                 | Watt                 |
-| [WALLBOX_CAR_CONNECTED](#influx_sensor_wallbox_car_connected) | Boolean (True/False) |
+| [WALLBOX_CAR_CONNECTED](#influx_sensor_wallbox_car_connected) | Logisch (True/False) |
+| [CAR_BATTERY_SOC](#influx_sensor_car_battery_soc)             | Prozent              |
 
-#### E-Auto
+#### Wärmepumpe
 
-| Sensor-Name                                       | Einheit |
-| ------------------------------------------------- | ------- |
-| [CAR_BATTERY_SOC](#influx_sensor_car_battery_soc) | Prozent |
+| Sensor-Name                                                     | Einheit |
+| --------------------------------------------------------------- | ------- |
+| [HEATPUMP_HEATING_POWER](#influx_sensor_heatpump_heating_power) | Watt    |
+| [HEATPUMP_TANK_TEMP](#influx_sensor_heatpump_tank_temp)         | °C      |
+| [HEATPUMP_STATUS](#influx_sensor_heatpump_status)               | Text    |
+| [OUTDOOR_TEMP](#influx_sensor_outdoor_temp)                     | °C      |
 
-#### Prognose
+#### Prognosen
 
-| Sensor-Name                                                       | Einheit |
-| ----------------------------------------------------------------- | ------- |
-| [INVERTER_POWER_FORECAST](#influx_sensor_inverter_power_forecast) | Watt    |
+| Sensor-Name                                                                         | Einheit |
+| ----------------------------------------------------------------------------------- | ------- |
+| [INVERTER_POWER_FORECAST](#influx_sensor_inverter_power_forecast)                   | Watt    |
+| [INVERTER_POWER_FORECAST_CLEARSKY](#influx_sensor_inverter_power_forecast_clearsky) | Watt    |
+| [OUTDOOR_TEMP_FORECAST](#influx_sensor_outdoor_temp_forecast)                       | °C      |
 
 ## Umgebungsvariablen
 
@@ -202,6 +206,30 @@ Prognostizierte PV-Erzeugung in Watt
 INFLUX_SENSOR_INVERTER_POWER_FORECAST=forecast:watt
 ```
 
+#### INFLUX_SENSOR_INVERTER_POWER_FORECAST_CLEARSKY
+
+Höchstmögliche PV-Erzeugung bei wolkenlosem Himmel, in Watt.
+
+```properties title="Beispiel"
+INFLUX_SENSOR_INVERTER_POWER_FORECAST_CLEARSKY=forecast:watt_clearsky
+```
+
+:::note
+Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+:::
+
+#### INFLUX_SENSOR_OUTDOOR_TEMP_FORECAST
+
+Prognostizierte Außentemperatur in °C.
+
+```properties title="Beispiel"
+INFLUX_SENSOR_OUTDOOR_TEMP_FORECAST=forecast:temp
+```
+
+:::note
+Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+:::
+
 #### INFLUX_SENSOR_SYSTEM_STATUS
 
 Systemstatus (z.B. Fehlermeldungen) als Text
@@ -231,8 +259,56 @@ INFLUX_SENSOR_GRID_EXPORT_LIMIT=SENEC:power_ratio
 Aktuelle Leistung der Wärmepumpe in Watt
 
 ```properties title="Beispiel"
-INFLUX_SENSOR_HEATPUMP_POWER=Heatpump:power
+INFLUX_SENSOR_HEATPUMP_POWER=heatpump:power
 ```
+
+#### INFLUX_SENSOR_HEATPUMP_HEATING_POWER
+
+Erzeugte Wärmeleistung der Wärmepumpe in Watt. Dies ist die **thermische** Leistung, die die Wärmepumpe abgibt – nicht zu verwechseln mit dem Stromverbrauch.
+
+```properties title="Beispiel"
+INFLUX_SENSOR_HEATPUMP_HEATING_POWER=heatpump:heating_power
+```
+
+:::note
+Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+:::
+
+#### INFLUX_SENSOR_HEATPUMP_STATUS
+
+Status der Wärmepumpe als Text (z.B. "Heizen", "Warmwasser", "Standby").
+
+```properties title="Beispiel"
+INFLUX_SENSOR_HEATPUMP_STATUS=heatpump:status
+```
+
+:::note
+Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+:::
+
+#### INFLUX_SENSOR_OUTDOOR_TEMP
+
+Außentemperatur in °C (im Kontext der Wärmepumpe).
+
+```properties title="Beispiel"
+INFLUX_SENSOR_OUTDOOR_TEMP=heatpump:outdoor_temp
+```
+
+:::note
+Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+:::
+
+#### INFLUX_SENSOR_HEATPUMP_TANK_TEMP
+
+Temperatur des Warmwasserspeichers der Wärmepumpe in °C.
+
+```properties title="Beispiel"
+INFLUX_SENSOR_HEATPUMP_TANK_TEMP=heatpump:tank_temp
+```
+
+:::note
+Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+:::
 
 #### INFLUX_SENSOR_WALLBOX_CAR_CONNECTED
 
@@ -263,7 +339,7 @@ INFLUX_SENSOR_CUSTOM_POWER_03=Washer:power
 # ...
 ```
 
-## Spezialität: Hausverbrauch anpassen
+## Spezialität: Hausverbrauch korrigieren
 
 #### INFLUX_EXCLUDE_FROM_HOUSE_POWER
 
