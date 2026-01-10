@@ -215,7 +215,7 @@ INFLUX_SENSOR_INVERTER_POWER_FORECAST_CLEARSKY=forecast:watt_clearsky
 ```
 
 :::note
-Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+Erst ab **Version 1.0** verfügbar.
 :::
 
 #### INFLUX_SENSOR_OUTDOOR_TEMP_FORECAST
@@ -227,7 +227,7 @@ INFLUX_SENSOR_OUTDOOR_TEMP_FORECAST=forecast:temp
 ```
 
 :::note
-Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+Erst ab **Version 1.0** verfügbar.
 :::
 
 #### INFLUX_SENSOR_SYSTEM_STATUS
@@ -271,7 +271,7 @@ INFLUX_SENSOR_HEATPUMP_HEATING_POWER=heatpump:heating_power
 ```
 
 :::note
-Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+Erst ab **Version 1.0** verfügbar.
 :::
 
 #### INFLUX_SENSOR_HEATPUMP_STATUS
@@ -283,7 +283,7 @@ INFLUX_SENSOR_HEATPUMP_STATUS=heatpump:status
 ```
 
 :::note
-Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+Erst ab **Version 1.0** verfügbar.
 :::
 
 #### INFLUX_SENSOR_OUTDOOR_TEMP
@@ -295,7 +295,7 @@ INFLUX_SENSOR_OUTDOOR_TEMP=heatpump:outdoor_temp
 ```
 
 :::note
-Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+Erst ab **Version 1.0** verfügbar.
 :::
 
 #### INFLUX_SENSOR_HEATPUMP_TANK_TEMP
@@ -307,7 +307,7 @@ INFLUX_SENSOR_HEATPUMP_TANK_TEMP=heatpump:tank_temp
 ```
 
 :::note
-Erst ab **Version 1.0** verfügbar (derzeit in Beta).
+Erst ab **Version 1.0** verfügbar.
 :::
 
 #### INFLUX_SENSOR_WALLBOX_CAR_CONNECTED
