@@ -1,8 +1,7 @@
 ---
 title: Ersparnis durch die Photovoltaikanlage
 sidebar:
-  order: 4
-  label: Ersparnis-Berechnung
+  hidden: true
 ---
 
 Die Einsparung, die durch den Betrieb der PV-Anlage erzielt wird, besteht grundsätzlich aus zwei Komponenten:

@@ -1,8 +1,7 @@
 ---
 title: Limitierung der Protokoll-Dateien
 sidebar:
-  order: 5
-  label: Logging limitieren
+  hidden: true
 ---
 
 Die verschiedenen Docker-Container von SOLECTRUS schreiben zur Diagnose und Fehlersuche Protokoll-Dateien (Logs). Diese Dateien können sehr groß werden, wenn sie nicht begrenzt werden. Das kann irgendwann zu [Speicherplatzproblemen](https://github.com/orgs/solectrus/discussions/3748) führen.

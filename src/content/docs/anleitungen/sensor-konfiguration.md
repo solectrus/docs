@@ -1,8 +1,7 @@
 ---
-title: Umstellung auf neue Konfiguration
+title: Umstellung auf neue Sensor-Konfiguration
 sidebar:
-  order: 6
-  label: Neue Konfiguration
+  hidden: true
 ---
 
 Mit Version `0.15` wurde in SOLECTRUS eine neue Konfiguration eingeführt. Dieser Text soll erklären, warum das notwendig war, welche Vorteile es bringt und was bisherige Benutzer von SOLECTRUS tun sollten.

@@ -1,8 +1,7 @@
 ---
 title: Umzug auf einen neuen Server
 sidebar:
-  order: 3
-  label: Server-Umzug
+  hidden: true
 ---
 
 Ein Server-Umzug kann aus verschiedenen Gründen notwendig sein, z. B. bei einem Wechsel auf leistungsfähigere Hardware, einer Migration zu einem anderen Hosting-Anbieter oder zur Konsolidierung mehrerer Server.
@@ -28,7 +27,7 @@ Beim Kopieren der Datenbank-Ordner kann es sein, dass dazu erhöhte Berechtigung
 **Wichtig:** Während des Kopiervorgangs dürfen die Datenbanken nicht verändert werden. Daher müssen die Container vorher gestoppt werden.
 
 :::note
-Das [Backup-Script](/wartung/datensicherung) ist für diesen Zweck nicht ideal, da es eine leere Datenbank und laufende Container zur Wiederherstellung benötigt. Es dient primär der Datensicherung im laufenden Betrieb.
+Das [Backup-Script](/anleitungen/datensicherung) ist für diesen Zweck nicht ideal, da es eine leere Datenbank und laufende Container zur Wiederherstellung benötigt. Es dient primär der Datensicherung im laufenden Betrieb.
 :::
 
 ## 3. Konfigurationsdateien kopieren

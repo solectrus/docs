@@ -363,4 +363,4 @@ Hier gibt es die Besonderheit, dass die benutzerdefinierten Sensoren nicht nur a
 
 Wenn ein Sensor nicht definiert ist (z.B. weil die SOLECTRUS-Installation **vor** `v0.15` erfolgt ist), dann versucht SOLECTRUS, die Konfiguration automatisch zu vermittelt. Hierzu werden die früheren (und mittlerweile veralteten) Umgebungsvariablen `INFLUX_MEASUREMENT_PV` und `INFLUX_MEASUREMENT_FORECAST` verwendet.
 
-Im Docker-Protokoll finden sich dann Hinweise, welche Konfiguration vorgenommen wurde und wie man diese explizit in die `.env` schreiben kann. Diese sollte [bei Gelegenheit gemacht werden](/wartung/sensor-konfiguration), da zukünftige Versionen von SOLECTRUS die alte Konfiguration möglicherweise nicht mehr unterstützen werden.
+Im Docker-Protokoll finden sich dann Hinweise, welche Konfiguration vorgenommen wurde und wie man diese explizit in die `.env` schreiben kann. Diese sollte [bei Gelegenheit gemacht werden](/anleitungen/sensor-konfiguration), da zukünftige Versionen von SOLECTRUS die alte Konfiguration möglicherweise nicht mehr unterstützen werden.

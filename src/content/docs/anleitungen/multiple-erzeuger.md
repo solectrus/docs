@@ -1,8 +1,7 @@
 ---
 title: Multiple Erzeuger integrieren
 sidebar:
-  order: 1
-  label: Multiple Erzeuger
+  hidden: true
 ---
 
 SOLECTRUS kann ab Version `0.20` mit mehreren Erzeugern umgehen. Das ist dann nützlich, wenn man beispielsweise ein **Balkonkraftwerk** ("Steckersolar") oder mehrere Flächen mit PV-Modulen betreibt.

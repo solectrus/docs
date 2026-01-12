@@ -29,9 +29,8 @@ src/
 ├── content/docs/     # Markdown-Dokumentationsseiten
 │   ├── installation/ # Installationsanleitungen
 │   ├── referenz/     # Referenzdokumentation (Dashboard, Collectors, etc.)
-│   ├── erweiterungen/# Erweiterte Konfigurationen
-│   ├── wartung/      # Wartungsanleitungen
-│   ├── bedienung/    # Bedienungsanleitungen
+│   ├── anleitungen/  # Praxis-Anleitungen (Updates, Backup, Docker, Community, etc.)
+│   ├── bedienung/    # Dashboard verstehen (Kosten, Ersparnis, Admin)
 │   └── support/      # Support-Informationen
 ├── components/       # Astro-Komponenten (Head.astro, PlausibleAnalytics.astro)
 ├── assets/          # Bilder und andere Assets
@@ -46,7 +45,17 @@ src/
 
 ### Sidebar-Struktur
 
-Die Sidebar wird in `astro.config.mjs` definiert und verwendet `autogenerate` für die meisten Verzeichnisse. Die Referenz-Sektion hat eine manuelle Struktur mit verschachtelten Untermenüs für die verschiedenen Komponenten (Dashboard, InfluxDB, PostgreSQL, Collectors, etc.).
+Die Sidebar wird in `astro.config.mjs` definiert:
+
+- **Installation**: `autogenerate` für alle Seiten
+- **Referenz**: Manuelle Struktur mit verschachtelten `autogenerate`-Untermenüs für Komponenten
+- **Praxis**: Gruppiert drei Bereiche als direkte Links (`slug`):
+  - Anleitungen, Bedienung, Support
+
+Für die Praxis-Bereiche gilt:
+- Jeder Bereich hat eine `index.md` als Übersichtsseite mit Linkliste
+- Alle Unterseiten haben `sidebar: hidden: true` im Frontmatter
+- Die Sidebar zeigt nur die Übersichtsseiten, nicht die einzelnen Artikel
 
 ## Dokumentations-Konventionen
 
@@ -114,8 +123,9 @@ Wenn Docker-Service-Variablen anders heißen als in der `.env`:
 
 ## Weitere Hinweise
 
-- Alle Dokumentationsseiten sind Markdown-Dateien im `src/content/docs/` Verzeichnis
-- Neue Seiten werden automatisch in die Sidebar aufgenommen (via `autogenerate`)
+- Dokumentationsseiten sind Markdown-Dateien (`.md`) im `src/content/docs/` Verzeichnis
+- Seiten mit Starlight-Komponenten (z.B. `LinkCard`, `CardGrid`) verwenden `.mdx`
 - Mermaid-Diagramme werden über das `astro-mermaid` Plugin unterstützt
 - Theme: `starlight-theme-rapide` für das Styling
 - Interne Links verwenden absolute Pfade: `[Link](/referenz/dashboard/)`
+- Redirects für alte URLs sind in `astro.config.mjs` unter `redirects` definiert

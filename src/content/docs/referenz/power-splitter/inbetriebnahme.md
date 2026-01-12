@@ -15,7 +15,7 @@ Wenn es nur den Hausverbrauch gibt (also keine weiteren Verbraucher), macht der 
 
 ## 2. Sensor-Konfiguration prüfen
 
-Als nächstes ist zu prüfen, ob die [neue Sensor-Konfiguration](/wartung/sensor-konfiguration) bereits vorhanden ist. Bei älteren Installation (vor Juli 2024) ist meist die ältere Konfiguration vorhanden und muss zunächst angepasst werden.
+Als nächstes ist zu prüfen, ob die [neue Sensor-Konfiguration](/anleitungen/sensor-konfiguration) bereits vorhanden ist. Bei älteren Installation (vor Juli 2024) ist meist die ältere Konfiguration vorhanden und muss zunächst angepasst werden.
 
 Das bedeutet: Beim Start der Docker-Container von SOLECTRUS dürfen keine Warnungen bezüglich fehlender Sensoren im Log erscheinen. Falls doch, müssen diese zunächst behoben werden. Im Log steht genau, wie das geht.
 

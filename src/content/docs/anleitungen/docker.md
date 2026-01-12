@@ -1,8 +1,7 @@
 ---
 title: Grundlagen zu Docker
 sidebar:
-  order: 2
-  label: Docker-Grundlagen
+  hidden: true
 ---
 
 SOLECTRUS nutzt [Docker](https://www.docker.com/) als Basis für alle seine Komponenten, die jeweils in separaten Docker-Containern laufen. Ein grundlegendes Verständnis von Docker ist daher hilfreich. Dieses Kapitel bietet eine sehr grobe Einführung in Docker und erklärt einige der wichtigsten Befehle und Konzepte.

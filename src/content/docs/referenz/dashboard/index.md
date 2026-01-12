@@ -101,7 +101,7 @@ docker compose logs dashboard
 Bei Problemen oder Fehlern wird dies ebenfalls protokolliert. Es empfiehlt sich daher unbedingt, im Zweifelsfall zuerst das Protokoll zu prüfen.
 
 :::note
-Bei einer veralteten Konfiguration wird dies ebenfalls im Protokoll festgehalten. Es empfiehlt sich dann, in einer ruhigen Minute auf die neue [Sensor-Konfiguration umzustellen](/wartung/sensor-konfiguration).
+Bei einer veralteten Konfiguration wird dies ebenfalls im Protokoll festgehalten. Es empfiehlt sich dann, in einer ruhigen Minute auf die neue [Sensor-Konfiguration umzustellen](/anleitungen/sensor-konfiguration).
 :::
 
 ## Quelltext

@@ -1,8 +1,7 @@
 ---
 title: Kosten durch den Stromverbrauch
 sidebar:
-  order: 3
-  label: Kosten-Berechnung
+  hidden: true
 ---
 
 SOLECTRUS berechnet Kosten, die für den Verbrauch von Strom anfallen, wobei zwischen **Netzbezug** und **Eigenverbrauch** unterschieden wird. Die Darstellung erfolgt für jeden beliebigen Zeitraum, z.B. für einen Monat oder ein Jahr. Hier ein Beispiel:

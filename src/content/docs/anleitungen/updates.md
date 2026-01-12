@@ -1,8 +1,7 @@
 ---
 title: Installation von Updates
 sidebar:
-  order: 1
-  label: Updates
+  hidden: true
 ---
 
 Für die verschiedenen Komponenten von SOLECTRUS erscheinen unabhängig voneinander immer wieder Updates, die neue Funktionen und Verbesserungen enthalten. Es ist sehr empfehlenswert, diese Updates zu installieren, um neue Funktionen, Verbesserungen und Fehlerkorrekturen zu erhalten.

@@ -1,15 +1,12 @@
 ---
-title: Wie bekomme ich Unterstützung?
-sidebar:
-  order: 1
-  label: Individuelle Unterstützung
+title: Support
 ---
 
 Nicht immer funktioniert alles so, wie es soll. Wenn es bei der Installation oder dem Betrieb von SOLECTRUS irgendwo hakt, gibt es Unterstützung:
 
-Hier in der Dokumentation finden sich im [Referenz-Kapitel](/referenz) detaillierte Informationen zu den einzelnen Komponenten von SOLECTRUS. Für den Einstieg gibt es außerdem eine kleine Einführung zu den [Grundlagen von Docker](/support/docker).
+Hier in der Dokumentation finden sich im neben der [Referenz](/referenz/) mit detaillierte Informationen zu den einzelnen Komponenten von SOLECTRUS auch verschiedene [Anleitungen](/anleitungen/) zu häufigen Aufgaben und Problemen.
 
-Bei individuellen Fragen oder Problemen ist **GitHub** die erste Anlaufstelle:
+Wenn das alles nicht weiterhilft, gibt es noch die Möglichkeit der individuellen Unterstützung. Dabei ist **GitHub** der Dreh- und Angelpunkt:
 
 - Bei technischen Problemen und Fehlerreports ist ein **Issue** anzulegen: \
   [https://github.com/solectrus/solectrus/issues](https://github.com/solectrus/solectrus/issues)
@@ -17,8 +14,10 @@ Bei individuellen Fragen oder Problemen ist **GitHub** die erste Anlaufstelle:
 - Für alles andere, z.B. Fragen zur Installation, Verbesserungsvorschläge, Ideen, Lob und Kritik steht der **Diskussionsbereich** zur Verfügung: \
   [https://github.com/solectrus/solectrus/discussions](https://github.com/solectrus/solectrus/discussions)
 
-Mit der Suchfunktion von GitHub kann nach bereits bestehenden Issues oder Diskussionen gesucht werden. Es ist gut möglich, dass eine Frage schon einmal gestellt oder ein Problem schon gelöst wurde.
+Mit der Suchfunktion von GitHub kann nach bereits bestehenden Issues oder Diskussionen gesucht werden. Es ist gut möglich, dass eine Frage schon einmal beantwortet oder ein Problem bereits gelöst worden ist.
 
-:::caution[Bitte unbedingt beachten!]
-Es ist wichtig, bei Fragen oder Problemen wirklich GitHub zu verwenden und **nicht** eine E-Mail zu schicken. Dadurch können auch Dritte von Frage und Antwort profitieren.
+:::caution[Wichtig!]
+Bitte stelle keine Support-Anfragen per E-Mail, sondern wirklich ausschließlich über GitHub! Nur dadurch können auch zukünftige von Frage und Antwort profitieren.
+
+Falls Du noch kein GitHub-Konto hast, kannst Du Dir dort kostenlos eines anlegen.
 :::

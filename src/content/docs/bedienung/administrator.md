@@ -1,7 +1,7 @@
 ---
 title: Administrator-Zugang
 sidebar:
-  order: 2
+  hidden: true
 ---
 
 Einige Bereiche von SOLECTRUS sind geschützt und nur für autorisierte Benutzer zugänglich. Dazu gehören:

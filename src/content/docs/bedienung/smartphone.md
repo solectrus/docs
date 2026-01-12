@@ -1,8 +1,7 @@
 ---
 title: Apps für Smartphone oder Tablet
 sidebar:
-  order: 5
-  label: Smartphone & Tablet
+  hidden: true
 ---
 
 SOLECTRUS ist eine sogenannte **PWA** (Progressive Web App). Das bedeutet, dass es sich um eine Webanwendung handelt, die aber so aussieht und sich so verhält, als wäre sie eine native App. Das hat den Vorteil, dass SOLECTRUS auf allen Geräten funktioniert, die einen Browser unterstützen. Die Verwendung auf iPhone, iPad oder Android Geräten ist also kein Problem. Es gibt auch Berichte von Nutzern, die [SOLECTRUS auf einem (smarten) Kühlschrank verwenden](https://github.com/solectrus/solectrus/issues/2511#issuecomment-2052028943) - alles, was einen modernen Browser hat, kann SOLECTRUS anzeigen.

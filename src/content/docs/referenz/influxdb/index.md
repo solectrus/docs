@@ -28,7 +28,7 @@ Dass es hier Probleme gibt, ist eher unwahrscheinlich. Dennoch sollte im Zweifel
 
 ## Datensicherung
 
-Für die [Sicherung und -wiederherstellung von SOLECTRUS](/wartung/datensicherung) stehen einfach zu bedienende Scripte bereit, die auch InfluxDB berücksichtigen.
+Für die [Sicherung und -wiederherstellung von SOLECTRUS](/anleitungen/datensicherung) stehen einfach zu bedienende Scripte bereit, die auch InfluxDB berücksichtigen.
 
 ## Docker-Image
 

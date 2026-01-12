@@ -8,7 +8,7 @@ sidebar:
 Der Power-Splitter wird üblicherweise in die Gesamtkonfiguration von SOLECTRUS integriert, d.h. die bestehenden Dateien `compose.yaml` und `.env` sind zu erweitern.
 
 :::caution
-Voraussetzung ist, dass eine Sensor-Konfiguration vorhanden ist. Bei einer älteren Installation von SOLECTRUS (begonnen vor Version `0.15`) ist das meist nicht der Fall und muss zwingend [nachgeholt](/wartung/sensor-konfiguration) werden.
+Voraussetzung ist, dass eine Sensor-Konfiguration vorhanden ist. Bei einer älteren Installation von SOLECTRUS (begonnen vor Version `0.15`) ist das meist nicht der Fall und muss zwingend [nachgeholt](/anleitungen/sensor-konfiguration) werden.
 :::
 
 ## compose.yaml

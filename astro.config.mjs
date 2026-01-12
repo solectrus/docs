@@ -8,6 +8,19 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://docs.solectrus.de',
+  redirects: {
+    '/wartung/updates/': '/anleitungen/updates/',
+    '/wartung/datensicherung/': '/anleitungen/datensicherung/',
+    '/wartung/server-umzug/': '/anleitungen/server-umzug/',
+    '/wartung/datenkorrektur/': '/anleitungen/datenkorrektur/',
+    '/wartung/logging/': '/anleitungen/logging/',
+    '/wartung/sensor-konfiguration/': '/anleitungen/sensor-konfiguration/',
+    '/erweiterungen/': '/anleitungen/',
+    '/erweiterungen/multiple-erzeuger/': '/anleitungen/multiple-erzeuger/',
+    '/erweiterungen/mehrere-shelly/': '/anleitungen/mehrere-shelly/',
+    '/support/docker/': '/anleitungen/docker/',
+    '/support/community/': '/anleitungen/',
+  },
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',
@@ -124,24 +137,9 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Erweiterungen',
+          label: 'Praxis',
           collapsed: true,
-          autogenerate: { directory: 'erweiterungen' },
-        },
-        {
-          label: 'Wartung',
-          collapsed: true,
-          autogenerate: { directory: 'wartung' },
-        },
-        {
-          label: 'Bedienung',
-          collapsed: true,
-          autogenerate: { directory: 'bedienung' },
-        },
-        {
-          label: 'Support',
-          collapsed: true,
-          autogenerate: { directory: 'support' },
+          items: [{ slug: 'anleitungen' }, { slug: 'bedienung' }, { slug: 'support' }],
         },
       ],
       customCss: ['./src/styles/custom.css'],

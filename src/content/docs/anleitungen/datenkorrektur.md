@@ -1,8 +1,7 @@
 ---
 title: Korrektur von Messwerten in InfluxDB
 sidebar:
-  order: 4
-  label: Datenkorrektur
+  hidden: true
 ---
 
 Bei der Übernahme von Messwerten z.B. über den [MQTT-Collector](/referenz/mqtt-collector/) nach SOLECTRUS kann es in seltenen Fällen vorkommen, dass fehlerhafte Messwerte geliefert und dann in InfluxDB gespeichert werden.
@@ -13,7 +12,7 @@ Das Löschen von Messwerten ist in InfluxDB nicht ohne weiteres möglich. Es ist
 
 ### 0. Vorbereitung
 
-Bevor Daten in InfluxDB korrigiert werden, sollte unbedingt eine [Sicherung der Datenbank](/wartung/datensicherung) erstellt werden.
+Bevor Daten in InfluxDB korrigiert werden, sollte unbedingt eine [Sicherung der Datenbank](/anleitungen/datensicherung) erstellt werden.
 
 ### 1. Fehlerhafte Daten selektieren
 

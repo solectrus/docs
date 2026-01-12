@@ -1,8 +1,7 @@
 ---
 title: Zusätzliche Shelly-Verbrauchszähler integrieren
 sidebar:
-  order: 2
-  label: Zusätzliche Shelly
+  hidden: true
 ---
 
 Hat man mehrere Shelly-Geräte im Einsatz und möchte deren Messwerte einsammeln, so ist für jedes Gerät ein **eigener** Collector einzurichten, es laufen dann also mehrere Container des [Shelly-Collectors](/referenz/shelly-collector/) parallel.

@@ -1,8 +1,7 @@
 ---
 title: Erstellen von Datensicherungen
 sidebar:
-  order: 2
-  label: Datensicherung
+  hidden: true
 ---
 
 Die beiden Datenbanken von SOLECTRUS (PostgreSQL und vor allem InfluxDB) sammeln Daten, die man nicht verlieren möchte. Daher ist es wichtig, regelmäßig Sicherungen zu erstellen.

@@ -31,7 +31,7 @@ Dass es hier Probleme gibt, ist recht unwahrscheinlich. Dennoch sollte im Zweife
 
 ## Datensicherung
 
-Für die [Sicherung und -wiederherstellung von SOLECTRUS](/wartung/datensicherung) stehen einfach zu bedienende Scripte bereit, die auch PostgreSQL berücksichtigen.
+Für die [Sicherung und -wiederherstellung von SOLECTRUS](/anleitungen/datensicherung) stehen einfach zu bedienende Scripte bereit, die auch PostgreSQL berücksichtigen.
 
 ## Docker-Image
 
