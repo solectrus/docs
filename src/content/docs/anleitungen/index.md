@@ -13,6 +13,7 @@ Hier finden sich verschiedene Anleitungen zur Nutzung und Konfiguration von SOLE
 - [Umstellung auf neue Sensor-Konfiguration](/anleitungen/sensor-konfiguration/)
 - [Multiple Erzeuger integrieren (z.B. Balkonkraftwerk)](/anleitungen/multiple-erzeuger/)
 - [Zusätzliche Shelly-Verbrauchszähler integrieren](/anleitungen/mehrere-shelly/)
+- [Umstellung auf pvnode als Forecast-Anbieter](/anleitungen/umstellung-pvnode/)
 
 ## Betrieb & Pflege
 
