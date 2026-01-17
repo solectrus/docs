@@ -4,17 +4,11 @@ sidebar:
   hidden: true
 ---
 
-Mit Version `0.15` wurde in SOLECTRUS eine neue Konfiguration eingeführt. Dieser Text soll erklären, warum das notwendig war, welche Vorteile es bringt und was bisherige Benutzer von SOLECTRUS tun sollten.
+Im [Sommer 2024](https://solectrus.de/blog/2024-07-15-version-0-15/) wurde mit Version `0.15` eine neue Konfiguration für SOLECTRUS eingeführt. Dieser Text soll genauer erklären, warum das notwendig war, welche Vorteile es bringt und was Nutzer von SOLECTRUS tun sollten.
 
-Für Benutzer, die erst mit Version `0.15` (oder später) eingestiegen sind, ist das alles nicht relevant. Sie haben vermutlich den [Konfigurator](/installation/konfigurator) verwendet und müssen nichts umstellen. Der Konfigurator erzeugt automatisch die neue Konfiguration.
+Für Benutzer, die erst mit Version `0.15` (oder später) eingestiegen sind, ist das alles nicht relevant. Sie haben vermutlich den [Konfigurator](/installation/konfigurator) verwendet und müssen nichts umstellen. Der Konfigurator erzeugt bereits automatisch die neue Konfiguration.
 
 Dieser Text richtet sich also an Benutzer, die SOLECTRUS schon länger verwenden, also vor Version `0.15` eingestiegen sind.
-
-:::note
-Für die Umstellung sollte eher **nicht** der Konfigurator verwendet werden, da dieser einige andere Bezeichnungen verwendet, z.B. für InfluxDB-Bucket und -Measurements, Docker-Services und anderes. Das würde einige manuelle Anpassungen erfordern, die ein tieferes Verständnis von InfluxDB und Docker voraussetzen.
-
-Der Konfigurator ist nur für eine **Neuinstallation** gedacht, bei der keine bestehenden Datenbanken fortgeführt werden müssen.
-:::
 
 ## Warum überhaupt eine neue Konfiguration?
 
@@ -28,46 +22,40 @@ Dies führte zum Entschluss, eine eigene Namensgebung einzuführen, die **herste
 
 Ein Sensor ist die Definition eines Messwerts und eine zusätzliche Schicht, die von der Datenbank abstrahiert. Ein Sensor hat einen Namen, der nicht zwingend mit dem Namen in InfluxDB übereinstimmen muss.
 
-Welche Sensoren es gibt, wird von SOLECTRUS festgelegt. Derzeit gibt es genau diese 16:
+Welche Sensoren es gibt, wird von SOLECTRUS festgelegt. Beispiele für Sensoren sind:
 
 - `INVERTER_POWER` (erzeugte Leistung des Wechselrichters)
 - `HOUSE_POWER` (Hausverbrauch)
 - `GRID_IMPORT_POWER` (Netzbezug)
 - `GRID_EXPORT_POWER` (Netzeinspeisung)
-- `HEATPUMP_POWER` (Leistung der Wärmepumpe)
-- `BATTERY_CHARGING_POWER` (Ladeleistung des Speichers)
-- `BATTERY_DISCHARGING_POWER` (Entladeleistung des Speichers)
-- `BATTERY_SOC` (Ladestand des Speichers)
-- `WALLBOX_POWER` (Ladeleistung der Wallbox)
-- `CASE_TEMP` (Temperatur des Speichers)
-- `INVERTER_POWER_FORECAST` (prognostizierte PV-Leistung)
-- `SYSTEM_STATUS` (Status des Speichers oder der Anlage)
-- `SYSTEM_STATUS_OK` (Status des Speichers gilt als "OK")
-- `GRID_EXPORT_LIMIT` (Einspeisebegrenzung)
-- `CAR_BATTERY_SOC` (Ladestand des E-Autos)
-- `WALLBOX_CAR_CONNECTED` (Verbindungsstatus des E-Autos mit der Wallbox)
+- `BATTERY_CHARGING_POWER` (Batterie-Ladeleistung)
+- ...
 
-Zukünftige Versionen werden sicherlich weitere Sensoren einführen.
+Eine vollständige Liste aller Sensoren findet sich in der [Referenz zum Dashboard](/referenz/dashboard/sensor-konfiguration/).
 
 ## Definition von Sensoren
 
-In der `.env`-Datei werden die Sensoren definiert. Ein Beispiel:
+In der `.env`-Datei werden die Sensoren definiert. Sie erhalten dabei den Prefix `INFLUX_SENSOR_`, gefolgt vom Sensor-Namen. Ein Beispiel:
 
 ```properties
 INFLUX_SENSOR_BATTERY_CHARGING_POWER=SENEC:bat_power_plus
 ```
 
-Das ist folgendermaßen zu lesen: Der Sensor `BATTERY_CHARGING_POWER` ist im Measurement `SENEC` zu finden und dort im Field `bat_power_plus`.
+Das ist folgendermaßen zu lesen: Der Sensor `BATTERY_CHARGING_POWER` ist im _Measurement_ `SENEC` zu finden und dort im _Field_ `bat_power_plus`.
 
-## Kompatibilität mit älteren Versionen
+Der Doppelpunkt trennt also _Measurement_ und _Field_. Dies sind Begriffe aus InfluxDB und dienen der Strukturierung der Datenbank.
+
+## Fallback-Kompatibilität mit älteren Versionen
 
 In älteren Versionen von SOLECTRUS findet sich keine Sensor-Definition. SOLECTRUS hat daher einen Fallback-Mechanismus implementiert, der beim Start automatisch eine alte Konfiguration interpretiert.
 
-Damit können bestehende SOLECTRUS-Nutzer ihre gesammelten Messwerte weiter verwenden und müssen auch gar nicht zwingend eine Sensor-Konfiguration anlegen. Langfristig ist es aber **sehr** zu empfehlen, die Sensoren explizit zu definieren. Der Fallback wird nämlich irgendwann entfernt werden.
+Damit können bestehende SOLECTRUS-Nutzer ihre gesammelten Messwerte weiter verwenden und müssen auch gar nicht zwingend eine Sensor-Konfiguration anlegen. Langfristig ist es aber **sehr** zu empfehlen, die Sensoren explizit zu definieren. Der Fallback wird möglicherweise irgendwann entfernt werden.
+
+Außerdem: Die Sensor-Konfiguration ist Voraussetzung für die Nutzung des [Power-Splitters](/referenz/power-splitter).
 
 ## Besonderheit bei MQTT
 
-Der MQTT-Collector ab (Version 0.2.0) profitiert auch von dieser Umstellung. Er muss nämlich gar nicht wissen, welche Sensoren es in SOLECTRUS gibt. Er kann beliebige Messwerte empfangen, verarbeiten und in die InfluxDB schreiben. Der Collector muss sich an keinem vorgegebenen Namensschema orientieren, sondern die Messwerte können sinnvoll z.B. nach ihrer Quelle strukturiert werden.
+Der MQTT-Collector (ab Version 0.2.0) profitiert auch von dieser Umstellung. Er muss nämlich gar nicht wissen, welche Sensoren es in SOLECTRUS gibt. Er kann beliebige Messwerte empfangen, verarbeiten und in die InfluxDB schreiben. Der Collector muss sich an keinem vorgegebenen Namensschema orientieren, sondern die Messwerte können sinnvoll z.B. nach Quelle strukturiert werden.
 
 Für jedes Topic, das der MQTT-Collector abonniert, kann einzeln festgelegt werden, was mit den Messwerten geschehen soll und insbesondere wohin sie gespeichert werden sollen. Die Werte können insbesondere auf unterschiedliche Measurements verteilt werden, was früher nicht möglich war.
 
@@ -77,35 +65,80 @@ Auch sind Verarbeitungsschritte möglich, z.B. die Umrechnung oder die Extraktio
 
 ## Anleitung zur Umstellung
 
-Um die Sensor-Konfiguration zu erstellen, sind zusätzliche Umgebungsvariablen in der `.env`-Datei zu erstellen - und außerdem in der `compose.yaml` aufzuführen.
-
 Die Umstellung betrifft sowohl das Dashboard als auch den MQTT-Collector (sofern verwendet).
+
+:::note
+Für die Umstellung sollte eher **nicht** der Konfigurator verwendet werden, da dieser einige andere Bezeichnungen verwendet, z.B. für InfluxDB-Bucket und -Measurements, Docker-Services und anderes. Das würde einige manuelle Anpassungen erfordern, die ein tieferes Verständnis von InfluxDB und Docker voraussetzen.
+
+Der Konfigurator ist nur für eine **Neuinstallation** gedacht, bei der keine bestehenden Datenbanken fortgeführt werden müssen.
+:::
+
+Um die Sensor-Konfiguration zu erstellen, sind einige Umgebungsvariablen in der `.env`-Datei zu ergänzen - und außerdem in der `compose.yaml` aufzuführen.
+
+:::note
+
+Bei älteren SOLECTRUS-Installationen wirst du vermutlich keine `compose.yaml` finden, sondern eine `docker-compose.yml`. Das ist völlig in Ordnung und hat keine Nachteile, beide Dateien sind äquivalent. In diesem Text wird der Begriff `compose.yaml`verwendet, da dies [der offizielle Name im Docker-Umfeld](https://docs.docker.com/compose/intro/compose-application-model/#the-compose-file) ist.
+
+:::
 
 ### Dashboard
 
 Eine Warnung im Docker-Log des Dashboards sieht z.B. so aus:
 
 ```log
-DEPRECATION WARNING: Missing environment variable INFLUX_SENSOR_INVERTER_POWER.
-  To remove this warning, add the following to your environment:
-    INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
-  or, when you want to ignore this sensor:
-    INFLUX_SENSOR_INVERTER_POWER=
+───── SENSOR INITIALIZATION ──────────────────────────────────────────────────
+
+····· ⚠️  LEGACY CONFIGURATION ···············································
+
+Legacy configuration detected and automatically converted.
+Everything works as expected, but please consider updating your configuration:
+
+INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
+INFLUX_SENSOR_INVERTER_POWER_FORECAST=Forecast:watt
+INFLUX_SENSOR_HOUSE_POWER=SENEC:house_power
+INFLUX_SENSOR_GRID_IMPORT_POWER=SENEC:grid_power_plus
+INFLUX_SENSOR_GRID_EXPORT_POWER=SENEC:grid_power_minus
+INFLUX_SENSOR_GRID_EXPORT_LIMIT=SENEC:power_ratio
+INFLUX_SENSOR_BATTERY_CHARGING_POWER=SENEC:bat_power_plus
+INFLUX_SENSOR_BATTERY_DISCHARGING_POWER=SENEC:bat_power_minus
+INFLUX_SENSOR_BATTERY_SOC=SENEC:bat_fuel_charge
+INFLUX_SENSOR_WALLBOX_POWER=SENEC:wallbox_charge_power
+INFLUX_SENSOR_CASE_TEMP=SENEC:case_temp
+INFLUX_SENSOR_SYSTEM_STATUS=SENEC:current_state
+INFLUX_SENSOR_SYSTEM_STATUS_OK=SENEC:current_state_ok
+
+After updating, you can remove INFLUX_MEASUREMENT_PV and INFLUX_MEASUREMENT_FORECAST.
 ```
 
-Es ist dann folgendes zu tun:
+Es sind dann zwei Schritte zu tun:
 
-- Einfügen eines Eintrags in die `.env`-Datei
-- Ergänzen der Umgebungsvariable in der `compose.yaml` im Abschnitt `environment` des services `dashboard` (früherer Name: `app`)
+1. Einfügen der aufgeführten Variablen in die `.env`-Datei
+2. Ergänzen der Umgebungsvariablen in der `compose.yaml`
 
-### .env
+#### .env ergänzen
+
+Es sind genau die Variablen in die `.env`-Datei einzufügen, die in der Warnung ausgegeben werden - und zwar genau so, wie sie dort stehen. Aus dem obigen Beispiel der Warnung ergibt sich also:
 
 ```properties
 # ...
 INFLUX_SENSOR_INVERTER_POWER=SENEC:inverter_power
+INFLUX_SENSOR_INVERTER_POWER_FORECAST=Forecast:watt
+INFLUX_SENSOR_HOUSE_POWER=SENEC:house_power
+INFLUX_SENSOR_GRID_IMPORT_POWER=SENEC:grid_power_plus
+INFLUX_SENSOR_GRID_EXPORT_POWER=SENEC:grid_power_minus
+INFLUX_SENSOR_GRID_EXPORT_LIMIT=SENEC:power_ratio
+INFLUX_SENSOR_BATTERY_CHARGING_POWER=SENEC:bat_power_plus
+INFLUX_SENSOR_BATTERY_DISCHARGING_POWER=SENEC:bat_power_minus
+INFLUX_SENSOR_BATTERY_SOC=SENEC:bat_fuel_charge
+INFLUX_SENSOR_WALLBOX_POWER=SENEC:wallbox_charge_power
+INFLUX_SENSOR_CASE_TEMP=SENEC:case_temp
+INFLUX_SENSOR_SYSTEM_STATUS=SENEC:current_state
+INFLUX_SENSOR_SYSTEM_STATUS_OK=SENEC:current_state_ok
 ```
 
-### compose.yaml
+#### compose.yaml erweitern
+
+Im Abschnitt `environment` des services `dashboard` sind die ergänzten Variablen ebenfalls aufzuführen, aber ohne Wert. Dadurch erhält der Container Zugriff auf diese Variablen. Hier im Beispiel ergibt sich also:
 
 ```yaml
 services:
@@ -115,13 +148,45 @@ services:
     environment:
       # ...
       - INFLUX_SENSOR_INVERTER_POWER
+      - INFLUX_SENSOR_INVERTER_POWER_FORECAST
+      - INFLUX_SENSOR_HOUSE_POWER
+      - INFLUX_SENSOR_GRID_IMPORT_POWER
+      - INFLUX_SENSOR_GRID_EXPORT_POWER
+      - INFLUX_SENSOR_GRID_EXPORT_LIMIT
+      - INFLUX_SENSOR_BATTERY_CHARGING_POWER
+      - INFLUX_SENSOR_BATTERY_DISCHARGING_POWER
+      - INFLUX_SENSOR_BATTERY_SOC
+      - INFLUX_SENSOR_WALLBOX_POWER
+      - INFLUX_SENSOR_CASE_TEMP
+      - INFLUX_SENSOR_SYSTEM_STATUS
+      - INFLUX_SENSOR_SYSTEM_STATUS_OK
 ```
 
-Mit diesen Hinweisen kann man schrittweise von der alten auf die neue Konfiguration umstellen. Nach jeder Änderung kann mit `docker compose up -d` die Konfiguration neu geladen werden.
+:::note
 
-Wenn beim Start keine Warnung mehr erscheinen, ist die Umstellung abgeschlossen.
+Falls in deiner `compose.yaml` der Service noch `app` heißt, sollte er in `dashboard` umbenannt werden. Das ist zwar nicht zwingend erforderlich, aber diese (neue) Bezeichnung wird in der Dokumentation überall verwendet und vermeidet Verwirrung.
+
+**Vorsicht:** Bevor (!) du den Service umbenennst, müssen die Container beendet werden, sonst gibt es später Durcheinander:
+
+```bash
+docker compose down
+```
+
+:::
+
+#### Neustart
+
+Nach dem Anpassen der beiden Dateien muss der Container mit folgendem Befehl neu gestartet werden, um die Änderungen zu übernehmen. Das geht am einfachsten so:
+
+```bash
+docker compose up -d
+```
+
+Wenn beim Start keine Legacy-Warnung mehr im Log des Dashboards erscheint, ist die Umstellung abgeschlossen.
 
 ### MQTT-Collector
+
+Falls man den MQTT-Collector verwendet, gibt es dort ebenfalls eine Warnung zur Umstellung der Konfiguration.
 
 Was genau zu tun ist, wird beim Start des MQTT-Collectors im Docker-Log ausgegeben. Dort findet sich z.B. eine Meldung wie diese:
 
@@ -143,7 +208,7 @@ Es ist dann folgendes zu tun:
 
 Es muss also wie folgt aussehen:
 
-### .env
+#### .env ergänzen
 
 ```properties
 # ...
@@ -155,7 +220,7 @@ MAPPING_3_MEASUREMENT_NEGATIVE=SUNGROW
 MAPPING_3_TYPE=integer
 ```
 
-### compose.yaml
+#### compose.yaml erweitern
 
 ```yaml
 services:
