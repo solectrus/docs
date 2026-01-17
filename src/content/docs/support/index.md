@@ -17,7 +17,7 @@ Wenn das alles nicht weiterhilft, gibt es noch die Möglichkeit der individuelle
 Mit der Suchfunktion von GitHub kann nach bereits bestehenden Issues oder Diskussionen gesucht werden. Es ist gut möglich, dass eine Frage schon einmal beantwortet oder ein Problem bereits gelöst worden ist.
 
 :::caution[Wichtig!]
-Bitte stelle keine Support-Anfragen per E-Mail, sondern wirklich ausschließlich über GitHub! Nur dadurch können auch zukünftige von Frage und Antwort profitieren.
+Bitte stelle keine Support-Anfragen per E-Mail, sondern wirklich ausschließlich über GitHub! Nur dadurch können auch zukünftige Nutzer von Frage und Antwort profitieren.
 
 Falls Du noch kein GitHub-Konto hast, kannst Du Dir dort kostenlos eines anlegen.
 :::
