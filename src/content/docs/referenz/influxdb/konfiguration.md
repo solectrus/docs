@@ -122,7 +122,7 @@ Diese Variable wirkt sich nur auf den ersten Start von InfluxDB aus, wenn noch k
 
 #### DOCKER_INFLUXDB_INIT_BUCKET
 
-Anzulegender Bucket für die Aufnahme der Messwerte. Das ist die Datenbank, in der die Messwerte gespeichert werden. Der Bucket wird beim ersten Start von InfluxDB angelegt. SOLECTRUS verwendet nur einen Bucket, dieser wird daher sinnvollerweise `solectrus` benannt.
+Anzulegender Bucket für die Aufnahme der Messwerte. Das ist die Datenbank, in der die Messwerte gespeichert werden. Der Bucket wird beim ersten Start (und nur dann!) von InfluxDB angelegt. SOLECTRUS verwendet nur **einen** Bucket, dieser wird daher sinnvollerweise `solectrus` benannt.
 
 ```properties title="Beispiel"
 DOCKER_INFLUXDB_INIT_BUCKET=solectrus
@@ -130,6 +130,10 @@ DOCKER_INFLUXDB_INIT_BUCKET=solectrus
 
 :::note
 Diese Variable wirkt sich nur auf den ersten Start von InfluxDB aus, wenn noch keine Datenbank vorhanden ist. Ein späteres Ändern dieser Variable hat keine Auswirkung.
+:::
+
+:::caution
+InfluxDB legt einen Bucket an, der für **unbegrenzte** Aufbewahrung konfiguriert ist (Retention Policy: `forever`). Das ist wichtig, damit SOLECTRUS historische Daten dauerhaft speichert. Es ist mit InfluxDB möglich, diese Definition später zu ändern, das darf bei Verwendung von SOLECTRUS aber **nicht** gemacht werden!
 :::
 
 #### INFLUX_VOLUME_PATH
