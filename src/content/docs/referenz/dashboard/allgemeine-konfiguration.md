@@ -29,6 +29,7 @@ services:
       - TZ
       - APP_HOST
       - FORCE_SSL
+      - TRUSTED_PROXY_RANGES
       - SECRET_KEY_BASE
       - WEB_CONCURRENCY
       - INSTALLATION_DATE
@@ -156,6 +157,20 @@ Mögliche Werte: `true`, `false`
 
 ```properties title="Beispiel"
 FORCE_SSL=true
+```
+
+#### TRUSTED_PROXY_RANGES
+
+Kommaseparierte Liste von IP-Adressbereichen (CIDR-Notation), die als vertrauenswürdige Proxies behandelt werden sollen. Wird benötigt, wenn SOLECTRUS hinter einem Reverse-Proxy wie z.B. Cloudflare betrieben wird, damit Rate-Limiting und IP-Logging korrekt funktionieren.
+
+:::note[Optional]
+Verfügbar ab Version `1.1`
+
+Standard: leer (nur lokale und Docker-interne Adressen werden als Proxies akzeptiert)
+:::
+
+```properties title="Beispiel"
+TRUSTED_PROXY_RANGES=173.245.48.0/20,103.21.244.0/22
 ```
 
 #### SECRET_KEY_BASE
