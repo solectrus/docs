@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
-    "@astrojs/starlight": "^0.37.6",
+    "@astrojs/starlight": "^0.37.7",
     "@plausible-analytics/tracker": "^0.4.4",
     "astro": "^5.18.0",
     "astro-mermaid": "^1.3.1",
