@@ -87,12 +87,13 @@ Die von SOLECTRUS unterstützten Sensoren lassen sich in verschiedene Kategorien
 
 #### Wärmepumpe
 
-| Sensor-Name                                                     | Einheit |
-| --------------------------------------------------------------- | ------- |
-| [HEATPUMP_HEATING_POWER](#influx_sensor_heatpump_heating_power) | Watt    |
-| [HEATPUMP_TANK_TEMP](#influx_sensor_heatpump_tank_temp)         | °C      |
-| [HEATPUMP_STATUS](#influx_sensor_heatpump_status)               | Text    |
-| [OUTDOOR_TEMP](#influx_sensor_outdoor_temp)                     | °C      |
+| Sensor-Name                                                               | Einheit |
+| ------------------------------------------------------------------------- | ------- |
+| [HEATPUMP_HEATING_POWER](#influx_sensor_heatpump_heating_power)           | Watt    |
+| [HEATPUMP_TANK_TEMP](#influx_sensor_heatpump_tank_temp)                   | °C      |
+| [HEATPUMP_TANK_TEMP_SETPOINT](#influx_sensor_heatpump_tank_temp_setpoint) | °C      |
+| [HEATPUMP_STATUS](#influx_sensor_heatpump_status)                         | Text    |
+| [OUTDOOR_TEMP](#influx_sensor_outdoor_temp)                               | °C      |
 
 #### Prognosen
 
@@ -308,6 +309,18 @@ INFLUX_SENSOR_HEATPUMP_TANK_TEMP=heatpump:tank_temp
 
 :::note
 Erst ab **Version 1.0** verfügbar.
+:::
+
+#### INFLUX_SENSOR_HEATPUMP_TANK_TEMP_SETPOINT
+
+Solltemperatur des Warmwasserspeichers der Wärmepumpe in °C.
+
+```properties title="Beispiel"
+INFLUX_SENSOR_HEATPUMP_TANK_TEMP_SETPOINT=heatpump:tank_temp_setpoint
+```
+
+:::note
+Erst ab **Version 1.2** verfügbar.
 :::
 
 #### INFLUX_SENSOR_WALLBOX_CAR_CONNECTED
