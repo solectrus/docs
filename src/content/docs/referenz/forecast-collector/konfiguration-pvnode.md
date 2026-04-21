@@ -48,8 +48,10 @@ FORECAST_1_KWP=3.9
 # pvnode-Zugangsdaten
 PVNODE_APIKEY=pvn_my-secret-api-key
 
-# Optional: Kostenpflichtiger Account
+# Optional: Tarif des bezahlten pvnode-Accounts (Standard: kostenloser Tarif)
 # PVNODE_PAID=true
+# oder
+# PVNODE_PAID=nowcast
 
 # Optional: Zusätzliche API-Parameter
 # PVNODE_EXTRA_PARAMS=diffuse_radiation_model=perez
@@ -87,29 +89,36 @@ PVNODE_APIKEY=pvn_my-secret-api-key
 
 #### PVNODE_PAID
 
-Aktiviert Funktionen für kostenpflichtige pvnode-Accounts.
+Wählt den pvnode-Tarif aus. Der Collector kann das nicht automatisch erkennen, daher muss der Tarif bei kostenpflichtigen Accounts explizit angegeben werden.
 
 :::note[Optional]
-Diese Angabe ist bei Verwendung eines **kostenpflichtigen** Accounts nötig, da der Collector das nicht automatisch erkennen kann. Wenn bei einem kostenlosen Account hier dennoch `true` angegeben wird, kommt es bei der Abfrage zu Fehlermeldungen.
+Mögliche Werte:
+
+- `false` – kostenloser Tarif
+- `true` – kostenpflichtiger Basis-Tarif
+- `nowcast` – kostenpflichtiger Nowcast-Tarif (verfügbar ab forecast-collector **v0.9.0**)
 
 Standard: `false`
+
+Der gewählte Wert muss zum aktiv abonnierten Tarif passen. Wird ein höherer Tarif angegeben als tatsächlich abonniert, kann es zu Fehlermeldungen kommen und/oder das monatliche Kontingent wird vorzeitig aufgebraucht, weil der Collector häufiger abfragt, als der abonnierte Tarif erlaubt.
 :::
 
 ```properties title="Beispiel"
-PVNODE_PAID=true
+PVNODE_PAID=nowcast
 ```
 
-Eine Aktivierung wirkt sich wie folgt aus:
+Die Tarife unterscheiden sich wie folgt:
 
-- Nutzung von bis zu 1.000 API-Anfragen **pro Monat** (statt **40 pro Monat** bei kostenlosem Account)
-- Abfrage von 7-Tage-Vorhersagen (statt 1 Tag bei kostenlosem Account)
+- **Kostenloser Tarif (`false`)**: bis zu 40 API-Anfragen pro Monat, 1-Tages-Vorhersage
+- **Basis-Tarif (`true`)**: bis zu 1.000 API-Anfragen pro Monat, 7-Tages-Vorhersage, stündliche Slots
+- **Nowcast-Tarif (`nowcast`)**: bis zu 3.000 API-Anfragen pro Monat, 7-Tages-Vorhersage, 10-Minuten-Updates während der Tageslichtstunden
 
 ### Abfrageintervall
 
 Das Abfrageintervall (`FORECAST_INTERVAL`) muss bei pvnode **nicht konfiguriert werden**. Der Collector ermittelt automatisch die optimalen Abrufzeitpunkte basierend auf:
 
-- den festen Update-Zeiten von pvnode (16-mal täglich zu festen Uhrzeiten)
-- dem verfügbaren API-Kontingent (40 Anfragen/Monat kostenlos, 1.000 Anfragen/Monat bei kostenpflichtigem Account)
+- den Update-Zeiten von pvnode (16-mal täglich zu festen Uhrzeiten bei Frei- und Basis-Tarif, zusätzlich alle 10 Minuten während der Tageslichtstunden beim Nowcast-Tarif)
+- dem verfügbaren API-Kontingent (40 Anfragen/Monat kostenlos, 1.000 Anfragen/Monat im Basis-Tarif, 3.000 Anfragen/Monat im Nowcast-Tarif)
 - der Anzahl der konfigurierten Dachflächen
 - den konfigurierten zusätzlichen Parametern (`PVNODE_EXTRA_PARAMS`)
 
