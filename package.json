@@ -24,7 +24,7 @@
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/starlight": "^0.38.4",
     "@plausible-analytics/tracker": "^0.4.4",
-    "astro": "^6.1.10",
+    "astro": "^6.2.1",
     "astro-mermaid": "^2.0.1",
     "starlight-theme-rapide": "^0.5.2"
   },
