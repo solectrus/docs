@@ -67,7 +67,7 @@ Die Sicherung kann optional auf einem anderen Speicherort gespeichert werden. Da
 Außerdem kann dafür gesorgt, dass nur eine begrenzte Anzahl von Sicherungen aufbewahrt wird. Dazu wird die Anzahl ebenfalls als Parameter übergeben:
 
 ```bash
-./backup.sh --retentation-days 10
+./backup.sh --retention-days 10
 ```
 
 ### Automatisieren der Datensicherung
