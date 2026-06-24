@@ -9,6 +9,17 @@ Diese Seite beschreibt die spezifischen Umgebungsvariablen für den Anbieter [pv
 
 Zusätzlich zu den hier beschriebenen Variablen müssen die [allgemeinen Einstellungen](/referenz/forecast-collector/allgemeine-konfiguration/) konfiguriert werden.
 
+## Zwei API-Varianten
+
+Der Forecast-Collector kann pvnode auf zwei Arten ansprechen:
+
+- **v1 (Plane-basiert)**: Standort und Dachflächen werden vollständig über die Umgebungsvariablen konfiguriert (`FORECAST_LATITUDE`, `FORECAST_LONGITUDE`, `FORECAST_DECLINATION`, `FORECAST_AZIMUTH`, `FORECAST_KWP` usw.). Dies ist das bisherige Verhalten.
+- **v2 (Site-basiert)**: Der Standort und alle PV-Strings werden einmalig in der pvnode-Web-App als _Site_ angelegt. Der Collector referenziert diese Site nur noch über deren ID ([`PVNODE_SITE_ID`](#pvnode_site_id)). Die Geometrie liegt damit auf der Site, sodass die oben genannten Standort- und Dachflächen-Variablen sowie `PVNODE_EXTRA_PARAMS` **nicht mehr verwendet** werden.
+
+:::caution[Noch nicht veröffentlicht]
+Die v2-API über [`PVNODE_SITE_ID`](#pvnode_site_id) ist derzeit nur im `develop`-Branch des forecast-collector verfügbar und noch in keinem Release enthalten.
+:::
+
 ## Vollständiges Beispiel
 
 ```properties title=".env"
@@ -48,6 +59,11 @@ FORECAST_1_KWP=3.9
 # pvnode-Zugangsdaten
 PVNODE_APIKEY=pvn_my-secret-api-key
 
+# Optional: Site-ID aktiviert die pvnode-API v2 (nur in develop verfügbar)
+# Ist sie gesetzt, werden Standort und Dachflächen aus der pvnode-Web-App
+# verwendet; die obigen FORECAST_*- und PVNODE_EXTRA_PARAMS-Variablen entfallen.
+# PVNODE_SITE_ID=site_xxxxxxxxxxxxxxxxxxxxxx
+
 # Optional: Tarif des bezahlten pvnode-Accounts (Standard: kostenloser Tarif)
 # PVNODE_PAID=true
 # oder
@@ -85,6 +101,26 @@ Der API-Key identifiziert den Account und ist in jedem Fall erforderlich.
 
 ```properties title="Beispiel"
 PVNODE_APIKEY=pvn_my-secret-api-key
+```
+
+#### PVNODE_SITE_ID
+
+Aktiviert die pvnode-API **v2** (Site-basiert). Die _Site_ wird einmalig in der pvnode-Web-App angelegt – sie enthält den Standort und alle PV-Strings. Hier wird nur noch deren ID referenziert.
+
+:::caution[Optional – nur in develop verfügbar]
+Diese Variable ist derzeit nur im `develop`-Branch des forecast-collector verfügbar und noch in keinem Release enthalten.
+
+Ist sie gesetzt, verwendet der Collector die v2-API. Die Geometrie liegt dann vollständig auf der Site, daher werden folgende Variablen **nicht mehr verwendet**:
+
+- `FORECAST_LATITUDE`, `FORECAST_LONGITUDE`
+- `FORECAST_DECLINATION`, `FORECAST_AZIMUTH`, `FORECAST_KWP` (bzw. deren `FORECAST_X_*`-Varianten)
+- `PVNODE_EXTRA_PARAMS` (bzw. `PVNODE_X_EXTRA_PARAMS`)
+
+Bleibt sie ungesetzt, nutzt der Collector weiterhin die v1-API (Konfiguration über die Dachflächen-Variablen).
+:::
+
+```properties title="Beispiel"
+PVNODE_SITE_ID=site_xxxxxxxxxxxxxxxxxxxxxx
 ```
 
 #### PVNODE_PAID
@@ -205,7 +241,9 @@ FORECAST_KWP=9.24
 
 Zusätzliche Query-Parameter für die pvnode-API. Diese werden an alle Dachflächen-Abfragen angehängt.
 
-:::note[Optional]
+:::note[Optional – nur v1]
+Wird nur bei der v1-API verwendet. Bei aktivierter v2-API ([`PVNODE_SITE_ID`](#pvnode_site_id)) ist dieser Parameter wirkungslos, da die Konfiguration auf der Site liegt.
+
 Format: `key1=value1&key2=value2` (ohne führendes `?` oder `&`)
 
 Informationen zu den verfügbaren Parametern finden sich in der pvnode-Dokumentation: \
@@ -275,8 +313,8 @@ FORECAST_1_KWP=5.5
 
 Zusätzliche Query-Parameter für eine bestimmte Dachfläche. Diese überschreiben `PVNODE_EXTRA_PARAMS` für die jeweilige Dachfläche.
 
-:::note[Optional]
-Nur relevant bei mehreren Dachflächen mit unterschiedlichen Parametern.
+:::note[Optional – nur v1]
+Nur relevant bei mehreren Dachflächen mit unterschiedlichen Parametern. Bei aktivierter v2-API ([`PVNODE_SITE_ID`](#pvnode_site_id)) wirkungslos.
 :::
 
 ```properties title="Beispiel"
