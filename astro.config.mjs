@@ -4,10 +4,17 @@ import starlight from '@astrojs/starlight';
 import starlightThemeRapide from 'starlight-theme-rapide';
 import mermaid from 'astro-mermaid';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://docs.solectrus.de',
+  // Astro 7 uses the native Sätteri processor by default, which does not run
+  // remark/rehype plugins. astro-mermaid relies on a rehype plugin, so we keep
+  // the unified() pipeline to ensure Mermaid diagrams are rendered.
+  markdown: {
+    processor: unified(),
+  },
   redirects: {
     '/wartung/updates/': '/anleitungen/updates/',
     '/wartung/datensicherung/': '/anleitungen/datensicherung/',
