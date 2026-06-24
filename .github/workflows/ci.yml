@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build (fail on warnings)
+        run: |
+          set -o pipefail
+          bun run build 2>&1 | tee build.log
+          # Treat warnings and deprecations as errors so a dependency update
+          # that introduces them (e.g. Astro's Sätteri config warning) blocks
+          # the merge instead of silently degrading the docs.
+          if grep -nEi "\[WARN\]|\[ERROR\]|deprecat|doesn't run them|is set, but" build.log; then
+            echo "::error::Build emitted warnings/deprecations (see matched lines above). Resolve them before merging."
+            exit 1
+          fi
+          echo "✓ Build completed without warnings"

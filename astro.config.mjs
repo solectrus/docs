@@ -33,6 +33,14 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/sharp',
     },
   },
+  vite: {
+    build: {
+      // The Mermaid bundle exceeds Vite's default 500 kB warning threshold.
+      // This is expected and not a regression, so raise the limit to keep the
+      // build output clean (CI treats any remaining warning as a failure).
+      chunkSizeWarningLimit: 2000,
+    },
+  },
   integrations: [
     sitemap(),
     mermaid(),
