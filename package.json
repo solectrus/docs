@@ -22,9 +22,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@astrojs/starlight": "^0.40.0",
+    "@astrojs/starlight": "^0.41.0",
     "@plausible-analytics/tracker": "^0.4.5",
-    "astro": "^6.4.8",
+    "astro": "^7.0.2",
     "astro-mermaid": "^2.0.4",
     "starlight-theme-rapide": "^0.5.2"
   },
